@@ -58,6 +58,11 @@ COORDS = {
 }
 
 
+# crew-gewichten (naam -> kg) + bagage; gevuld in main() uit journal.json
+WEIGHTS = {}
+BAGGAGE_KG = 0
+
+
 def load():
     with open(JOURNAL, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -87,12 +92,21 @@ def pslug(name):
 
 
 def crew_member(name, role):
-    """Render one crew member chip with role styling."""
+    """Render one crew member chip with role styling + gewicht (lichaam +bagage)."""
     cls = {"PIC": "pic", "COPILOT": "copilot"}.get(role, "pax")
     chip = f'<span class="crew">{html.escape(name)}</span>'
+    w = WEIGHTS.get(name)
+    wt = ""
+    if w is not None:
+        if BAGGAGE_KG:
+            total = w + BAGGAGE_KG
+            wt = (f'<span class="seat-wt" title="{w} kg lichaam + {BAGGAGE_KG} kg bagage = {total} kg">'
+                  f'{w}<span class="wt-bag">+{BAGGAGE_KG}</span>\u202F<span class="wt-tot">{total}kg</span></span>')
+        else:
+            wt = f'<span class="seat-wt">{w}kg</span>'
     return (
         f'<span class="seat {cls}" data-person="{pslug(name)}">'
-        f'<span class="seat-role">{html.escape(role)}</span>{chip}</span>'
+        f'<span class="seat-role">{html.escape(role)}</span>{chip}{wt}</span>'
     )
 
 
@@ -362,8 +376,11 @@ def render_day(data, day):
 
 
 def main():
+    global WEIGHTS, BAGGAGE_KG
     data = load()
     meta = data["meta"]
+    WEIGHTS = data.get("weights", {}) or {}
+    BAGGAGE_KG = int(meta.get("baggageKg", 0) or 0)
     now = datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M UTC")
     data["meta"]["lastUpdated"] = now
 
@@ -607,6 +624,11 @@ a.cll-apt.has-plate{color:var(--accent)}
 .seat.copilot .seat-role{background:rgba(126,224,192,.2);color:var(--copilot)}
 .seat.pax .seat-role{background:rgba(185,167,255,.16);color:var(--pax)}
 .crew{color:var(--ink)}
+.seat-wt{display:inline-flex;align-items:baseline;gap:1px;font-size:11px;color:var(--muted);
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  padding:1px 6px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.seat-wt .wt-bag{font-size:9px;opacity:.65}
+.seat-wt .wt-tot{font-weight:700;color:var(--accent2)}
 .crew-details{margin-top:10px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
   background:rgba(255,255,255,.02);overflow:hidden}
 .crew-details summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:14px;font-weight:600;

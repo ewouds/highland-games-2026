@@ -5,10 +5,11 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "09/06/2026 17:40 UTC",
+    "lastUpdated": "09/06/2026 20:23 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 5
+    "nextRef": 5,
+    "baggageKg": 7
   },
   "aircraft": [
     {
@@ -881,5 +882,26 @@
       ],
       "entries": []
     }
-  ]
+  ],
+  "weights": {
+    "Annick": 54,
+    "Axel": 76,
+    "Brecht": 64,
+    "Dirk": 110,
+    "Ewoud": 85,
+    "Glenn": 78,
+    "Hans": 93,
+    "Josha": 85,
+    "Ken": 96,
+    "Koen V": 77,
+    "Koenraad VB": 92,
+    "Kristof": 70,
+    "Lieven": 85,
+    "Luk": 96,
+    "Marc": 98,
+    "Michael": 76,
+    "Nick": 88,
+    "Tom": 100,
+    "Wim": 85
+  }
 }
