@@ -414,6 +414,12 @@ def main():
   <p class="updated">Laatst bijgewerkt: {now}</p>
 </footer>
 
+<button id="fabToggle" class="fab" type="button" aria-expanded="false" title="Alles openklappen">
+  <svg class="fab-ico fab-expand" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <svg class="fab-ico fab-collapse" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <span class="fab-label">Alles openklappen</span>
+</button>
+
 <div id="lightbox" class="lightbox" hidden>
   <button class="lb-close" aria-label="Sluiten">&times;</button>
   <img src="" alt="">
@@ -633,7 +639,23 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 .lightbox[hidden]{display:none}
 .lightbox img{max-width:96vw;max-height:92vh;border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,.6)}
 .lb-close{position:absolute;top:18px;right:24px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;line-height:1}
-@media(max-width:560px){.day{padding:18px 14px}.gallery img{height:130px}}
+/* --- floating expand/collapse-all knop --- */
+.fab{position:fixed;right:22px;bottom:22px;z-index:900;display:flex;align-items:center;gap:0;
+  height:56px;padding:0;border:none;cursor:pointer;border-radius:999px;overflow:hidden;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04203b;
+  box-shadow:0 8px 26px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12) inset;
+  transition:transform .16s ease,box-shadow .16s ease,padding .2s ease}
+.fab:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.2) inset}
+.fab:active{transform:translateY(0)}
+.fab-ico{width:56px;height:56px;padding:16px;flex:none;box-sizing:border-box}
+.fab .fab-collapse{display:none}
+.fab[aria-expanded="true"] .fab-expand{display:none}
+.fab[aria-expanded="true"] .fab-collapse{display:block}
+.fab-label{font-family:Inter,system-ui,sans-serif;font-weight:700;font-size:14px;white-space:nowrap;
+  max-width:0;opacity:0;overflow:hidden;transition:max-width .22s ease,opacity .18s ease,padding .22s ease}
+.fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:190px;opacity:1;padding-right:20px}
+@media(max-width:560px){.day{padding:18px 14px}.gallery img{height:130px}
+  .fab{right:16px;bottom:16px}.fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}}
 """
 
 JS_TEMPLATE = r"""
@@ -782,6 +804,29 @@ JS_TEMPLATE = r"""
   // init: pas opgeslagen selectie toe; klap de filter open als er een actieve selectie is
   if(crewFilter && cfSel.length){ crewFilter.open = true; }
   applyFilter();
+
+  // ---- floating expand/collapse-all knop ----
+  var fab = document.getElementById('fabToggle');
+  if(fab){
+    var allDetails = Array.prototype.slice.call(document.querySelectorAll('details'));
+    function syncFab(){
+      // als er nog minstens één dicht is -> volgende actie = openklappen
+      var anyClosed = allDetails.some(function(d){ return !d.open; });
+      fab.setAttribute('aria-expanded', anyClosed ? 'false' : 'true');
+      var lbl = anyClosed ? 'Alles openklappen' : 'Alles inklappen';
+      fab.title = lbl;
+      var span = fab.querySelector('.fab-label');
+      if(span) span.textContent = lbl;
+    }
+    fab.addEventListener('click', function(){
+      var anyClosed = allDetails.some(function(d){ return !d.open; });
+      allDetails.forEach(function(d){ d.open = anyClosed; });
+      syncFab();
+    });
+    // houd de knop in sync als de gebruiker losse secties open/dicht klapt
+    allDetails.forEach(function(d){ d.addEventListener('toggle', syncFab); });
+    syncFab();
+  }
 })();
 """
 
