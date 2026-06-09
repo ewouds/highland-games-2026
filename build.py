@@ -231,8 +231,6 @@ def render_hotel(h):
             f'<span class="htl-row htl-addr"><span class="htl-k">\U0001F4CD</span>'
             f'<a href="{_maps}" target="_blank" rel="noopener">{html.escape(h["address"])}</a></span>'
         )
-    if h.get("cancel_by"):
-        rows.append(f'<span class="htl-row htl-cancel"><span class="htl-k">\u23F0</span>gratis annuleerbaar tot {html.escape(h["cancel_by"])}</span>')
     if rows:
         parts.append('<div class="htl-meta">' + "".join(rows) + '</div>')
     if h.get("note"):
@@ -634,7 +632,6 @@ a.cll-apt.has-plate{color:var(--accent)}
 .htl-meta{display:flex;flex-wrap:wrap;gap:7px 16px;padding:0 15px 13px;font-size:13px;color:var(--muted)}
 .htl-row{display:inline-flex;align-items:center;gap:6px}
 .htl-k{font-size:13px;opacity:.85}
-.htl-cancel{color:var(--rest)}
 .htl-addr a{color:var(--accent);text-decoration:none;border-bottom:1px dotted rgba(72,169,255,.4)}
 .htl-addr a:hover{color:var(--accent2);border-bottom-color:var(--accent2)}
 .htl-note{padding:0 15px 13px;font-size:12.5px;color:var(--muted);font-style:italic;margin-top:-4px}
