@@ -9,6 +9,31 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 JOURNAL = os.path.join(HERE, "journal.json")
 OUT = os.path.join(HERE, "index.html")
+PLATES_DIR = os.path.join(HERE, "plates")
+
+
+def available_plates():
+    """Scan plates/ en geef set van ICAO-codes met een <CODE>.pdf bestand."""
+    out = set()
+    if os.path.isdir(PLATES_DIR):
+        for fn in os.listdir(PLATES_DIR):
+            if fn.lower().endswith(".pdf"):
+                out.add(os.path.splitext(fn)[0].upper())
+    return out
+
+
+PLATES = available_plates()
+
+
+def apt_code(code, cls="apt"):
+    """Render een luchthavencode; klikbaar (opent Jeppesen-plate) als er een PDF bestaat."""
+    code = code or ""
+    safe = html.escape(code)
+    if code.upper() in PLATES:
+        href = f"plates/{urllib.parse.quote(code.upper())}.pdf"
+        return (f'<a class="{cls} has-plate" href="{href}" target="_blank" rel="noopener" '
+                f'title="Jeppesen VFR-plate {safe} openen">{safe}<span class="plate-ico" aria-hidden="true">\U0001F4C4</span></a>')
+    return f'<span class="{cls}">{safe}</span>'
 
 # Airport coordinates (lat, lon) for the map
 COORDS = {
@@ -266,10 +291,10 @@ def render_day(data, day):
             frm, to = leg["from"], leg["to"]
             parts.append('<div class="leg">')
             parts.append(
-                f'<div class="leg-route"><span class="apt">{frm}</span>'
+                f'<div class="leg-route">{apt_code(frm)}'
                 f'<span class="apt-name">{html.escape(ap.get(frm, ""))}</span>'
                 f'<span class="arrow">→</span>'
-                f'<span class="apt">{to}</span>'
+                f'{apt_code(to)}'
                 f'<span class="apt-name">{html.escape(ap.get(to, ""))}</span></div>'
             )
             meta = f'{leg["dist_nm"]} NM · {fmt_time(leg.get("time_min"))}'
@@ -289,8 +314,8 @@ def render_day(data, day):
                     continue
                 parts.append('<div class="crew-leg-block">')
                 parts.append(
-                    f'<div class="crew-leg-label"><span class="cll-apt">{leg["from"]}</span>'
-                    f'<span class="cll-arr">→</span><span class="cll-apt">{leg["to"]}</span></div>'
+                    f'<div class="crew-leg-label">{apt_code(leg["from"], "cll-apt")}'
+                    f'<span class="cll-arr">→</span>{apt_code(leg["to"], "cll-apt")}</div>'
                 )
                 parts.append('<div class="crew-grid">')
                 for ac in crew:
@@ -543,6 +568,14 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .apt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--accent)}
 .apt-name{font-size:13px;color:var(--muted)}
 .arrow{color:var(--accent2);font-size:18px;margin:0 2px}
+/* klikbare luchthavencodes -> Jeppesen-plate */
+a.apt.has-plate,a.cll-apt.has-plate{text-decoration:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:4px;border-bottom:1px dashed rgba(72,169,255,.45);
+  transition:color .15s,border-color .15s}
+a.apt.has-plate:hover,a.cll-apt.has-plate:hover{color:#9fd4ff;border-bottom-color:#9fd4ff}
+a.cll-apt.has-plate{color:var(--accent)}
+.plate-ico{font-size:.5em;opacity:.7;line-height:1;transform:translateY(-1px)}
+a.has-plate:hover .plate-ico{opacity:1}
 .leg-meta{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .crew-grid{display:grid;gap:7px;margin-top:4px}
 .ac-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;
