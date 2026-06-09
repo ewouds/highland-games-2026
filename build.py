@@ -40,15 +40,36 @@ def fmt_time(mins):
     return f"{m} min"
 
 
-def role_badge(role):
-    cls = {
-        "PIC": "pic",
-        "COPILOT": "copilot",
-        "PAX 1": "pax",
-        "PAX 2": "pax",
-    }.get(role, "pax")
-    label = {"PIC": "PIC ✈️", "COPILOT": "Copilot", "PAX 1": "Passagier", "PAX 2": "Passagier"}.get(role, role)
-    return f'<span class="role {cls}">{html.escape(label)}</span>'
+def crew_member(name, role, highlight):
+    """Render one crew member chip with role styling; highlight the spotlight name."""
+    cls = {"PIC": "pic", "COPILOT": "copilot"}.get(role, "pax")
+    is_hl = highlight and name.strip().lower() == highlight.strip().lower()
+    chip = f'<span class="crew{" me" if is_hl else ""}">{html.escape(name)}</span>'
+    return f'<span class="seat {cls}"><span class="seat-role">{html.escape(role)}</span>{chip}</span>'
+
+
+def render_aircraft_crew(ac, highlight):
+    """Render one aircraft row: reg + PIC + Copilot + PAX list."""
+    reg = ac.get("reg", "")
+    seats = []
+    if ac.get("pic"):
+        seats.append(crew_member(ac["pic"], "PIC", highlight))
+    if ac.get("copilot"):
+        seats.append(crew_member(ac["copilot"], "COPILOT", highlight))
+    for i, p in enumerate(ac.get("pax", []) or []):
+        seats.append(crew_member(p, "PAX", highlight))
+    has_me = highlight and any(
+        (ac.get("pic") or "").strip().lower() == highlight.strip().lower()
+        or (ac.get("copilot") or "").strip().lower() == highlight.strip().lower()
+        or any((p or "").strip().lower() == highlight.strip().lower() for p in (ac.get("pax") or []))
+        for _ in [0]
+    )
+    return (
+        f'<div class="ac-row{" mine" if has_me else ""}">'
+        f'<span class="ac-reg">{html.escape(reg)}</span>'
+        f'<span class="ac-seats">{"".join(seats)}</span>'
+        '</div>'
+    )
 
 
 def build_route_points(data):
@@ -115,6 +136,7 @@ def render_day(data, day):
     else:
         # legs
         parts.append('<div class="legs">')
+        highlight = data.get("meta", {}).get("highlightName")
         for leg in day.get("legs", []):
             frm, to = leg["from"], leg["to"]
             parts.append('<div class="leg">')
@@ -126,13 +148,13 @@ def render_day(data, day):
                 f'<span class="apt-name">{html.escape(ap.get(to, ""))}</span></div>'
             )
             meta = f'{leg["dist_nm"]} NM · {fmt_time(leg.get("time_min"))}'
-            ew = leg.get("ewoud")
-            ewa = leg.get("ewoud_aircraft", "")
-            parts.append(
-                f'<div class="leg-meta">{meta}'
-                + (f' · {role_badge(ew)} <span class="ac">{html.escape(ewa)}</span>' if ew else "")
-                + '</div>'
-            )
+            parts.append(f'<div class="leg-meta">{meta}</div>')
+            crew = leg.get("crew") or []
+            if crew:
+                parts.append('<div class="crew-grid">')
+                for ac in crew:
+                    parts.append(render_aircraft_crew(ac, highlight))
+                parts.append('</div>')
             parts.append('</div>')
         parts.append('</div>')
 
@@ -296,11 +318,23 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .apt-name{font-size:13px;color:var(--muted)}
 .arrow{color:var(--accent2);font-size:18px;margin:0 2px}
 .leg-meta{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.role{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
-.role.pic{background:rgba(72,169,255,.18);color:var(--pic)}
-.role.copilot{background:rgba(126,224,192,.18);color:var(--copilot)}
-.role.pax{background:rgba(185,167,255,.18);color:var(--pax)}
-.ac{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--ink);font-size:15px}
+.crew-grid{display:grid;gap:7px;margin-top:4px}
+.ac-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;
+  background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
+.ac-row.mine{background:rgba(72,169,255,.10);border-color:rgba(72,169,255,.35)}
+.ac-reg{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent2);
+  font-size:18px;min-width:74px;flex-shrink:0;padding-top:1px}
+.ac-row.mine .ac-reg{color:var(--accent)}
+.ac-seats{display:flex;flex-wrap:wrap;gap:6px}
+.seat{display:inline-flex;align-items:center;gap:5px;font-size:13px}
+.seat-role{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  padding:2px 6px;border-radius:6px}
+.seat.pic .seat-role{background:rgba(72,169,255,.2);color:var(--pic)}
+.seat.copilot .seat-role{background:rgba(126,224,192,.2);color:var(--copilot)}
+.seat.pax .seat-role{background:rgba(185,167,255,.16);color:var(--pax)}
+.crew{color:var(--ink)}
+.crew.me{font-weight:800;color:#fff;background:rgba(72,169,255,.28);
+  padding:1px 7px;border-radius:999px;box-shadow:0 0 0 1px rgba(72,169,255,.5)}
 .entries{margin-top:18px;display:grid;gap:18px}
 .entries.empty{color:var(--muted);font-style:italic;font-size:14px;opacity:.7;margin-top:14px}
 .entry{border-left:2px solid rgba(72,169,255,.3);padding-left:16px}

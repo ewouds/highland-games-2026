@@ -5,9 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "09/06/2026 11:18 UTC",
+    "lastUpdated": "09/06/2026 11:45 UTC",
     "pilot": "Ewoud Smets",
-    "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet."
+    "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
+    "highlightName": "Ewoud"
   },
   "aircraft": [
     {
@@ -60,24 +61,171 @@
           "to": "EGSC",
           "dist_nm": 171,
           "time_min": 102.6,
-          "ewoud": "PIC",
-          "ewoud_aircraft": "F-GXNC"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Kristof",
+              "copilot": "Josha",
+              "pax": [
+                "Michael"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Dirk",
+              "copilot": "Hans",
+              "pax": [
+                "Ken"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Glenn",
+              "copilot": "Marc",
+              "pax": [
+                "Luk"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Tom",
+              "copilot": "Annick",
+              "pax": [
+                "Koen V"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Brecht",
+              "copilot": "Nick",
+              "pax": [
+                "Wim",
+                "Koenraad VB"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Lieven",
+              "copilot": "Axel",
+              "pax": [
+                "Ewoud"
+              ]
+            }
+          ]
         },
         {
           "from": "EGSC",
           "to": "EGCM",
           "dist_nm": 110,
           "time_min": 66,
-          "ewoud": "PIC",
-          "ewoud_aircraft": "F-GXNC"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Wim",
+              "copilot": "Brecht",
+              "pax": [
+                "Josha"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Michael",
+              "copilot": "Nick",
+              "pax": [
+                "Annick",
+                "Koen V"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Hans",
+              "copilot": "Dirk",
+              "pax": [
+                "Marc"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Luk",
+              "copilot": "Glenn",
+              "pax": [
+                "Kristof"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Ken",
+              "copilot": "Tom",
+              "pax": [
+                "Koenraad VB"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Ewoud",
+              "copilot": "Lieven",
+              "pax": [
+                "Axel"
+              ]
+            }
+          ]
         },
         {
           "from": "EGCM",
           "to": "EGPG",
           "dist_nm": 161,
           "time_min": 96.6,
-          "ewoud": "PAX 2",
-          "ewoud_aircraft": "OO-VPE"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Nick",
+              "copilot": "Kristof",
+              "pax": [
+                "Annick"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Koenraad VB",
+              "copilot": "Brecht",
+              "pax": [
+                "Wim",
+                "Ewoud"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Marc",
+              "copilot": "Dirk",
+              "pax": [
+                "Luk"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Axel",
+              "copilot": "Glenn",
+              "pax": [
+                "Michael"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Josha",
+              "copilot": "Tom",
+              "pax": [
+                "Hans"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Koen V",
+              "copilot": "Lieven",
+              "pax": [
+                "Ken"
+              ]
+            }
+          ]
         }
       ],
       "entries": []
@@ -93,16 +241,114 @@
           "to": "EGPR",
           "dist_nm": 131,
           "time_min": 78.6,
-          "ewoud": "COPILOT",
-          "ewoud_aircraft": "OO-MAV"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Kristof",
+              "copilot": "Axel",
+              "pax": [
+                "Wim"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Dirk",
+              "copilot": "Marc",
+              "pax": [
+                "Hans"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Glenn",
+              "copilot": "Nick",
+              "pax": [
+                "Michael",
+                "Koenraad VB"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Brecht",
+              "copilot": "Ewoud",
+              "pax": [
+                "Josha"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Tom",
+              "copilot": "Luk",
+              "pax": [
+                "Ken"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Lieven",
+              "copilot": "Annick",
+              "pax": [
+                "Koen V"
+              ]
+            }
+          ]
         },
         {
           "from": "EGPR",
           "to": "EGPE",
           "dist_nm": 115,
           "time_min": 69,
-          "ewoud": "PIC",
-          "ewoud_aircraft": "F-GXNC"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Annick",
+              "copilot": "Glenn",
+              "pax": [
+                "Nick"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Michael",
+              "copilot": "Tom",
+              "pax": [
+                "Axel",
+                "Josha"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Marc",
+              "copilot": "Dirk",
+              "pax": [
+                "Hans"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Luk",
+              "copilot": "Brecht",
+              "pax": [
+                "Wim"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Ken",
+              "copilot": "Kristof",
+              "pax": [
+                "Koenraad VB"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Ewoud",
+              "copilot": "Lieven",
+              "pax": [
+                "Koen V"
+              ]
+            }
+          ]
         }
       ],
       "entries": []
@@ -118,16 +364,114 @@
           "to": "EGEO",
           "dist_nm": 79,
           "time_min": 47.4,
-          "ewoud": "PAX 1",
-          "ewoud_aircraft": "PH-DYX"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Nick",
+              "copilot": "Glenn",
+              "pax": [
+                "Annick"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Koenraad VB",
+              "copilot": "Brecht",
+              "pax": [
+                "Ewoud",
+                "Wim"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Hans",
+              "copilot": "Dirk",
+              "pax": [
+                "Luk"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Axel",
+              "copilot": "Kristof",
+              "pax": [
+                "Ken"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Josha",
+              "copilot": "Tom",
+              "pax": [
+                "Marc"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Koen V",
+              "copilot": "Lieven",
+              "pax": [
+                "Michael"
+              ]
+            }
+          ]
         },
         {
           "from": "EGEO",
           "to": "EGAD",
           "dist_nm": 114,
           "time_min": 68.4,
-          "ewoud": "PIC",
-          "ewoud_aircraft": "OO-MAV"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Annick",
+              "copilot": "Dirk",
+              "pax": [
+                "Michael"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Wim",
+              "copilot": "Brecht",
+              "pax": [
+                "Koenraad VB",
+                "Hans"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Kristof",
+              "copilot": "Ken",
+              "pax": [
+                "Marc"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Ewoud",
+              "copilot": "Glenn",
+              "pax": [
+                "Koen V"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Tom",
+              "copilot": "Luk",
+              "pax": [
+                "Nick"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Lieven",
+              "copilot": "Josha",
+              "pax": [
+                "Axel"
+              ]
+            }
+          ]
         }
       ],
       "entries": []
@@ -151,16 +495,114 @@
           "to": "EIKY",
           "dist_nm": 199,
           "time_min": 119.4,
-          "ewoud": "PAX 1",
-          "ewoud_aircraft": "PH-DYX"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Nick",
+              "copilot": "Glenn",
+              "pax": [
+                "Annick"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Wim",
+              "copilot": "Brecht",
+              "pax": [
+                "Ewoud",
+                "Koen V"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Hans",
+              "copilot": "Tom",
+              "pax": [
+                "Marc"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Luk",
+              "copilot": "Kristof",
+              "pax": [
+                "Michael"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Dirk",
+              "copilot": "Ken",
+              "pax": [
+                "Josha"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Axel",
+              "copilot": "Lieven",
+              "pax": [
+                "Koenraad VB"
+              ]
+            }
+          ]
         },
         {
           "from": "EIKY",
           "to": "EGFF",
           "dist_nm": 235,
           "time_min": 141,
-          "ewoud": "COPILOT",
-          "ewoud_aircraft": "OO-MAV"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Koenraad VB",
+              "copilot": "Brecht",
+              "pax": [
+                "Michael"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Marc",
+              "copilot": "Dirk",
+              "pax": [
+                "Hans"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Koen V",
+              "copilot": "Kristof",
+              "pax": [
+                "Wim",
+                "Nick"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Glenn",
+              "copilot": "Ewoud",
+              "pax": [
+                "Annick"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Josha",
+              "copilot": "Tom",
+              "pax": [
+                "Luk"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Ken",
+              "copilot": "Lieven",
+              "pax": [
+                "Axel"
+              ]
+            }
+          ]
         }
       ],
       "entries": []
@@ -176,16 +618,114 @@
           "to": "EGSU",
           "dist_nm": 136,
           "time_min": 81.6,
-          "ewoud": "PAX 2",
-          "ewoud_aircraft": "OO-VPE"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Annick",
+              "copilot": "Glenn",
+              "pax": [
+                "Luk"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Marc",
+              "copilot": "Kristof",
+              "pax": [
+                "Hans"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Michael",
+              "copilot": "Dirk",
+              "pax": [
+                "Wim",
+                "Ewoud"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Brecht",
+              "copilot": "Koen V",
+              "pax": [
+                "Koenraad VB"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Ken",
+              "copilot": "Tom",
+              "pax": [
+                "Nick"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Axel",
+              "copilot": "Lieven",
+              "pax": [
+                "Josha"
+              ]
+            }
+          ]
         },
         {
           "from": "EGSU",
           "to": "EBAW",
           "dist_nm": 170,
           "time_min": 102,
-          "ewoud": "PAX 1",
-          "ewoud_aircraft": "OO-VPE"
+          "crew": [
+            {
+              "reg": "OO-VPE",
+              "pic": "Wim",
+              "copilot": "Brecht",
+              "pax": [
+                "Ewoud"
+              ]
+            },
+            {
+              "reg": "PH-DYX",
+              "pic": "Tom",
+              "copilot": "Michael",
+              "pax": [
+                "Nick",
+                "Annick"
+              ]
+            },
+            {
+              "reg": "OO-MPL",
+              "pic": "Luk",
+              "copilot": "Dirk",
+              "pax": [
+                "Ken"
+              ]
+            },
+            {
+              "reg": "OO-MAV",
+              "pic": "Glenn",
+              "copilot": "Hans",
+              "pax": [
+                "Axel"
+              ]
+            },
+            {
+              "reg": "OO-VSP",
+              "pic": "Josha",
+              "copilot": "Kristof",
+              "pax": [
+                "Marc"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Koen V",
+              "copilot": "Lieven",
+              "pax": [
+                "Koenraad VB"
+              ]
+            }
+          ]
         }
       ],
       "entries": []
