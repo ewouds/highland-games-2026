@@ -73,6 +73,8 @@ def main():
     ap.add_argument("--photo", action="append", nargs="+", metavar=("PATH", "CAPTION"),
                     help="Path then optional caption. Repeatable.")
     ap.add_argument("--rebuild", action="store_true", help="Only rebuild+push, no new entry")
+    ap.add_argument("--delete-ref", type=int, default=None, metavar="N",
+                    help="Delete the entry with REF-N (across all days), then rebuild+push.")
     ap.add_argument("--no-push", action="store_true")
     args = ap.parse_args()
 
@@ -84,7 +86,25 @@ def main():
     with open(JOURNAL, encoding="utf-8") as f:
         data = json.load(f)
 
-    if not args.rebuild:
+    if args.delete_ref is not None:
+        target = args.delete_ref
+        removed = None
+        for _d in data["days"]:
+            ents = _d.get("entries", [])
+            for i, _e in enumerate(ents):
+                if _e.get("ref") == target:
+                    removed = ents.pop(i)
+                    removed_day = _d.get("date")
+                    break
+            if removed is not None:
+                break
+        if removed is None:
+            sys.exit(f"No entry with REF-{target:03d} found.")
+        with open(JOURNAL, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"Deleted REF-{target:03d} from {removed_day}: {removed.get('text','')[:60]}...")
+
+    if not args.rebuild and args.delete_ref is None:
         date = resolve_date(args.date)
         day = next((d for d in data["days"] if d["date"] == date), None)
         if day is None:
@@ -138,7 +158,12 @@ def main():
 
     # commit + push
     run(["git", "add", "-A"])
-    msg = "Rebuild" if args.rebuild else f"Update {resolve_date(args.date)}"
+    if args.rebuild:
+        msg = "Rebuild"
+    elif args.delete_ref is not None:
+        msg = f"Delete REF-{args.delete_ref:03d}"
+    else:
+        msg = f"Update {resolve_date(args.date)}"
     c = run(["git", "commit", "-m", f"Highland Games: {msg}"])
     if "nothing to commit" in (c.stdout + c.stderr):
         print("No changes to commit.")
