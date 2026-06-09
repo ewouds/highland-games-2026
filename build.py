@@ -100,8 +100,8 @@ def crew_member(name, role):
     if w is not None:
         if BAGGAGE_KG:
             total = w + BAGGAGE_KG
-            wt = (f'<span class="seat-wt" title="{w} kg lichaam + {BAGGAGE_KG} kg bagage = {total} kg">'
-                  f'{w}<span class="wt-bag">+{BAGGAGE_KG}</span>\u202F<span class="wt-tot">{total}kg</span></span>')
+            wt = (f'<span class="seat-wt" title="{w} kg lichaam + {BAGGAGE_KG} kg bagage">'
+                  f'{total}kg</span>')
         else:
             wt = f'<span class="seat-wt">{w}kg</span>'
     return (
@@ -624,11 +624,9 @@ a.cll-apt.has-plate{color:var(--accent)}
 .seat.copilot .seat-role{background:rgba(126,224,192,.2);color:var(--copilot)}
 .seat.pax .seat-role{background:rgba(185,167,255,.16);color:var(--pax)}
 .crew{color:var(--ink)}
-.seat-wt{display:inline-flex;align-items:baseline;gap:1px;font-size:11px;color:var(--muted);
+.seat-wt{display:inline-flex;align-items:baseline;font-size:11px;font-weight:700;color:var(--accent2);
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
   padding:1px 6px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.seat-wt .wt-bag{font-size:9px;opacity:.65}
-.seat-wt .wt-tot{font-weight:700;color:var(--accent2)}
 .crew-details{margin-top:10px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
   background:rgba(255,255,255,.02);overflow:hidden}
 .crew-details summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:14px;font-weight:600;
