@@ -302,8 +302,20 @@ def render_day(data, day):
                 f'<span class="arrow">→</span>'
                 f'{apt_pair(to, ap.get(to, ""))}</div>'
             )
-            meta = f'{leg["dist_nm"]} NM · {fmt_time(leg.get("time_min"))}'
-            parts.append(f'<div class="leg-meta">{meta}</div>')
+            dist_svg = ('<svg class="meta-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">'
+                        '<path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" '
+                        'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+            time_svg = ('<svg class="meta-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">'
+                        '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>'
+                        '<path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" '
+                        'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+            parts.append(
+                f'<div class="leg-meta">'
+                f'<span class="meta-item">{dist_svg}{leg["dist_nm"]} NM</span>'
+                f'<span class="meta-sep">·</span>'
+                f'<span class="meta-item">{time_svg}{fmt_time(leg.get("time_min"))}</span>'
+                f'</div>'
+            )
             parts.append('</div>')
         parts.append('</div>')
 
@@ -581,6 +593,9 @@ a.apt.has-plate,a.cll-apt.has-plate{text-decoration:none;cursor:pointer;
 a.apt.has-plate:hover,a.cll-apt.has-plate:hover{color:#9fd4ff;border-bottom-color:#9fd4ff}
 a.cll-apt.has-plate{color:var(--accent)}
 .leg-meta{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.meta-item{display:inline-flex;align-items:center;gap:5px}
+.meta-ico{flex:none;opacity:.75;color:var(--accent2)}
+.meta-sep{opacity:.5}
 .crew-grid{display:grid;gap:7px;margin-top:4px}
 .ac-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;
   background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
