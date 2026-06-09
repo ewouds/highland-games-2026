@@ -666,7 +666,8 @@ JS_TEMPLATE = r"""
   var markers = __MARKERS__;
   var line = __LINE__;
   if(document.getElementById('map') && window.L){
-    var map = L.map('map',{scrollWheelZoom:false,attributionControl:true});
+    var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    var map = L.map('map',{scrollWheelZoom:false,dragging:!isMobile,tap:!isMobile,attributionControl:true});
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
       attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19, subdomains:'abcd'
     }).addTo(map);

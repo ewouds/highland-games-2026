@@ -573,7 +573,7 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 
 <footer>
   <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
-  <p class="updated">Laatst bijgewerkt: 09/06/2026 16:19 UTC</p>
+  <p class="updated">Laatst bijgewerkt: 09/06/2026 16:26 UTC</p>
 </footer>
 
 <button id="fabToggle" class="fab" type="button" aria-expanded="false" title="Alles openklappen">
@@ -593,7 +593,8 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
   var markers = [{"code": "EBAW", "name": "Antwerpen", "lat": 51.1894, "lon": 4.4603}, {"code": "EGSC", "name": "Cambridge", "lat": 52.205, "lon": 0.175}, {"code": "EGCM", "name": "Leeds East", "lat": 53.8665, "lon": -1.009}, {"code": "EGPG", "name": "Cumbernauld", "lat": 55.9747, "lon": -3.9747}, {"code": "EGPR", "name": "Barra", "lat": 57.0228, "lon": -7.4431}, {"code": "EGPE", "name": "Inverness", "lat": 57.5425, "lon": -4.0475}, {"code": "EGEO", "name": "Oban", "lat": 56.4636, "lon": -5.3997}, {"code": "EGAD", "name": "Newtownards", "lat": 54.5811, "lon": -5.6919}, {"code": "EIKY", "name": "Kerry", "lat": 52.1809, "lon": -9.5238}, {"code": "EGFF", "name": "Cardiff", "lat": 51.3967, "lon": -3.3433}, {"code": "EGSU", "name": "Duxford", "lat": 52.0908, "lon": 0.1314}];
   var line = [[51.1894, 4.4603], [52.205, 0.175], [53.8665, -1.009], [55.9747, -3.9747], [57.0228, -7.4431], [57.5425, -4.0475], [56.4636, -5.3997], [54.5811, -5.6919], [52.1809, -9.5238], [51.3967, -3.3433], [52.0908, 0.1314], [51.1894, 4.4603]];
   if(document.getElementById('map') && window.L){
-    var map = L.map('map',{scrollWheelZoom:false,attributionControl:true});
+    var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    var map = L.map('map',{scrollWheelZoom:false,dragging:!isMobile,tap:!isMobile,attributionControl:true});
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
       attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19, subdomains:'abcd'
     }).addTo(map);
