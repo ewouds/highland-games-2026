@@ -100,7 +100,9 @@ def crew_member(name, role):
     if w is not None:
         if BAGGAGE_KG:
             total = w + BAGGAGE_KG
-            wt = (f'<span class="seat-wt" title="{w} kg lichaam + {BAGGAGE_KG} kg bagage">'
+            detail = f'{w} kg lichaam + {BAGGAGE_KG} kg bagage'
+            wt = (f'<span class="seat-wt" title="{detail}" data-detail="{detail}" '
+                  f'tabindex="0" role="button" aria-label="Gewicht {total} kg. {detail}">'
                   f'{total}kg</span>')
         else:
             wt = f'<span class="seat-wt">{w}kg</span>'
@@ -626,7 +628,17 @@ a.cll-apt.has-plate{color:var(--accent)}
 .crew{color:var(--ink)}
 .seat-wt{display:inline-flex;align-items:baseline;font-size:11px;font-weight:700;color:var(--accent2);
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
-  padding:1px 6px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  padding:1px 6px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums;
+  cursor:help;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.seat-wt.wt-active{background:rgba(126,224,192,.18);border-color:rgba(126,224,192,.5)}
+.wt-pop{position:fixed;z-index:9999;max-width:230px;background:#0f1a30;color:var(--ink);
+  border:1px solid rgba(126,224,192,.4);border-radius:10px;padding:8px 11px;font-size:12.5px;
+  line-height:1.35;box-shadow:0 10px 34px rgba(0,0,0,.55);pointer-events:none;
+  opacity:0;transform:translateY(4px);transition:opacity .14s ease,transform .14s ease}
+.wt-pop.show{opacity:1;transform:translateY(0)}
+.wt-pop b{color:var(--accent2)}
+.wt-pop::after{content:"";position:absolute;left:var(--ax,50%);bottom:-6px;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:#0f1a30;filter:drop-shadow(0 1px 0 rgba(126,224,192,.4))}
 .crew-details{margin-top:10px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
   background:rgba(255,255,255,.02);overflow:hidden}
 .crew-details summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:14px;font-weight:600;
@@ -948,6 +960,60 @@ JS_TEMPLATE = r"""
     allDetails.forEach(function(d){ d.addEventListener('toggle', syncFab); });
     syncFab();
   }
+
+  // ---- gewicht-detail via long-press (mobiel) / tap / focus ----
+  (function(){
+    var pop=null, lpTimer=null, lpTarget=null, startY=0;
+    function ensurePop(){
+      if(!pop){ pop=document.createElement('div'); pop.className='wt-pop'; document.body.appendChild(pop); }
+      return pop;
+    }
+    function showFor(el){
+      var d=el.getAttribute('data-detail'); if(!d) return;
+      var p=ensurePop();
+      var total=el.textContent.trim();
+      p.innerHTML='<b>'+total+'</b> totaal<br>'+d;
+      p.classList.add('show');
+      el.classList.add('wt-active');
+      // positioneer boven de badge, binnen viewport
+      p.style.left='0px'; p.style.top='0px';
+      var r=el.getBoundingClientRect(), pr=p.getBoundingClientRect();
+      var left=r.left+r.width/2-pr.width/2;
+      left=Math.max(8, Math.min(left, window.innerWidth-pr.width-8));
+      var top=r.top-pr.height-10;
+      if(top<8){ top=r.bottom+10; } // val terug onder badge als bovenaan geen plek
+      p.style.left=left+'px'; p.style.top=top+'px';
+      var ax=r.left+r.width/2-left; p.style.setProperty('--ax', ax+'px');
+      pop._for=el;
+    }
+    function hide(){
+      if(pop){ pop.classList.remove('show'); }
+      if(pop && pop._for){ pop._for.classList.remove('wt-active'); pop._for=null; }
+    }
+    // touch: long-press 380ms
+    document.addEventListener('touchstart',function(e){
+      var el=e.target.closest('.seat-wt'); if(!el) return;
+      lpTarget=el; startY=(e.touches[0]||{}).clientY||0;
+      lpTimer=setTimeout(function(){ showFor(el); lpTarget=null; }, 380);
+    },{passive:true});
+    document.addEventListener('touchmove',function(e){
+      if(lpTimer && Math.abs(((e.touches[0]||{}).clientY||0)-startY)>10){ clearTimeout(lpTimer); lpTimer=null; lpTarget=null; }
+    },{passive:true});
+    document.addEventListener('touchend',function(){ if(lpTimer){clearTimeout(lpTimer);lpTimer=null;lpTarget=null;} },{passive:true});
+    // tap/click elders sluit; click op badge (desktop) toggelt
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('.seat-wt');
+      if(el){ if(pop && pop._for===el){ hide(); } else { showFor(el); } e.stopPropagation(); return; }
+      hide();
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){ hide(); return; }
+      if((e.key==='Enter'||e.key===' ') && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('seat-wt')){
+        e.preventDefault(); var el=document.activeElement; if(pop&&pop._for===el){hide();}else{showFor(el);} }
+    });
+    window.addEventListener('scroll',hide,{passive:true});
+    window.addEventListener('resize',hide);
+  })();
 })();
 """
 
