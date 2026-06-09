@@ -63,6 +63,24 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .day.prep .day-date .dt{color:var(--accent2);font-size:15px;letter-spacing:.06em}
 .prep-banner{background:rgba(126,224,192,.08);border:1px dashed rgba(126,224,192,.4);
   border-radius:12px;padding:14px 16px;color:var(--accent2);font-weight:500}
+.prep-section{padding:0;overflow:hidden}
+.prep-collapse summary{cursor:pointer;list-style:none;padding:16px 18px;font-size:16px;font-weight:700;
+  color:var(--accent2);display:flex;align-items:center;gap:9px;user-select:none}
+.prep-collapse summary::-webkit-details-marker{display:none}
+.prep-collapse summary:hover{background:rgba(126,224,192,.06)}
+.prep-ico{font-size:17px}
+.prep-count{background:rgba(126,224,192,.16);color:var(--accent2);font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:999px}
+.prep-collapse[open] summary{border-bottom:1px solid rgba(126,224,192,.18)}
+.prep-collapse[open] .sum-hint::after{content:"▲"}
+.prep-collapse:not([open]) .sum-hint::after{content:"▼"}
+.prep-body{padding:6px 18px 18px}
+.prep-item{padding:14px 0;border-top:1px solid rgba(255,255,255,.06)}
+.prep-item:first-child{border-top:none}
+.prep-item-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.prep-date{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent);font-size:20px}
+.prep-label{font-weight:600;color:var(--ink);font-size:15px}
+
 .legs{display:grid;gap:10px;margin-bottom:6px}
 .leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
   border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
@@ -144,29 +162,24 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
     <p>Dit verslag wordt onderweg bijgewerkt met foto's en verhalen. De eerste beelden volgen snel.</p>
   </div>
 
-  <section class="day prep" id="2026-06-04">
-<div class="day-head">
-<div class="day-date"><span class="wd">04/06</span><span class="dt">PREP</span></div>
-<h2>Briefing — Barra &amp; het plan</h2>
-</div>
-<div class="prep-banner">📝 Voorbereiding — nog geen wielen van de grond, wel volop papierwerk. Gendecs, GAR's, PPR's, paspoorten &amp; ETA's.</div>
-<div class="entries">
+  <section class="day prep prep-section" id="voorbereiding">
+<details class="prep-collapse">
+<summary><span class="prep-ico">📝</span> Voorbereiding <span class="prep-count">2 momenten</span><span class="sum-hint">(klik om te tonen)</span></summary>
+<div class="prep-body">
+<div class="prep-item">
+<div class="prep-item-head"><span class="prep-date">04/06</span><span class="prep-label">Briefing — Barra &amp; het plan</span></div>
 <div class="entry">
 <p>Vergadering met de volledige groep. Eerst een uitleg van &#x27;Lady Bush Pilot&#x27;, die haar ervaringen deelt over hoe we moeten landen (en snel weer vertrekken) op Barra — de enige luchthaven ter wereld met een geplande lijndienst op een strandbaan, waar het getij de openingstijden bepaalt. Daarna een presentatie van Glenn over het volledige verloop van de fly-out.</p>
 </div>
 </div>
-</section>
-<section class="day prep" id="2026-06-09">
-<div class="day-head">
-<div class="day-date"><span class="wd">09/06</span><span class="dt">PREP</span></div>
-<h2>Dag 0 — De aanloop</h2>
-</div>
-<div class="prep-banner">📝 Voorbereiding — nog geen wielen van de grond, wel volop papierwerk. Gendecs, GAR's, PPR's, paspoorten &amp; ETA's.</div>
-<div class="entries">
+<div class="prep-item">
+<div class="prep-item-head"><span class="prep-date">09/06</span><span class="prep-label">Dag 0 — De aanloop</span></div>
 <div class="entry">
 <p>Iedereen is druk in de weer om de gendecs, GAR&#x27;s, PPR&#x27;s, paspoorten en ETA&#x27;s in orde te brengen. Dit alles brengt de WhatsApp-groep van de fly-out naar ongeziene interacties — de zenuwachtigheid en stress beginnen te komen. Tijd dat de piloten gelost worden!</p>
 </div>
 </div>
+</div>
+</details>
 </section>
 <section class="day" id="2026-06-10">
 <div class="day-head">
@@ -393,7 +406,7 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 
 <footer>
   <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
-  <p class="updated">Laatst bijgewerkt: 09/06/2026 12:20 UTC</p>
+  <p class="updated">Laatst bijgewerkt: 09/06/2026 12:59 UTC</p>
 </footer>
 
 <div id="lightbox" class="lightbox" hidden>

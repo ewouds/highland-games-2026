@@ -114,6 +114,40 @@ def render_entry(entry):
     return "\n".join(parts)
 
 
+
+def render_prep_section(prep_days):
+    """Render all preparation days bundled into one collapsible section."""
+    if not prep_days:
+        return ""
+    days = sorted(prep_days, key=lambda d: d.get("date", ""))
+    parts = []
+    parts.append('<section class="day prep prep-section" id="voorbereiding">')
+    parts.append('<details class="prep-collapse">')
+    parts.append(
+        '<summary><span class="prep-ico">📝</span> Voorbereiding '
+        f'<span class="prep-count">{len(days)} momenten</span>'
+        '<span class="sum-hint">(klik om te tonen)</span></summary>'
+    )
+    parts.append('<div class="prep-body">')
+    for day in days:
+        dt = f'{day["date"][8:10]}/{day["date"][5:7]}'
+        parts.append('<div class="prep-item">')
+        parts.append(
+            f'<div class="prep-item-head"><span class="prep-date">{html.escape(dt)}</span>'
+            f'<span class="prep-label">{html.escape(day.get("label", ""))}</span></div>'
+        )
+        entries = day.get("entries", [])
+        if entries:
+            for e in entries:
+                parts.append(render_entry(e))
+        else:
+            parts.append('<div class="entries empty">Nog geen updates.</div>')
+        parts.append('</div>')
+    parts.append('</div>')
+    parts.append('</details>')
+    parts.append('</section>')
+    return "\n".join(parts)
+
 def render_day(data, day):
     ap = data["airports"]
     parts = []
@@ -207,7 +241,10 @@ def main():
     n_legs = sum(len(day.get("legs", [])) for day in data["days"])
     n_photos = sum(len(e.get("photos", [])) for day in data["days"] for e in day.get("entries", []))
 
-    days_html = "\n".join(render_day(data, d) for d in data["days"])
+    prep_days = [d for d in data["days"] if d.get("prep")]
+    trip_days = [d for d in data["days"] if not d.get("prep")]
+    prep_html = render_prep_section(prep_days)
+    days_html = prep_html + "\n" + "\n".join(render_day(data, d) for d in trip_days)
 
     photo_line = f"Al <b>{n_photos}</b> foto's online." if n_photos else "De eerste beelden volgen snel."
 
@@ -335,6 +372,24 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .day.prep .day-date .dt{color:var(--accent2);font-size:15px;letter-spacing:.06em}
 .prep-banner{background:rgba(126,224,192,.08);border:1px dashed rgba(126,224,192,.4);
   border-radius:12px;padding:14px 16px;color:var(--accent2);font-weight:500}
+.prep-section{padding:0;overflow:hidden}
+.prep-collapse summary{cursor:pointer;list-style:none;padding:16px 18px;font-size:16px;font-weight:700;
+  color:var(--accent2);display:flex;align-items:center;gap:9px;user-select:none}
+.prep-collapse summary::-webkit-details-marker{display:none}
+.prep-collapse summary:hover{background:rgba(126,224,192,.06)}
+.prep-ico{font-size:17px}
+.prep-count{background:rgba(126,224,192,.16);color:var(--accent2);font-size:12px;font-weight:600;
+  padding:2px 9px;border-radius:999px}
+.prep-collapse[open] summary{border-bottom:1px solid rgba(126,224,192,.18)}
+.prep-collapse[open] .sum-hint::after{content:"▲"}
+.prep-collapse:not([open]) .sum-hint::after{content:"▼"}
+.prep-body{padding:6px 18px 18px}
+.prep-item{padding:14px 0;border-top:1px solid rgba(255,255,255,.06)}
+.prep-item:first-child{border-top:none}
+.prep-item-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.prep-date{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent);font-size:20px}
+.prep-label{font-weight:600;color:var(--ink);font-size:15px}
+
 .legs{display:grid;gap:10px;margin-bottom:6px}
 .leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
   border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
