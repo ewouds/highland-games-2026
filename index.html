@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Highland Games — Fly-Out 2026</title>
+<meta name="description" content="Fly-Out 2026 — RAAC naar Schotland &amp; Ierland">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{
+  --bg:#0b1220; --bg2:#0f1a2e; --card:#13203a; --line:#223150;
+  --ink:#e8eefc; --muted:#9fb2d4; --accent:#48a9ff; --accent2:#7ee0c0;
+  --pic:#48a9ff; --copilot:#7ee0c0; --pax:#b9a7ff; --rest:#ffcf6b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:
+  radial-gradient(1200px 600px at 80% -10%, #16284a 0%, transparent 60%),
+  radial-gradient(900px 500px at -10% 10%, #122038 0%, transparent 55%),
+  var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.hero{position:relative;overflow:hidden;padding:84px 20px 64px;text-align:center;
+  background:linear-gradient(180deg,#0a1020 0%, #0c1730 100%);border-bottom:1px solid rgba(72,169,255,.18)}
+.hero:before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.5), transparent),
+  radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,.4), transparent),
+  radial-gradient(1.5px 1.5px at 80% 20%, rgba(255,255,255,.3), transparent),
+  radial-gradient(1px 1px at 35% 80%, rgba(255,255,255,.35), transparent);
+  opacity:.6;pointer-events:none}
+.hero-inner{position:relative;max-width:920px;margin:0 auto}
+.kicker{letter-spacing:.28em;font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,11vw,128px);line-height:.92;margin:0;
+  letter-spacing:.01em;background:linear-gradient(180deg,#fff,#9fc6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(16px,2.4vw,22px);color:var(--ink);margin:14px 0 4px;font-weight:600}
+.tagline{color:var(--muted);font-size:16px;margin:0 0 28px;font-style:italic}
+.stats{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px}
+.stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;
+  padding:12px 18px;min-width:84px;backdrop-filter:blur(6px)}
+.stat b{display:block;font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--accent2)}
+.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+#map{height:380px;width:100%;background:#0a1020;z-index:0}
+.leaflet-container{background:#0a1020}
+main{max-width:920px;margin:0 auto;padding:0 18px 40px}
+.intro{padding:32px 4px 8px;color:var(--muted);font-size:17px}
+.intro b{color:var(--ink)}
+.day{margin:34px 0;background:linear-gradient(180deg,var(--card),#101b32);
+  border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:24px 22px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.day.rest{background:linear-gradient(180deg,#2a2113,#1c1810);border-color:rgba(255,207,107,.25)}
+.day-head{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.day-date{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:64px;height:64px;border-radius:16px;background:rgba(72,169,255,.12);
+  border:1px solid rgba(72,169,255,.3);flex-shrink:0}
+.day.rest .day-date{background:rgba(255,207,107,.12);border-color:rgba(255,207,107,.35)}
+.day-date .wd{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.day-date .dt{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;color:var(--ink)}
+.day-head h2{margin:0;font-size:clamp(20px,3.2vw,26px);font-weight:700}
+.rest-banner{background:rgba(255,207,107,.1);border:1px dashed rgba(255,207,107,.4);
+  border-radius:12px;padding:14px 16px;color:var(--rest);font-weight:500}
+.legs{display:grid;gap:10px;margin-bottom:6px}
+.leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.leg-route{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.apt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--accent)}
+.apt-name{font-size:13px;color:var(--muted)}
+.arrow{color:var(--accent2);font-size:18px;margin:0 2px}
+.leg-meta{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.role{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+.role.pic{background:rgba(72,169,255,.18);color:var(--pic)}
+.role.copilot{background:rgba(126,224,192,.18);color:var(--copilot)}
+.role.pax{background:rgba(185,167,255,.18);color:var(--pax)}
+.ac{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--ink);font-size:15px}
+.entries{margin-top:18px;display:grid;gap:18px}
+.entries.empty{color:var(--muted);font-style:italic;font-size:14px;opacity:.7;margin-top:14px}
+.entry{border-left:2px solid rgba(72,169,255,.3);padding-left:16px}
+.entry-time{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.entry p{margin:6px 0;color:var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:12px}
+.gallery figure{margin:0;border-radius:12px;overflow:hidden;background:#0a1020;border:1px solid rgba(255,255,255,.08)}
+.gallery img{width:100%;height:160px;object-fit:cover;display:block;cursor:zoom-in;transition:transform .3s}
+.gallery img:hover{transform:scale(1.04)}
+.gallery figcaption{font-size:12px;color:var(--muted);padding:8px 10px}
+footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.06);margin-top:30px}
+footer .updated{font-size:12px;opacity:.7;margin-top:6px}
+.lightbox{position:fixed;inset:0;background:rgba(5,8,16,.94);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;cursor:zoom-out}
+.lightbox img{max-width:96vw;max-height:92vh;border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,.6)}
+.lb-close{position:absolute;top:18px;right:24px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;line-height:1}
+@media(max-width:560px){.day{padding:18px 14px}.gallery img{height:130px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">RAAC · FLY-OUT 2026 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+    <h1>The Highland Games</h1>
+    <p class="sub">Fly-Out 2026 — RAAC naar Schotland &amp; Ierland</p>
+    <p class="tagline">Zes vliegtuigen, één crew, de Highlands tegemoet.</p>
+    <div class="stats">
+      <div class="stat"><b>6</b><span>dagen</span></div>
+      <div class="stat"><b>11</b><span>legs</span></div>
+      <div class="stat"><b>1621</b><span>NM</span></div>
+      <div class="stat"><b>16u13</b><span>vliegtijd</span></div>
+      <div class="stat"><b>6</b><span>vliegtuigen</span></div>
+    </div>
+  </div>
+</header>
+
+<div id="map"></div>
+
+<main>
+  <div class="intro">
+    <p>Welkom op het live reisverslag van onze Fly-Out naar Schotland & Ierland. We vertrekken op <b>woensdag 10 juni</b> vanuit Antwerpen (EBAW) en zijn <b>maandag 15 juni</b> terug. Onderweg landen we op legendarische velden — van het strand van <b>Barra</b> tot de Highlands van <b>Inverness</b> en de Ierse westkust.</p>
+    <p>Dit verslag wordt onderweg bijgewerkt met foto's en verhalen. De eerste beelden volgen snel.</p>
+  </div>
+
+  <section class="day" id="2026-06-10">
+<div class="day-head">
+<div class="day-date"><span class="wd">Woensdag</span><span class="dt">10/06</span></div>
+<h2>Dag 1 — Vertrek naar het noorden</h2>
+</div>
+<div class="legs">
+<div class="leg">
+<div class="leg-route"><span class="apt">EBAW</span><span class="apt-name">Antwerpen</span><span class="arrow">→</span><span class="apt">EGSC</span><span class="apt-name">Cambridge</span></div>
+<div class="leg-meta">171 NM · 1u43 · <span class="role pic">PIC ✈️</span> <span class="ac">F-GXNC</span></div>
+</div>
+<div class="leg">
+<div class="leg-route"><span class="apt">EGSC</span><span class="apt-name">Cambridge</span><span class="arrow">→</span><span class="apt">EGCM</span><span class="apt-name">Leeds East</span></div>
+<div class="leg-meta">110 NM · 1u06 · <span class="role pic">PIC ✈️</span> <span class="ac">F-GXNC</span></div>
+</div>
+<div class="leg">
+<div class="leg-route"><span class="apt">EGCM</span><span class="apt-name">Leeds East</span><span class="arrow">→</span><span class="apt">EGPG</span><span class="apt-name">Cumbernauld</span></div>
+<div class="leg-meta">161 NM · 1u37 · <span class="role pax">Passagier</span> <span class="ac">OO-VPE</span></div>
+</div>
+</div>
+<div class="entries empty">Nog geen updates voor deze dag.</div>
+</section>
+<section class="day" id="2026-06-11">
+<div class="day-head">
+<div class="day-date"><span class="wd">Donderdag</span><span class="dt">11/06</span></div>
+<h2>Dag 2 — De eilanden in</h2>
+</div>
+<div class="legs">
+<div class="leg">
+<div class="leg-route"><span class="apt">EGPG</span><span class="apt-name">Cumbernauld</span><span class="arrow">→</span><span class="apt">EGPR</span><span class="apt-name">Barra</span></div>
+<div class="leg-meta">131 NM · 1u19 · <span class="role copilot">Copilot</span> <span class="ac">OO-MAV</span></div>
+</div>
+<div class="leg">
+<div class="leg-route"><span class="apt">EGPR</span><span class="apt-name">Barra</span><span class="arrow">→</span><span class="apt">EGPE</span><span class="apt-name">Inverness</span></div>
+<div class="leg-meta">115 NM · 1u09 · <span class="role pic">PIC ✈️</span> <span class="ac">F-GXNC</span></div>
+</div>
+</div>
+<div class="entries empty">Nog geen updates voor deze dag.</div>
+</section>
+<section class="day" id="2026-06-12">
+<div class="day-head">
+<div class="day-date"><span class="wd">Vrijdag</span><span class="dt">12/06</span></div>
+<h2>Dag 3 — Highlands &amp; overzee naar Ierland</h2>
+</div>
+<div class="legs">
+<div class="leg">
+<div class="leg-route"><span class="apt">EGPE</span><span class="apt-name">Inverness</span><span class="arrow">→</span><span class="apt">EGEO</span><span class="apt-name">Oban</span></div>
+<div class="leg-meta">79 NM · 47 min · <span class="role pax">Passagier</span> <span class="ac">PH-DYX</span></div>
+</div>
+<div class="leg">
+<div class="leg-route"><span class="apt">EGEO</span><span class="apt-name">Oban</span><span class="arrow">→</span><span class="apt">EGAD</span><span class="apt-name">Newtownards</span></div>
+<div class="leg-meta">114 NM · 1u08 · <span class="role pic">PIC ✈️</span> <span class="ac">OO-MAV</span></div>
+</div>
+</div>
+<div class="entries empty">Nog geen updates voor deze dag.</div>
+</section>
+<section class="day rest" id="2026-06-13">
+<div class="day-head">
+<div class="day-date"><span class="wd">Zaterdag</span><span class="dt">13/06</span></div>
+<h2>Dag 4 — Rustdag</h2>
+</div>
+<div class="rest-banner">🛌 Rustdag — geen vluchten gepland. Tijd om de Highlands te proeven.</div>
+<div class="entries empty">Nog geen updates voor deze dag.</div>
+</section>
+<section class="day" id="2026-06-14">
+<div class="day-head">
+<div class="day-date"><span class="wd">Zondag</span><span class="dt">14/06</span></div>
+<h2>Dag 5 — Langs de Ierse kust</h2>
+</div>
+<div class="legs">
+<div class="leg">
+<div class="leg-route"><span class="apt">EGAD</span><span class="apt-name">Newtownards</span><span class="arrow">→</span><span class="apt">EIKY</span><span class="apt-name">Kerry</span></div>
+<div class="leg-meta">199 NM · 1u59 · <span class="role pax">Passagier</span> <span class="ac">PH-DYX</span></div>
+</div>
+<div class="leg">
+<div class="leg-route"><span class="apt">EIKY</span><span class="apt-name">Kerry</span><span class="arrow">→</span><span class="apt">EGFF</span><span class="apt-name">Cardiff</span></div>
+<div class="leg-meta">235 NM · 2u21 · <span class="role copilot">Copilot</span> <span class="ac">OO-MAV</span></div>
+</div>
+</div>
+<div class="entries empty">Nog geen updates voor deze dag.</div>
+</section>
+<section class="day" id="2026-06-15">
+<div class="day-head">
+<div class="day-date"><span class="wd">Maandag</span><span class="dt">15/06</span></div>
+<h2>Dag 6 — Terug naar huis</h2>
+</div>
+<div class="legs">
+<div class="leg">
+<div class="leg-route"><span class="apt">EGFF</span><span class="apt-name">Cardiff</span><span class="arrow">→</span><span class="apt">EGSU</span><span class="apt-name">Duxford</span></div>
+<div class="leg-meta">136 NM · 1u22 · <span class="role pax">Passagier</span> <span class="ac">OO-VPE</span></div>
+</div>
+<div class="leg">
+<div class="leg-route"><span class="apt">EGSU</span><span class="apt-name">Duxford</span><span class="arrow">→</span><span class="apt">EBAW</span><span class="apt-name">Antwerpen</span></div>
+<div class="leg-meta">170 NM · 1u42 · <span class="role pax">Passagier</span> <span class="ac">OO-VPE</span></div>
+</div>
+</div>
+<div class="entries empty">Nog geen updates voor deze dag.</div>
+</section>
+</main>
+
+<footer>
+  <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Koda 🐾</p>
+  <p class="updated">Laatst bijgewerkt: 09/06/2026 11:16 UTC</p>
+</footer>
+
+<div id="lightbox" class="lightbox" hidden>
+  <button class="lb-close" aria-label="Sluiten">&times;</button>
+  <img src="" alt="">
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var markers = [{"code": "EBAW", "name": "Antwerpen", "lat": 51.1894, "lon": 4.4603}, {"code": "EGSC", "name": "Cambridge", "lat": 52.205, "lon": 0.175}, {"code": "EGCM", "name": "Leeds East", "lat": 53.8665, "lon": -1.009}, {"code": "EGPG", "name": "Cumbernauld", "lat": 55.9747, "lon": -3.9747}, {"code": "EGPR", "name": "Barra", "lat": 57.0228, "lon": -7.4431}, {"code": "EGPE", "name": "Inverness", "lat": 57.5425, "lon": -4.0475}, {"code": "EGEO", "name": "Oban", "lat": 56.4636, "lon": -5.3997}, {"code": "EGAD", "name": "Newtownards", "lat": 54.5811, "lon": -5.6919}, {"code": "EIKY", "name": "Kerry", "lat": 52.1809, "lon": -9.5238}, {"code": "EGFF", "name": "Cardiff", "lat": 51.3967, "lon": -3.3433}, {"code": "EGSU", "name": "Duxford", "lat": 52.0908, "lon": 0.1314}];
+  var line = [[51.1894, 4.4603], [52.205, 0.175], [53.8665, -1.009], [55.9747, -3.9747], [57.0228, -7.4431], [57.5425, -4.0475], [56.4636, -5.3997], [54.5811, -5.6919], [52.1809, -9.5238], [51.3967, -3.3433], [52.0908, 0.1314], [51.1894, 4.4603]];
+  if(document.getElementById('map') && window.L){
+    var map = L.map('map',{scrollWheelZoom:false,attributionControl:true});
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+      attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19, subdomains:'abcd'
+    }).addTo(map);
+    var latlngs = line.map(function(p){return [p[0],p[1]];});
+    if(latlngs.length){
+      var poly = L.polyline(latlngs,{color:'#48a9ff',weight:3,opacity:.85,dashArray:'2,8',lineCap:'round'}).addTo(map);
+      map.fitBounds(poly.getBounds().pad(0.15));
+    }
+    markers.forEach(function(m){
+      var ic = L.divIcon({className:'apt-marker',html:'<div style="background:#7ee0c0;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 4px rgba(126,224,192,.25);border:2px solid #0a1020"></div>',iconSize:[10,10]});
+      L.marker([m.lat,m.lon],{icon:ic}).addTo(map)
+        .bindTooltip('<b>'+m.code+'</b> '+m.name,{direction:'top',offset:[0,-6]});
+    });
+  }
+  // lightbox
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb ? lb.querySelector('img') : null;
+  document.addEventListener('click',function(e){
+    var a = e.target.closest('a[data-lightbox]');
+    if(a){ e.preventDefault(); lbImg.src=a.getAttribute('href'); lb.hidden=false; return; }
+    if(lb && !lb.hidden && (e.target===lb || e.target.classList.contains('lb-close'))){ lb.hidden=true; lbImg.src=''; }
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb&&!lb.hidden){lb.hidden=true;lbImg.src='';}});
+})();
+</script>
+</body>
+</html>

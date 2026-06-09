@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "title": "The Highland Games",
+    "subtitle": "Fly-Out 2026 — RAAC naar Schotland & Ierland",
+    "depart": "2026-06-10",
+    "return": "2026-06-15",
+    "homeBase": "EBAW",
+    "lastUpdated": "09/06/2026 11:16 UTC",
+    "pilot": "Ewoud Smets",
+    "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet."
+  },
+  "aircraft": [
+    {
+      "reg": "OO-VPE",
+      "fuel": "91 L"
+    },
+    {
+      "reg": "PH-DYX",
+      "fuel": "91 L"
+    },
+    {
+      "reg": "OO-MPL",
+      "fuel": "91 L"
+    },
+    {
+      "reg": "OO-MAV",
+      "fuel": "24 USG"
+    },
+    {
+      "reg": "OO-VSP",
+      "fuel": "91 L"
+    },
+    {
+      "reg": "F-GXNC",
+      "fuel": "24 USG"
+    }
+  ],
+  "airports": {
+    "EBAW": "Antwerpen",
+    "EGSC": "Cambridge",
+    "EGCM": "Leeds East",
+    "EGPG": "Cumbernauld",
+    "EGPR": "Barra",
+    "EGPE": "Inverness",
+    "EGEO": "Oban",
+    "EGAD": "Newtownards",
+    "EIKY": "Kerry",
+    "EGFF": "Cardiff",
+    "EGSU": "Duxford"
+  },
+  "days": [
+    {
+      "date": "2026-06-10",
+      "weekday": "Woensdag",
+      "label": "Dag 1 — Vertrek naar het noorden",
+      "restDay": false,
+      "legs": [
+        {
+          "from": "EBAW",
+          "to": "EGSC",
+          "dist_nm": 171,
+          "time_min": 102.6,
+          "ewoud": "PIC",
+          "ewoud_aircraft": "F-GXNC"
+        },
+        {
+          "from": "EGSC",
+          "to": "EGCM",
+          "dist_nm": 110,
+          "time_min": 66,
+          "ewoud": "PIC",
+          "ewoud_aircraft": "F-GXNC"
+        },
+        {
+          "from": "EGCM",
+          "to": "EGPG",
+          "dist_nm": 161,
+          "time_min": 96.6,
+          "ewoud": "PAX 2",
+          "ewoud_aircraft": "OO-VPE"
+        }
+      ],
+      "entries": []
+    },
+    {
+      "date": "2026-06-11",
+      "weekday": "Donderdag",
+      "label": "Dag 2 — De eilanden in",
+      "restDay": false,
+      "legs": [
+        {
+          "from": "EGPG",
+          "to": "EGPR",
+          "dist_nm": 131,
+          "time_min": 78.6,
+          "ewoud": "COPILOT",
+          "ewoud_aircraft": "OO-MAV"
+        },
+        {
+          "from": "EGPR",
+          "to": "EGPE",
+          "dist_nm": 115,
+          "time_min": 69,
+          "ewoud": "PIC",
+          "ewoud_aircraft": "F-GXNC"
+        }
+      ],
+      "entries": []
+    },
+    {
+      "date": "2026-06-12",
+      "weekday": "Vrijdag",
+      "label": "Dag 3 — Highlands & overzee naar Ierland",
+      "restDay": false,
+      "legs": [
+        {
+          "from": "EGPE",
+          "to": "EGEO",
+          "dist_nm": 79,
+          "time_min": 47.4,
+          "ewoud": "PAX 1",
+          "ewoud_aircraft": "PH-DYX"
+        },
+        {
+          "from": "EGEO",
+          "to": "EGAD",
+          "dist_nm": 114,
+          "time_min": 68.4,
+          "ewoud": "PIC",
+          "ewoud_aircraft": "OO-MAV"
+        }
+      ],
+      "entries": []
+    },
+    {
+      "date": "2026-06-13",
+      "weekday": "Zaterdag",
+      "label": "Dag 4 — Rustdag",
+      "restDay": true,
+      "legs": [],
+      "entries": []
+    },
+    {
+      "date": "2026-06-14",
+      "weekday": "Zondag",
+      "label": "Dag 5 — Langs de Ierse kust",
+      "restDay": false,
+      "legs": [
+        {
+          "from": "EGAD",
+          "to": "EIKY",
+          "dist_nm": 199,
+          "time_min": 119.4,
+          "ewoud": "PAX 1",
+          "ewoud_aircraft": "PH-DYX"
+        },
+        {
+          "from": "EIKY",
+          "to": "EGFF",
+          "dist_nm": 235,
+          "time_min": 141,
+          "ewoud": "COPILOT",
+          "ewoud_aircraft": "OO-MAV"
+        }
+      ],
+      "entries": []
+    },
+    {
+      "date": "2026-06-15",
+      "weekday": "Maandag",
+      "label": "Dag 6 — Terug naar huis",
+      "restDay": false,
+      "legs": [
+        {
+          "from": "EGFF",
+          "to": "EGSU",
+          "dist_nm": 136,
+          "time_min": 81.6,
+          "ewoud": "PAX 2",
+          "ewoud_aircraft": "OO-VPE"
+        },
+        {
+          "from": "EGSU",
+          "to": "EBAW",
+          "dist_nm": 170,
+          "time_min": 102,
+          "ewoud": "PAX 1",
+          "ewoud_aircraft": "OO-VPE"
+        }
+      ],
+      "entries": []
+    }
+  ]
+}
