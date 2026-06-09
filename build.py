@@ -240,8 +240,9 @@ def render_day(data, day):
     rest = day.get("restDay")
     prep = day.get("prep")
     cls = " prep" if prep else (" rest" if rest else "")
-    parts.append(f'<section class="day{cls}" id="{day["date"]}">')
-    parts.append('<div class="day-head">')
+    parts.append(f'<section class="day{cls}" id="{day["date"]}" data-date="{day["date"]}">')
+    parts.append('<details class="day-collapse">')
+    parts.append('<summary class="day-head">')
     if prep:
         parts.append(
             f'<div class="day-date"><span class="wd">{html.escape(day["date"][8:10])}/{html.escape(day["date"][5:7])}</span>'
@@ -250,7 +251,9 @@ def render_day(data, day):
     else:
         parts.append(f'<div class="day-date"><span class="wd">{html.escape(day["weekday"])}</span><span class="dt">{html.escape(day["date"][8:10])}/{html.escape(day["date"][5:7])}</span></div>')
     parts.append(f'<h2>{html.escape(day["label"])}</h2>')
-    parts.append('</div>')
+    parts.append('<span class="day-chevron" aria-hidden="true"></span>')
+    parts.append('</summary>')
+    parts.append('<div class="day-body">')
 
     if prep:
         parts.append('<div class="prep-banner">📝 Voorbereiding — nog geen wielen van de grond, wel volop papierwerk. Gendecs, GAR\'s, PPR\'s, paspoorten &amp; ETA\'s.</div>')
@@ -312,6 +315,8 @@ def render_day(data, day):
     else:
         parts.append('<div class="entries empty">Nog geen updates voor deze dag.</div>')
 
+    parts.append('</div>')  # .day-body
+    parts.append('</details>')
     parts.append('</section>')
     return "\n".join(parts)
 
@@ -478,7 +483,17 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
   border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:24px 22px;
   box-shadow:0 12px 40px rgba(0,0,0,.35)}
 .day.rest{background:linear-gradient(180deg,#2a2113,#1c1810);border-color:rgba(255,207,107,.25)}
-.day-head{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.day-collapse{margin:0}
+.day-head{display:flex;align-items:center;gap:18px;cursor:pointer;list-style:none;user-select:none;
+  padding:2px 0;border-radius:12px;transition:background .15s}
+.day-head::-webkit-details-marker{display:none}
+.day-head:hover{background:rgba(255,255,255,.03)}
+.day-collapse[open] .day-head{margin-bottom:18px}
+.day-chevron{margin-left:auto;flex:none;width:11px;height:11px;border-right:2px solid var(--muted);
+  border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s ease,border-color .15s;opacity:.7}
+.day-head:hover .day-chevron{border-color:var(--accent);opacity:1}
+.day-collapse[open] .day-chevron{transform:rotate(-135deg)}
+.day-body{padding-top:2px}
 .day-date{display:flex;flex-direction:column;align-items:center;justify-content:center;
   min-width:64px;height:64px;border-radius:16px;background:rgba(72,169,255,.12);
   border:1px solid rgba(72,169,255,.3);flex-shrink:0}
@@ -486,6 +501,15 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .day-date .wd{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 .day-date .dt{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;color:var(--ink)}
 .day-head h2{margin:0;font-size:clamp(20px,3.2vw,26px);font-weight:700}
+/* --- vandaag-highlight --- */
+.day.today{border-color:rgba(72,169,255,.55);
+  box-shadow:0 12px 40px rgba(0,0,0,.35),0 0 0 1px rgba(72,169,255,.35),0 0 22px rgba(72,169,255,.12)}
+.day.today .day-date{background:rgba(72,169,255,.2);border-color:rgba(72,169,255,.6)}
+.day-today-badge{display:inline-flex;align-items:center;gap:5px;margin-left:12px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--accent);background:rgba(72,169,255,.16);border:1px solid rgba(72,169,255,.45);
+  padding:3px 9px;border-radius:999px;white-space:nowrap;vertical-align:middle}
+.day.today.rest .day-date{background:rgba(255,207,107,.2);border-color:rgba(255,207,107,.6)}
 .rest-banner{background:rgba(255,207,107,.1);border:1px dashed rgba(255,207,107,.4);
   border-radius:12px;padding:14px 16px;color:var(--rest);font-weight:500}
 .day.prep{background:linear-gradient(180deg,#161f33,#101826);border-color:rgba(126,224,192,.22)}
@@ -808,6 +832,26 @@ JS_TEMPLATE = r"""
   // init: pas opgeslagen selectie toe; klap de filter open als er een actieve selectie is
   if(crewFilter && cfSel.length){ crewFilter.open = true; }
   applyFilter();
+
+  // ---- vandaag-highlight: markeer + open de dag die met de huidige datum matcht ----
+  (function(){
+    var now = new Date();
+    var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+    var todayStr = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+    var todaySection = document.querySelector('section.day[data-date="' + todayStr + '"]');
+    if(todaySection){
+      todaySection.classList.add('today');
+      var h2 = todaySection.querySelector('.day-head h2');
+      if(h2 && !h2.querySelector('.day-today-badge')){
+        var badge = document.createElement('span');
+        badge.className = 'day-today-badge';
+        badge.textContent = '\uD83D\uDCCD Vandaag';
+        h2.appendChild(badge);
+      }
+      var det = todaySection.querySelector('.day-collapse');
+      if(det){ det.open = true; }
+    }
+  })();
 
   // ---- floating expand/collapse-all knop ----
   var fab = document.getElementById('fabToggle');
