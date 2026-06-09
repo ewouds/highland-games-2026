@@ -178,7 +178,6 @@ def render_day(data, day):
         parts.append('<div class="legs">')
         for leg in day.get("legs", []):
             frm, to = leg["from"], leg["to"]
-            n_ac = len(leg.get("crew") or [])
             parts.append('<div class="leg">')
             parts.append(
                 f'<div class="leg-route"><span class="apt">{frm}</span>'
@@ -188,8 +187,6 @@ def render_day(data, day):
                 f'<span class="apt-name">{html.escape(ap.get(to, ""))}</span></div>'
             )
             meta = f'{leg["dist_nm"]} NM · {fmt_time(leg.get("time_min"))}'
-            if n_ac:
-                meta += f' · {n_ac} toestellen'
             parts.append(f'<div class="leg-meta">{meta}</div>')
             parts.append('</div>')
         parts.append('</div>')
