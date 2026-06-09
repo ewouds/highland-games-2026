@@ -3,6 +3,7 @@
 import json
 import html
 import os
+import urllib.parse
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -170,6 +171,13 @@ def render_hotel(h):
         rows.append(f'<span class="htl-row"><span class="htl-k">\U0001F4C5</span>{html.escape(ci)} \u2192 {html.escape(co)}</span>')
     if h.get("booked_by"):
         rows.append(f'<span class="htl-row"><span class="htl-k">\U0001F465</span>{html.escape(h["booked_by"])}</span>')
+    if h.get("address"):
+        _q = urllib.parse.quote(f'{h.get("name","")} {h["address"]}')
+        _maps = f'https://www.google.com/maps/search/?api=1&query={_q}'
+        rows.append(
+            f'<span class="htl-row htl-addr"><span class="htl-k">\U0001F4CD</span>'
+            f'<a href="{_maps}" target="_blank" rel="noopener">{html.escape(h["address"])}</a></span>'
+        )
     if h.get("cancel_by"):
         rows.append(f'<span class="htl-row htl-cancel"><span class="htl-k">\u23F0</span>gratis annuleerbaar tot {html.escape(h["cancel_by"])}</span>')
     if rows:
@@ -497,6 +505,8 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .htl-row{display:inline-flex;align-items:center;gap:6px}
 .htl-k{font-size:13px;opacity:.85}
 .htl-cancel{color:var(--rest)}
+.htl-addr a{color:var(--accent);text-decoration:none;border-bottom:1px dotted rgba(72,169,255,.4)}
+.htl-addr a:hover{color:var(--accent2);border-bottom-color:var(--accent2)}
 .htl-note{padding:0 15px 13px;font-size:12.5px;color:var(--muted);font-style:italic;margin-top:-4px}
 .rooms-details{border-top:1px solid rgba(126,224,192,.16);background:rgba(255,255,255,.015)}
 .rooms-details summary{cursor:pointer;list-style:none;padding:11px 15px;font-size:13.5px;font-weight:600;
