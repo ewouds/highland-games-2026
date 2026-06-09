@@ -32,7 +32,7 @@ def apt_code(code, cls="apt"):
     if code.upper() in PLATES:
         href = f"plates/{urllib.parse.quote(code.upper())}.pdf"
         return (f'<a class="{cls} has-plate" href="{href}" target="_blank" rel="noopener" '
-                f'title="Jeppesen VFR-plate {safe} openen">{safe}<span class="plate-ico" aria-hidden="true">\U0001F4C4</span></a>')
+                f'title="Jeppesen VFR-plate {safe} openen">{safe}</a>')
     return f'<span class="{cls}">{safe}</span>'
 
 # Airport coordinates (lat, lon) for the map
@@ -574,8 +574,6 @@ a.apt.has-plate,a.cll-apt.has-plate{text-decoration:none;cursor:pointer;
   transition:color .15s,border-color .15s}
 a.apt.has-plate:hover,a.cll-apt.has-plate:hover{color:#9fd4ff;border-bottom-color:#9fd4ff}
 a.cll-apt.has-plate{color:var(--accent)}
-.plate-ico{font-size:.5em;opacity:.7;line-height:1;transform:translateY(-1px)}
-a.has-plate:hover .plate-ico{opacity:1}
 .leg-meta{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .crew-grid{display:grid;gap:7px;margin-top:4px}
 .ac-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;
