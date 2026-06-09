@@ -209,23 +209,26 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 .lightbox[hidden]{display:none}
 .lightbox img{max-width:96vw;max-height:92vh;border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,.6)}
 .lb-close{position:absolute;top:18px;right:24px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;line-height:1}
-/* --- floating expand/collapse-all knop --- */
-.fab{position:fixed;right:22px;bottom:22px;z-index:900;display:flex;align-items:center;gap:0;
-  height:56px;padding:0;border:none;cursor:pointer;border-radius:999px;overflow:hidden;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04203b;
-  box-shadow:0 8px 26px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12) inset;
-  transition:transform .16s ease,box-shadow .16s ease,padding .2s ease}
-.fab:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.2) inset}
+/* --- floating expand/collapse-all knop (subtiel) --- */
+.fab{position:fixed;right:16px;bottom:16px;z-index:900;display:flex;align-items:center;gap:0;
+  height:44px;padding:0;border:1px solid rgba(255,255,255,.14);cursor:pointer;border-radius:999px;overflow:hidden;
+  background:rgba(16,27,50,.6);color:var(--muted);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 4px 14px rgba(0,0,0,.28);opacity:.72;
+  transition:opacity .16s ease,color .16s ease,border-color .16s ease,background .16s ease,transform .16s ease}
+.fab:hover,.fab:focus-visible{opacity:1;color:var(--ink);border-color:rgba(72,169,255,.45);
+  background:rgba(16,27,50,.85);transform:translateY(-1px)}
 .fab:active{transform:translateY(0)}
-.fab-ico{width:56px;height:56px;padding:16px;flex:none;box-sizing:border-box}
+.fab-ico{width:44px;height:44px;padding:12px;flex:none;box-sizing:border-box}
 .fab .fab-collapse{display:none}
 .fab[aria-expanded="true"] .fab-expand{display:none}
 .fab[aria-expanded="true"] .fab-collapse{display:block}
-.fab-label{font-family:Inter,system-ui,sans-serif;font-weight:700;font-size:14px;white-space:nowrap;
+.fab-label{font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:13px;white-space:nowrap;
   max-width:0;opacity:0;overflow:hidden;transition:max-width .22s ease,opacity .18s ease,padding .22s ease}
-.fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:190px;opacity:1;padding-right:20px}
+.fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:170px;opacity:1;padding-right:18px}
 @media(max-width:560px){.day{padding:18px 14px}.gallery img{height:130px}
-  .fab{right:16px;bottom:16px}.fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}}
+  .fab{right:14px;bottom:14px;opacity:.62}
+  .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}}
+@media(hover:none){.fab{opacity:.62}.fab:active{opacity:1}}
 </style>
 </head>
 <body>
@@ -570,7 +573,7 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 
 <footer>
   <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
-  <p class="updated">Laatst bijgewerkt: 09/06/2026 16:15 UTC</p>
+  <p class="updated">Laatst bijgewerkt: 09/06/2026 16:19 UTC</p>
 </footer>
 
 <button id="fabToggle" class="fab" type="button" aria-expanded="false" title="Alles openklappen">
