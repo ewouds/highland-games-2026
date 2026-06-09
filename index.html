@@ -105,6 +105,7 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
   border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
 .leg-route{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.apt-pair{display:inline-flex;align-items:baseline;gap:8px}
 .apt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--accent)}
 .apt-name{font-size:13px;color:var(--muted)}
 .arrow{color:var(--accent2);font-size:18px;margin:0 2px}
@@ -252,7 +253,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:170px;opacity:1;padding-right:18px}
 @media(max-width:560px){.day{padding:18px 14px}.gallery img{height:130px}
   .fab{right:14px;bottom:14px;opacity:.62}
-  .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}}
+  .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}
+  .leg-route{align-items:flex-start;gap:10px}
+  .apt-pair{flex-direction:column;align-items:flex-start;gap:1px}
+  .apt-pair .apt-name{font-size:12px;line-height:1.2}
+  .leg-route .arrow{align-self:flex-start;line-height:24px}}
 @media(hover:none){.fab{opacity:.62}.fab:active{opacity:1}}
 </style>
 </head>
@@ -314,15 +319,15 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="day-body">
 <div class="legs">
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EBAW.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EBAW openen">EBAW</a><span class="apt-name">Antwerpen</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGSC.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSC openen">EGSC</a><span class="apt-name">Cambridge</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EBAW.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EBAW openen">EBAW</a><span class="apt-name">Antwerpen</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGSC.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSC openen">EGSC</a><span class="apt-name">Cambridge</span></span></div>
 <div class="leg-meta">171 NM · 1u43</div>
 </div>
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGSC.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSC openen">EGSC</a><span class="apt-name">Cambridge</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGCM.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGCM openen">EGCM</a><span class="apt-name">Leeds East</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGSC.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSC openen">EGSC</a><span class="apt-name">Cambridge</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGCM.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGCM openen">EGCM</a><span class="apt-name">Leeds East</span></span></div>
 <div class="leg-meta">110 NM · 1u06</div>
 </div>
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGCM.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGCM openen">EGCM</a><span class="apt-name">Leeds East</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGPG.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPG openen">EGPG</a><span class="apt-name">Cumbernauld</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGCM.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGCM openen">EGCM</a><span class="apt-name">Leeds East</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGPG.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPG openen">EGPG</a><span class="apt-name">Cumbernauld</span></span></div>
 <div class="leg-meta">161 NM · 1u37</div>
 </div>
 </div>
@@ -382,11 +387,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="day-body">
 <div class="legs">
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGPG.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPG openen">EGPG</a><span class="apt-name">Cumbernauld</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGPR.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPR openen">EGPR</a><span class="apt-name">Barra</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGPG.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPG openen">EGPG</a><span class="apt-name">Cumbernauld</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGPR.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPR openen">EGPR</a><span class="apt-name">Barra</span></span></div>
 <div class="leg-meta">131 NM · 1u19</div>
 </div>
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGPR.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPR openen">EGPR</a><span class="apt-name">Barra</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGPE.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPE openen">EGPE</a><span class="apt-name">Inverness</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGPR.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPR openen">EGPR</a><span class="apt-name">Barra</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGPE.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPE openen">EGPE</a><span class="apt-name">Inverness</span></span></div>
 <div class="leg-meta">115 NM · 1u09</div>
 </div>
 </div>
@@ -444,11 +449,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="day-body">
 <div class="legs">
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGPE.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPE openen">EGPE</a><span class="apt-name">Inverness</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGEO.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGEO openen">EGEO</a><span class="apt-name">Oban</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGPE.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGPE openen">EGPE</a><span class="apt-name">Inverness</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGEO.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGEO openen">EGEO</a><span class="apt-name">Oban</span></span></div>
 <div class="leg-meta">79 NM · 47 min</div>
 </div>
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGEO.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGEO openen">EGEO</a><span class="apt-name">Oban</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGAD.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGAD openen">EGAD</a><span class="apt-name">Newtownards</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGEO.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGEO openen">EGEO</a><span class="apt-name">Oban</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGAD.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGAD openen">EGAD</a><span class="apt-name">Newtownards</span></span></div>
 <div class="leg-meta">114 NM · 1u08</div>
 </div>
 </div>
@@ -532,11 +537,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="day-body">
 <div class="legs">
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGAD.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGAD openen">EGAD</a><span class="apt-name">Newtownards</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EIKY.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EIKY openen">EIKY</a><span class="apt-name">Kerry</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGAD.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGAD openen">EGAD</a><span class="apt-name">Newtownards</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EIKY.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EIKY openen">EIKY</a><span class="apt-name">Kerry</span></span></div>
 <div class="leg-meta">199 NM · 1u59</div>
 </div>
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EIKY.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EIKY openen">EIKY</a><span class="apt-name">Kerry</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGFF.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGFF openen">EGFF</a><span class="apt-name">Cardiff</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EIKY.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EIKY openen">EIKY</a><span class="apt-name">Kerry</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGFF.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGFF openen">EGFF</a><span class="apt-name">Cardiff</span></span></div>
 <div class="leg-meta">235 NM · 2u21</div>
 </div>
 </div>
@@ -585,11 +590,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="day-body">
 <div class="legs">
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGFF.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGFF openen">EGFF</a><span class="apt-name">Cardiff</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EGSU.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSU openen">EGSU</a><span class="apt-name">Duxford</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGFF.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGFF openen">EGFF</a><span class="apt-name">Cardiff</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EGSU.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSU openen">EGSU</a><span class="apt-name">Duxford</span></span></div>
 <div class="leg-meta">136 NM · 1u22</div>
 </div>
 <div class="leg">
-<div class="leg-route"><a class="apt has-plate" href="plates/EGSU.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSU openen">EGSU</a><span class="apt-name">Duxford</span><span class="arrow">→</span><a class="apt has-plate" href="plates/EBAW.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EBAW openen">EBAW</a><span class="apt-name">Antwerpen</span></div>
+<div class="leg-route"><span class="apt-pair"><a class="apt has-plate" href="plates/EGSU.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EGSU openen">EGSU</a><span class="apt-name">Duxford</span></span><span class="arrow">→</span><span class="apt-pair"><a class="apt has-plate" href="plates/EBAW.pdf" target="_blank" rel="noopener" title="Jeppesen VFR-plate EBAW openen">EBAW</a><span class="apt-name">Antwerpen</span></span></div>
 <div class="leg-meta">170 NM · 1u42</div>
 </div>
 </div>
@@ -628,7 +633,7 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 
 <footer>
   <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
-  <p class="updated">Laatst bijgewerkt: 09/06/2026 17:13 UTC</p>
+  <p class="updated">Laatst bijgewerkt: 09/06/2026 17:17 UTC</p>
 </footer>
 
 <button id="fabToggle" class="fab" type="button" aria-expanded="false" title="Alles openklappen">

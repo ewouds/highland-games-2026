@@ -35,6 +35,13 @@ def apt_code(code, cls="apt"):
                 f'title="Jeppesen VFR-plate {safe} openen">{safe}</a>')
     return f'<span class="{cls}">{safe}</span>'
 
+
+def apt_pair(code, name):
+    """Render een luchthaven als code + naam, gegroepeerd (naam stapelt onder code op mobiel)."""
+    nm = html.escape(name or "")
+    return (f'<span class="apt-pair">{apt_code(code)}'
+            f'<span class="apt-name">{nm}</span></span>')
+
 # Airport coordinates (lat, lon) for the map
 COORDS = {
     "EBAW": (51.1894, 4.4603),
@@ -291,11 +298,9 @@ def render_day(data, day):
             frm, to = leg["from"], leg["to"]
             parts.append('<div class="leg">')
             parts.append(
-                f'<div class="leg-route">{apt_code(frm)}'
-                f'<span class="apt-name">{html.escape(ap.get(frm, ""))}</span>'
+                f'<div class="leg-route">{apt_pair(frm, ap.get(frm, ""))}'
                 f'<span class="arrow">→</span>'
-                f'{apt_code(to)}'
-                f'<span class="apt-name">{html.escape(ap.get(to, ""))}</span></div>'
+                f'{apt_pair(to, ap.get(to, ""))}</div>'
             )
             meta = f'{leg["dist_nm"]} NM · {fmt_time(leg.get("time_min"))}'
             parts.append(f'<div class="leg-meta">{meta}</div>')
@@ -565,6 +570,7 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
   border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
 .leg-route{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.apt-pair{display:inline-flex;align-items:baseline;gap:8px}
 .apt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--accent)}
 .apt-name{font-size:13px;color:var(--muted)}
 .arrow{color:var(--accent2);font-size:18px;margin:0 2px}
@@ -712,7 +718,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:170px;opacity:1;padding-right:18px}
 @media(max-width:560px){.day{padding:18px 14px}.gallery img{height:130px}
   .fab{right:14px;bottom:14px;opacity:.62}
-  .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}}
+  .fab:hover .fab-label,.fab:focus-visible .fab-label{max-width:0;opacity:0;padding-right:0}
+  .leg-route{align-items:flex-start;gap:10px}
+  .apt-pair{flex-direction:column;align-items:flex-start;gap:1px}
+  .apt-pair .apt-name{font-size:12px;line-height:1.2}
+  .leg-route .arrow{align-self:flex-start;line-height:24px}}
 @media(hover:none){.fab{opacity:.62}.fab:active{opacity:1}}
 """
 
