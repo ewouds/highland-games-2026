@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "09/06/2026 11:54 UTC",
+    "lastUpdated": "09/06/2026 12:06 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet."
   },
@@ -49,6 +49,21 @@
     "EGSU": "Duxford"
   },
   "days": [
+    {
+      "date": "2026-06-09",
+      "weekday": "Voorbereiding",
+      "label": "Dag 0 — De aanloop",
+      "prep": true,
+      "restDay": false,
+      "legs": [],
+      "entries": [
+        {
+          "time": "",
+          "text": "Iedereen is druk in de weer om de gendecs, GAR's, PPR's, paspoorten en ETA's in orde te brengen. Dit alles brengt de WhatsApp-groep van de fly-out naar ongeziene interacties — de zenuwachtigheid en stress beginnen te komen. Tijd dat de piloten gelost worden!",
+          "photos": []
+        }
+      ]
+    },
     {
       "date": "2026-06-10",
       "weekday": "Woensdag",

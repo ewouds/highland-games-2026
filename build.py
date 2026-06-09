@@ -118,13 +118,23 @@ def render_day(data, day):
     ap = data["airports"]
     parts = []
     rest = day.get("restDay")
-    parts.append(f'<section class="day{" rest" if rest else ""}" id="{day["date"]}">')
+    prep = day.get("prep")
+    cls = " prep" if prep else (" rest" if rest else "")
+    parts.append(f'<section class="day{cls}" id="{day["date"]}">')
     parts.append('<div class="day-head">')
-    parts.append(f'<div class="day-date"><span class="wd">{html.escape(day["weekday"])}</span><span class="dt">{html.escape(day["date"][8:10])}/{html.escape(day["date"][5:7])}</span></div>')
+    if prep:
+        parts.append(
+            f'<div class="day-date"><span class="wd">{html.escape(day["date"][8:10])}/{html.escape(day["date"][5:7])}</span>'
+            f'<span class="dt">T-0</span></div>'
+        )
+    else:
+        parts.append(f'<div class="day-date"><span class="wd">{html.escape(day["weekday"])}</span><span class="dt">{html.escape(day["date"][8:10])}/{html.escape(day["date"][5:7])}</span></div>')
     parts.append(f'<h2>{html.escape(day["label"])}</h2>')
     parts.append('</div>')
 
-    if rest:
+    if prep:
+        parts.append('<div class="prep-banner">📝 Voorbereiding — nog geen wielen van de grond, wel volop papierwerk. Gendecs, GAR\'s, PPR\'s, paspoorten &amp; ETA\'s.</div>')
+    elif rest:
         parts.append('<div class="rest-banner">🛌 Rustdag — geen vluchten gepland. Tijd om de Highlands te proeven.</div>')
     else:
         # legs — kort overzicht (altijd zichtbaar)
@@ -320,6 +330,11 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .day-head h2{margin:0;font-size:clamp(20px,3.2vw,26px);font-weight:700}
 .rest-banner{background:rgba(255,207,107,.1);border:1px dashed rgba(255,207,107,.4);
   border-radius:12px;padding:14px 16px;color:var(--rest);font-weight:500}
+.day.prep{background:linear-gradient(180deg,#161f33,#101826);border-color:rgba(126,224,192,.22)}
+.day.prep .day-date{background:rgba(126,224,192,.12);border-color:rgba(126,224,192,.35)}
+.day.prep .day-date .dt{color:var(--accent2);font-size:22px}
+.prep-banner{background:rgba(126,224,192,.08);border:1px dashed rgba(126,224,192,.4);
+  border-radius:12px;padding:14px 16px;color:var(--accent2);font-weight:500}
 .legs{display:grid;gap:10px;margin-bottom:6px}
 .leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
   border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
