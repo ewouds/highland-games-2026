@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "09/06/2026 14:41 UTC",
+    "lastUpdated": "09/06/2026 14:55 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 4
@@ -260,7 +260,15 @@
           ]
         }
       ],
-      "entries": []
+      "entries": [],
+      "hotel": {
+        "city": "Glasgow",
+        "name": "Motel One Glasgow",
+        "checkin": "wo 10/06/2026",
+        "checkout": "do 11/06/2026",
+        "booked_by": "Brecht (booking.com)",
+        "cancel_by": "wo 10/06/2026 18:00"
+      }
     },
     {
       "date": "2026-06-11",
@@ -383,7 +391,40 @@
           ]
         }
       ],
-      "entries": []
+      "entries": [],
+      "hotel": {
+        "city": "Inverness",
+        "name": "B&B Hotel Inverness",
+        "checkin": "do 11/06/2026",
+        "checkout": "vr 12/06/2026",
+        "booked_by": "Brecht (booking.com)",
+        "cancel_by": "do 11/06/2026 18:00",
+        "rooms": {
+          "title": "Kamerverdeling Inverness",
+          "items": [
+            {
+              "type": "1× Triple",
+              "guests": "Brecht, Dirk, Wim",
+              "pax": 3
+            },
+            {
+              "type": "1× Double (1 bed)",
+              "guests": "Koen, Annick",
+              "pax": 2
+            },
+            {
+              "type": "4× Double (apart bed)",
+              "guests": "",
+              "pax": 8
+            },
+            {
+              "type": "3× Triple (apart bed)",
+              "guests": "voor 2 pers",
+              "pax": 6
+            }
+          ]
+        }
+      }
     },
     {
       "date": "2026-06-12",
@@ -506,7 +547,56 @@
           ]
         }
       ],
-      "entries": []
+      "entries": [],
+      "hotel": {
+        "city": "Belfast",
+        "name": "Aloft by Marriott Belfast Titanic",
+        "checkin": "vr 12/06/2026",
+        "checkout": "zo 14/06/2026",
+        "booked_by": "Brecht & Glenn (booking.com)",
+        "cancel_by": "do 11/06/2026 23:59",
+        "nights": 2,
+        "rooms": {
+          "title": "Kamerverdeling Belfast",
+          "groups": [
+            {
+              "label": "Geboekt door Brecht",
+              "items": [
+                {
+                  "type": "2× Double (apart bed)",
+                  "guests": "",
+                  "pax": 4
+                },
+                {
+                  "type": "2× Double (1 bed)",
+                  "guests": "",
+                  "pax": 2
+                },
+                {
+                  "type": "1× Double (1 bed)",
+                  "guests": "Koen, Annick",
+                  "pax": 2
+                },
+                {
+                  "type": "4× Double (1 bed)",
+                  "guests": "",
+                  "pax": 4
+                }
+              ]
+            },
+            {
+              "label": "Geboekt door Glenn",
+              "items": [
+                {
+                  "type": "7× Double (single use)",
+                  "guests": "",
+                  "pax": 7
+                }
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "date": "2026-06-13",
@@ -514,7 +604,16 @@
       "label": "Dag 4 — Rustdag",
       "restDay": true,
       "legs": [],
-      "entries": []
+      "entries": [],
+      "hotel": {
+        "city": "Belfast",
+        "name": "Aloft by Marriott Belfast Titanic",
+        "checkin": "vr 12/06/2026",
+        "checkout": "zo 14/06/2026",
+        "booked_by": "Brecht & Glenn (booking.com)",
+        "cancel_by": "do 11/06/2026 23:59",
+        "note": "2e nacht — rustdag in Belfast"
+      }
     },
     {
       "date": "2026-06-14",
@@ -637,7 +736,15 @@
           ]
         }
       ],
-      "entries": []
+      "entries": [],
+      "hotel": {
+        "city": "Cardiff",
+        "name": "Park Plaza Cardiff",
+        "checkin": "zo 14/06/2026",
+        "checkout": "ma 15/06/2026",
+        "booked_by": "Brecht & Glenn (booking.com)",
+        "cancel_by": "zo 14/06/2026 14:00"
+      }
     },
     {
       "date": "2026-06-15",

@@ -151,6 +151,60 @@ def render_prep_section(prep_days):
     parts.append('</section>')
     return "\n".join(parts)
 
+def render_hotel(h):
+    """Overnachtingskaart per dag. h = {city,name,checkin,checkout,booked_by,cancel_by,nights?,note?,rooms?}"""
+    parts = []
+    nights = h.get("nights")
+    nights_badge = f'<span class="htl-nights">{nights} nachten</span>' if nights and nights > 1 else ''
+    parts.append('<div class="hotel">')
+    parts.append(
+        f'<div class="htl-head"><span class="htl-ico">\U0001F6CF\uFE0F</span>'
+        f'<div class="htl-title"><span class="htl-city">{html.escape(h.get("city",""))}</span>'
+        f'<span class="htl-name">{html.escape(h.get("name",""))}</span></div>'
+        f'{nights_badge}</div>'
+    )
+    # meta-rij: data + boeker + annuleerdeadline
+    rows = []
+    ci, co = h.get("checkin"), h.get("checkout")
+    if ci and co:
+        rows.append(f'<span class="htl-row"><span class="htl-k">\U0001F4C5</span>{html.escape(ci)} \u2192 {html.escape(co)}</span>')
+    if h.get("booked_by"):
+        rows.append(f'<span class="htl-row"><span class="htl-k">\U0001F465</span>{html.escape(h["booked_by"])}</span>')
+    if h.get("cancel_by"):
+        rows.append(f'<span class="htl-row htl-cancel"><span class="htl-k">\u23F0</span>gratis annuleerbaar tot {html.escape(h["cancel_by"])}</span>')
+    if rows:
+        parts.append('<div class="htl-meta">' + "".join(rows) + '</div>')
+    if h.get("note"):
+        parts.append(f'<div class="htl-note">{html.escape(h["note"])}</div>')
+
+    # kamerverdeling (inklapbaar) — ondersteunt 'items' of gegroepeerde 'groups'
+    rooms = h.get("rooms")
+    if rooms:
+        def room_row(it):
+            g = html.escape(it.get("guests", "") or "")
+            guests_html = f'<span class="rm-guests">{g}</span>' if g else '<span class="rm-guests rm-empty">\u2014</span>'
+            pax = it.get("pax")
+            pax_html = f'<span class="rm-pax">{pax}p</span>' if isinstance(pax, int) else ''
+            return (f'<div class="rm-row"><span class="rm-type">{html.escape(it.get("type",""))}</span>'
+                    f'{guests_html}{pax_html}</div>')
+        parts.append('<details class="rooms-details">')
+        parts.append(f'<summary><span class="sum-ico">\u2630</span> {html.escape(rooms.get("title","Kamerverdeling"))} <span class="sum-hint">(klik om te tonen)</span></summary>')
+        parts.append('<div class="rooms-body">')
+        if rooms.get("groups"):
+            for grp in rooms["groups"]:
+                if grp.get("label"):
+                    parts.append(f'<div class="rm-group-label">{html.escape(grp["label"])}</div>')
+                for it in grp.get("items", []):
+                    parts.append(room_row(it))
+        else:
+            for it in rooms.get("items", []):
+                parts.append(room_row(it))
+        parts.append('</div>')
+        parts.append('</details>')
+    parts.append('</div>')
+    return "\n".join(parts)
+
+
 def render_day(data, day):
     ap = data["airports"]
     parts = []
@@ -211,6 +265,11 @@ def render_day(data, day):
                 parts.append('</div>')
             parts.append('</div>')
             parts.append('</details>')
+
+    # accommodatie (overnachting) — toont op zowel vlieg- als rustdagen
+    hotel = day.get("hotel")
+    if hotel:
+        parts.append(render_hotel(hotel))
 
     # entries
     entries = day.get("entries", [])
@@ -424,6 +483,40 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .crew-details[open] .sum-hint::after{content:"▲"}
 .crew-details:not([open]) .sum-hint::after{content:"▼"}
 .crew-body{padding:12px 14px 14px}
+/* --- accommodatie / overnachting --- */
+.hotel{margin-top:12px;border:1px solid rgba(126,224,192,.22);border-radius:12px;
+  background:linear-gradient(180deg,rgba(126,224,192,.06),rgba(126,224,192,.02));overflow:hidden}
+.htl-head{display:flex;align-items:center;gap:11px;padding:13px 15px}
+.htl-ico{font-size:20px;line-height:1}
+.htl-title{display:flex;flex-direction:column;gap:1px;min-width:0}
+.htl-city{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);font-weight:700}
+.htl-name{font-size:15px;font-weight:600;color:var(--ink)}
+.htl-nights{margin-left:auto;flex:none;background:rgba(126,224,192,.16);color:var(--accent2);
+  font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.htl-meta{display:flex;flex-wrap:wrap;gap:7px 16px;padding:0 15px 13px;font-size:13px;color:var(--muted)}
+.htl-row{display:inline-flex;align-items:center;gap:6px}
+.htl-k{font-size:13px;opacity:.85}
+.htl-cancel{color:var(--rest)}
+.htl-note{padding:0 15px 13px;font-size:12.5px;color:var(--muted);font-style:italic;margin-top:-4px}
+.rooms-details{border-top:1px solid rgba(126,224,192,.16);background:rgba(255,255,255,.015)}
+.rooms-details summary{cursor:pointer;list-style:none;padding:11px 15px;font-size:13.5px;font-weight:600;
+  color:var(--ink);display:flex;align-items:center;gap:8px;user-select:none;transition:background .15s}
+.rooms-details summary::-webkit-details-marker{display:none}
+.rooms-details summary:hover{background:rgba(126,224,192,.07)}
+.rooms-details[open] summary{border-bottom:1px solid rgba(126,224,192,.16)}
+.rooms-details[open] .sum-hint::after{content:"\25B2"}
+.rooms-details:not([open]) .sum-hint::after{content:"\25BC"}
+.rooms-body{padding:10px 15px 13px;display:flex;flex-direction:column;gap:6px}
+.rm-group-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);
+  font-weight:700;margin-top:6px;margin-bottom:1px}
+.rm-group-label:first-child{margin-top:0}
+.rm-row{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:8px 11px}
+.rm-type{font-weight:600;color:var(--ink);font-size:13.5px;flex:none;min-width:140px}
+.rm-guests{color:var(--accent2);font-size:13px;flex:1}
+.rm-guests.rm-empty{color:var(--muted);opacity:.5}
+.rm-pax{flex:none;font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:15px;
+  color:var(--copilot);background:rgba(126,224,192,.14);border-radius:7px;padding:1px 9px}
 .crew-leg-label{display:flex;align-items:center;gap:7px;margin:12px 0 7px;font-family:'Bebas Neue',sans-serif;
   letter-spacing:.04em;font-size:17px;color:var(--accent)}
 .crew-leg-label:first-child{margin-top:2px}
