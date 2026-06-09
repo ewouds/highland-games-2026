@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "09/06/2026 13:41 UTC",
+    "lastUpdated": "09/06/2026 13:50 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 3
+    "nextRef": 4
   },
   "aircraft": [
     {
@@ -79,6 +79,12 @@
           "text": "Iedereen is druk in de weer om de gendecs, GAR's, PPR's, paspoorten en ETA's in orde te brengen. Dit alles brengt de WhatsApp-groep van de fly-out naar ongeziene interacties — de zenuwachtigheid en stress beginnen te komen. Tijd dat de piloten gelost worden!",
           "photos": [],
           "ref": 2
+        },
+        {
+          "time": "",
+          "text": "Nog een laatste puzzelstuk: het grondvervoer en de overnachtingen. De taxi-ritten tussen velden en verblijven, plus de hotels onderweg, moeten nog vastgelegd én geboekt worden — streefdatum 08/06. Zodra alles bevestigd is, landt de definitieve planning hier in het logboek.",
+          "photos": [],
+          "ref": 3
         }
       ]
     },
