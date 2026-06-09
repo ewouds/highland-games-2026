@@ -85,14 +85,17 @@ def build_route_points(data):
 
 
 def render_entry(entry):
-    """An entry: {type: 'photo'|'note', text, photos:[{file,caption}], time}"""
+    """An entry: {ref:int, text, photos:[{file,caption}], time}"""
+    _ref = entry.get('ref')
+    ref_badge = (f'<span class="entry-ref">REF-{_ref:03d}</span>' if isinstance(_ref, int) else '')
     parts = []
     t = entry.get("time", "")
     text = entry.get("text", "")
     photos = entry.get("photos", [])
     parts.append('<div class="entry">')
-    if t:
-        parts.append(f'<div class="entry-time">{html.escape(t)}</div>')
+    if ref_badge or t:
+        _t = f'<span class="entry-time-txt">{html.escape(t)}</span>' if t else ''
+        parts.append(f'<div class="entry-time">{ref_badge}{_t}</div>')
     if text:
         # naive paragraph split
         for para in text.split("\n\n"):
@@ -389,6 +392,7 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .prep-item-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
 .prep-date{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent);font-size:20px}
 .prep-label{font-weight:600;color:var(--ink);font-size:15px}
+.entry-ref{display:inline-block;font-family:'Bebas Neue',sans-serif;letter-spacing:.07em;font-size:11px;color:var(--accent2);background:rgba(126,224,192,.12);border:1px solid rgba(126,224,192,.3);padding:1px 7px;border-radius:6px;margin-right:8px;vertical-align:middle;white-space:nowrap}
 
 .legs{display:grid;gap:10px;margin-bottom:6px}
 .leg{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);

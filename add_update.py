@@ -106,13 +106,23 @@ def main():
                 shutil.copy2(src, dst)
                 photos.append({"file": base, "caption": cap})
 
-        entry = {"time": args.time, "text": args.text, "photos": photos}
+        # assign next unique REF number (persisted in meta.nextRef)
+        nextref = data.get("meta", {}).get("nextRef")
+        if not isinstance(nextref, int):
+            mx = 0
+            for _d in data["days"]:
+                for _e in _d.get("entries", []):
+                    if isinstance(_e.get("ref"), int):
+                        mx = max(mx, _e["ref"])
+            nextref = mx + 1
+        entry = {"ref": nextref, "time": args.time, "text": args.text, "photos": photos}
         # skip fully-empty entries
         if entry["text"] or entry["photos"]:
             day.setdefault("entries", []).append(entry)
+            data.setdefault("meta", {})["nextRef"] = nextref + 1
             with open(JOURNAL, "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
-            print(f"Added entry to {date}: text={'yes' if args.text else 'no'}, photos={len(photos)}")
+            print(f"Added entry REF-{nextref:03d} to {date}: text={'yes' if args.text else 'no'}, photos={len(photos)}")
         else:
             print("Nothing to add (no text, no photos). Rebuilding only.")
 
