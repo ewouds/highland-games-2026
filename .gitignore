@@ -4,3 +4,4 @@ __pycache__/
 _fix.py
 _addfunc.py
 patch_refs.py
+node_modules/

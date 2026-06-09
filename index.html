@@ -155,6 +155,34 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
   letter-spacing:.04em;font-size:17px;color:var(--accent)}
 .crew-leg-label:first-child{margin-top:2px}
 .cll-arr{color:var(--accent2);font-size:14px}
+.crew-leg-block{margin:0}
+/* --- deelnemer-filter --- */
+.crew-filter{margin:28px 0 4px;background:linear-gradient(180deg,var(--card),#101b32);
+  border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;
+  box-shadow:0 8px 30px rgba(0,0,0,.28)}
+.cf-head{display:flex;flex-direction:column;gap:3px;margin-bottom:13px}
+.cf-title{font-weight:700;font-size:16px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.cf-hint{font-size:12.5px;color:var(--muted)}
+.cf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cf-chip{font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;
+  color:var(--muted);background:rgba(255,255,255,.03);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;transition:background .15s,color .15s,border-color .15s}
+.cf-chip:hover{color:var(--ink);border-color:rgba(72,169,255,.5);background:rgba(72,169,255,.08)}
+.cf-chip.active{color:var(--accent);background:rgba(72,169,255,.18);
+  border-color:rgba(72,169,255,.7);box-shadow:0 0 0 1px rgba(72,169,255,.25) inset}
+.cf-foot{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.cf-reset{font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;
+  color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:9px;
+  padding:6px 13px;transition:background .15s,color .15s,border-color .15s}
+.cf-reset:hover{color:var(--rest);border-color:rgba(255,207,107,.5);background:rgba(255,207,107,.08)}
+.cf-count{font-size:12.5px;color:var(--muted)}
+.cf-count b{color:var(--accent2)}
+/* highlight van geselecteerde deelnemer in de crew */
+.seat.person-hit{background:rgba(255,207,107,.18);border-radius:8px;padding:2px 6px;
+  box-shadow:0 0 0 1px rgba(255,207,107,.5),0 0 12px rgba(255,207,107,.25)}
+.seat.person-hit .crew{color:var(--rest);font-weight:700}
+.seat.cf-dim{opacity:.32;filter:saturate(.6)}
+.cf-hidden{display:none !important}
 .entries{margin-top:18px;display:grid;gap:18px}
 .entries.empty{color:var(--muted);font-style:italic;font-size:14px;opacity:.7;margin-top:14px}
 .entry{border-left:2px solid rgba(72,169,255,.3);padding-left:16px}
@@ -199,6 +227,8 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
     <p>Dit verslag wordt onderweg bijgewerkt met foto's en verhalen. De eerste beelden volgen snel.</p>
   </div>
 
+  <div class="crew-filter" id="crewFilter"><div class="cf-head"><span class="cf-title">🔍 Filter op deelnemer</span><span class="cf-hint">Tik op een naam om alleen die vluchten te tonen — combineer meerdere namen.</span></div><div class="cf-chips"><button class="cf-chip" data-person="annick">Annick</button><button class="cf-chip" data-person="axel">Axel</button><button class="cf-chip" data-person="brecht">Brecht</button><button class="cf-chip" data-person="dirk">Dirk</button><button class="cf-chip" data-person="ewoud">Ewoud</button><button class="cf-chip" data-person="glenn">Glenn</button><button class="cf-chip" data-person="hans">Hans</button><button class="cf-chip" data-person="josha">Josha</button><button class="cf-chip" data-person="ken">Ken</button><button class="cf-chip" data-person="koen-v">Koen V</button><button class="cf-chip" data-person="koenraad-vb">Koenraad VB</button><button class="cf-chip" data-person="kristof">Kristof</button><button class="cf-chip" data-person="lieven">Lieven</button><button class="cf-chip" data-person="luk">Luk</button><button class="cf-chip" data-person="marc">Marc</button><button class="cf-chip" data-person="michael">Michael</button><button class="cf-chip" data-person="nick">Nick</button><button class="cf-chip" data-person="tom">Tom</button><button class="cf-chip" data-person="wim">Wim</button></div><div class="cf-foot"><button class="cf-reset" id="cfReset">Reset</button><span class="cf-count" id="cfCount"></span></div></div>
+
   <section class="day prep prep-section" id="voorbereiding">
 <details class="prep-collapse">
 <summary><span class="prep-ico">📝</span> Voorbereiding <span class="prep-count">2 momenten</span><span class="sum-hint">(klik om te tonen)</span></summary>
@@ -242,32 +272,38 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <details class="crew-details">
 <summary><span class="sum-ico">☰</span> Bemanning per vliegtuig <span class="sum-hint">(klik om te tonen)</span></summary>
 <div class="crew-body">
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EBAW</span><span class="cll-arr">→</span><span class="cll-apt">EGSC</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Kristof</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Josha</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Dirk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Hans</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Marc</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Annick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Brecht</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Nick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Lieven</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Axel</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
+<div class="ac-row" data-people="kristof josha michael"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="kristof"><span class="seat-role">PIC</span><span class="crew">Kristof</span></span><span class="seat copilot" data-person="josha"><span class="seat-role">COPILOT</span><span class="crew">Josha</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
+<div class="ac-row" data-people="dirk hans ken"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="dirk"><span class="seat-role">PIC</span><span class="crew">Dirk</span></span><span class="seat copilot" data-person="hans"><span class="seat-role">COPILOT</span><span class="crew">Hans</span></span><span class="seat pax" data-person="ken"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
+<div class="ac-row" data-people="glenn marc luk"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="glenn"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot" data-person="marc"><span class="seat-role">COPILOT</span><span class="crew">Marc</span></span><span class="seat pax" data-person="luk"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
+<div class="ac-row" data-people="tom annick koen-v"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="tom"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot" data-person="annick"><span class="seat-role">COPILOT</span><span class="crew">Annick</span></span><span class="seat pax" data-person="koen-v"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+<div class="ac-row" data-people="brecht nick wim koenraad-vb"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="brecht"><span class="seat-role">PIC</span><span class="crew">Brecht</span></span><span class="seat copilot" data-person="nick"><span class="seat-role">COPILOT</span><span class="crew">Nick</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="lieven axel ewoud"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="lieven"><span class="seat-role">PIC</span><span class="crew">Lieven</span></span><span class="seat copilot" data-person="axel"><span class="seat-role">COPILOT</span><span class="crew">Axel</span></span><span class="seat pax" data-person="ewoud"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
 </div>
+</div>
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGSC</span><span class="cll-arr">→</span><span class="cll-apt">EGCM</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Michael</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Nick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Annick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Hans</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Kristof</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ewoud</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
+<div class="ac-row" data-people="wim brecht josha"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="wim"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="josha"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
+<div class="ac-row" data-people="michael nick annick koen-v"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="michael"><span class="seat-role">PIC</span><span class="crew">Michael</span></span><span class="seat copilot" data-person="nick"><span class="seat-role">COPILOT</span><span class="crew">Nick</span></span><span class="seat pax" data-person="annick"><span class="seat-role">PAX</span><span class="crew">Annick</span></span><span class="seat pax" data-person="koen-v"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+<div class="ac-row" data-people="hans dirk marc"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="hans"><span class="seat-role">PIC</span><span class="crew">Hans</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="marc"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
+<div class="ac-row" data-people="luk glenn kristof"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="luk"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="kristof"><span class="seat-role">PAX</span><span class="crew">Kristof</span></span></span></div>
+<div class="ac-row" data-people="ken tom koenraad-vb"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="ken"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="ewoud lieven axel"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="ewoud"><span class="seat-role">PIC</span><span class="crew">Ewoud</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="axel"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
 </div>
+</div>
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGCM</span><span class="cll-arr">→</span><span class="cll-apt">EGPG</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Nick</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koenraad VB</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
+<div class="ac-row" data-people="nick kristof annick"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="nick"><span class="seat-role">PIC</span><span class="crew">Nick</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="annick"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
+<div class="ac-row" data-people="koenraad-vb brecht wim ewoud"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="koenraad-vb"><span class="seat-role">PIC</span><span class="crew">Koenraad VB</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax" data-person="ewoud"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
+<div class="ac-row" data-people="marc dirk luk"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="marc"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="luk"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
+<div class="ac-row" data-people="axel glenn michael"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="axel"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
+<div class="ac-row" data-people="josha tom hans"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="josha"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="hans"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
+<div class="ac-row" data-people="koen-v lieven ken"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="koen-v"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="ken"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
+</div>
 </div>
 </div>
 </details>
@@ -295,23 +331,27 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <details class="crew-details">
 <summary><span class="sum-ico">☰</span> Bemanning per vliegtuig <span class="sum-hint">(klik om te tonen)</span></summary>
 <div class="crew-body">
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGPG</span><span class="cll-arr">→</span><span class="cll-apt">EGPR</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Kristof</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Axel</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Dirk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Marc</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Nick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Brecht</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Ewoud</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Luk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Lieven</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Annick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+<div class="ac-row" data-people="kristof axel wim"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="kristof"><span class="seat-role">PIC</span><span class="crew">Kristof</span></span><span class="seat copilot" data-person="axel"><span class="seat-role">COPILOT</span><span class="crew">Axel</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span></span></div>
+<div class="ac-row" data-people="dirk marc hans"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="dirk"><span class="seat-role">PIC</span><span class="crew">Dirk</span></span><span class="seat copilot" data-person="marc"><span class="seat-role">COPILOT</span><span class="crew">Marc</span></span><span class="seat pax" data-person="hans"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
+<div class="ac-row" data-people="glenn nick michael koenraad-vb"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="glenn"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot" data-person="nick"><span class="seat-role">COPILOT</span><span class="crew">Nick</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="brecht ewoud josha"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="brecht"><span class="seat-role">PIC</span><span class="crew">Brecht</span></span><span class="seat copilot" data-person="ewoud"><span class="seat-role">COPILOT</span><span class="crew">Ewoud</span></span><span class="seat pax" data-person="josha"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
+<div class="ac-row" data-people="tom luk ken"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="tom"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot" data-person="luk"><span class="seat-role">COPILOT</span><span class="crew">Luk</span></span><span class="seat pax" data-person="ken"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
+<div class="ac-row" data-people="lieven annick koen-v"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="lieven"><span class="seat-role">PIC</span><span class="crew">Lieven</span></span><span class="seat copilot" data-person="annick"><span class="seat-role">COPILOT</span><span class="crew">Annick</span></span><span class="seat pax" data-person="koen-v"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
 </div>
+</div>
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGPR</span><span class="cll-arr">→</span><span class="cll-apt">EGPE</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Annick</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Michael</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Axel</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ewoud</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+<div class="ac-row" data-people="annick glenn nick"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="annick"><span class="seat-role">PIC</span><span class="crew">Annick</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="nick"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
+<div class="ac-row" data-people="michael tom axel josha"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="michael"><span class="seat-role">PIC</span><span class="crew">Michael</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="axel"><span class="seat-role">PAX</span><span class="crew">Axel</span></span><span class="seat pax" data-person="josha"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
+<div class="ac-row" data-people="marc dirk hans"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="marc"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="hans"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
+<div class="ac-row" data-people="luk brecht wim"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="luk"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span></span></div>
+<div class="ac-row" data-people="ken kristof koenraad-vb"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="ken"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="ewoud lieven koen-v"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="ewoud"><span class="seat-role">PIC</span><span class="crew">Ewoud</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="koen-v"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+</div>
 </div>
 </div>
 </details>
@@ -348,23 +388,27 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <details class="crew-details">
 <summary><span class="sum-ico">☰</span> Bemanning per vliegtuig <span class="sum-hint">(klik om te tonen)</span></summary>
 <div class="crew-body">
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGPE</span><span class="cll-arr">→</span><span class="cll-apt">EGEO</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Nick</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koenraad VB</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Hans</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
+<div class="ac-row" data-people="nick glenn annick"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="nick"><span class="seat-role">PIC</span><span class="crew">Nick</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="annick"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
+<div class="ac-row" data-people="koenraad-vb brecht ewoud wim"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="koenraad-vb"><span class="seat-role">PIC</span><span class="crew">Koenraad VB</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="ewoud"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span></span></div>
+<div class="ac-row" data-people="hans dirk luk"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="hans"><span class="seat-role">PIC</span><span class="crew">Hans</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="luk"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
+<div class="ac-row" data-people="axel kristof ken"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="axel"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="ken"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
+<div class="ac-row" data-people="josha tom marc"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="josha"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="marc"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
+<div class="ac-row" data-people="koen-v lieven michael"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="koen-v"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
 </div>
+</div>
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGEO</span><span class="cll-arr">→</span><span class="cll-apt">EGAD</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Annick</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Kristof</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Ken</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ewoud</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Luk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Lieven</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Josha</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
+<div class="ac-row" data-people="annick dirk michael"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="annick"><span class="seat-role">PIC</span><span class="crew">Annick</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
+<div class="ac-row" data-people="wim brecht koenraad-vb hans"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="wim"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span><span class="seat pax" data-person="hans"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
+<div class="ac-row" data-people="kristof ken marc"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="kristof"><span class="seat-role">PIC</span><span class="crew">Kristof</span></span><span class="seat copilot" data-person="ken"><span class="seat-role">COPILOT</span><span class="crew">Ken</span></span><span class="seat pax" data-person="marc"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
+<div class="ac-row" data-people="ewoud glenn koen-v"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="ewoud"><span class="seat-role">PIC</span><span class="crew">Ewoud</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="koen-v"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+<div class="ac-row" data-people="tom luk nick"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="tom"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot" data-person="luk"><span class="seat-role">COPILOT</span><span class="crew">Luk</span></span><span class="seat pax" data-person="nick"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
+<div class="ac-row" data-people="lieven josha axel"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="lieven"><span class="seat-role">PIC</span><span class="crew">Lieven</span></span><span class="seat copilot" data-person="josha"><span class="seat-role">COPILOT</span><span class="crew">Josha</span></span><span class="seat pax" data-person="axel"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
+</div>
 </div>
 </div>
 </details>
@@ -417,23 +461,27 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <details class="crew-details">
 <summary><span class="sum-ico">☰</span> Bemanning per vliegtuig <span class="sum-hint">(klik om te tonen)</span></summary>
 <div class="crew-body">
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGAD</span><span class="cll-arr">→</span><span class="cll-apt">EIKY</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Nick</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Hans</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Dirk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Ken</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="nick glenn annick"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="nick"><span class="seat-role">PIC</span><span class="crew">Nick</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="annick"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
+<div class="ac-row" data-people="wim brecht ewoud koen-v"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="wim"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="ewoud"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span><span class="seat pax" data-person="koen-v"><span class="seat-role">PAX</span><span class="crew">Koen V</span></span></span></div>
+<div class="ac-row" data-people="hans tom marc"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="hans"><span class="seat-role">PIC</span><span class="crew">Hans</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="marc"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
+<div class="ac-row" data-people="luk kristof michael"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="luk"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
+<div class="ac-row" data-people="dirk ken josha"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="dirk"><span class="seat-role">PIC</span><span class="crew">Dirk</span></span><span class="seat copilot" data-person="ken"><span class="seat-role">COPILOT</span><span class="crew">Ken</span></span><span class="seat pax" data-person="josha"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
+<div class="ac-row" data-people="axel lieven koenraad-vb"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="axel"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
 </div>
+</div>
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EIKY</span><span class="cll-arr">→</span><span class="cll-apt">EGFF</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koenraad VB</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Ewoud</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
+<div class="ac-row" data-people="koenraad-vb brecht michael"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="koenraad-vb"><span class="seat-role">PIC</span><span class="crew">Koenraad VB</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="michael"><span class="seat-role">PAX</span><span class="crew">Michael</span></span></span></div>
+<div class="ac-row" data-people="marc dirk hans"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="marc"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="hans"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
+<div class="ac-row" data-people="koen-v kristof wim nick"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="koen-v"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax" data-person="nick"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
+<div class="ac-row" data-people="glenn ewoud annick"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="glenn"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot" data-person="ewoud"><span class="seat-role">COPILOT</span><span class="crew">Ewoud</span></span><span class="seat pax" data-person="annick"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
+<div class="ac-row" data-people="josha tom luk"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="josha"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="luk"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
+<div class="ac-row" data-people="ken lieven axel"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="ken"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="axel"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
+</div>
 </div>
 </div>
 </details>
@@ -461,23 +509,27 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <details class="crew-details">
 <summary><span class="sum-ico">☰</span> Bemanning per vliegtuig <span class="sum-hint">(klik om te tonen)</span></summary>
 <div class="crew-body">
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGFF</span><span class="cll-arr">→</span><span class="cll-apt">EGSU</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Annick</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Michael</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Brecht</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Koen V</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
+<div class="ac-row" data-people="annick glenn luk"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="annick"><span class="seat-role">PIC</span><span class="crew">Annick</span></span><span class="seat copilot" data-person="glenn"><span class="seat-role">COPILOT</span><span class="crew">Glenn</span></span><span class="seat pax" data-person="luk"><span class="seat-role">PAX</span><span class="crew">Luk</span></span></span></div>
+<div class="ac-row" data-people="marc kristof hans"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="marc"><span class="seat-role">PIC</span><span class="crew">Marc</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="hans"><span class="seat-role">PAX</span><span class="crew">Hans</span></span></span></div>
+<div class="ac-row" data-people="michael dirk wim ewoud"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="michael"><span class="seat-role">PIC</span><span class="crew">Michael</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="wim"><span class="seat-role">PAX</span><span class="crew">Wim</span></span><span class="seat pax" data-person="ewoud"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
+<div class="ac-row" data-people="brecht koen-v koenraad-vb"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="brecht"><span class="seat-role">PIC</span><span class="crew">Brecht</span></span><span class="seat copilot" data-person="koen-v"><span class="seat-role">COPILOT</span><span class="crew">Koen V</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="ken tom nick"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="ken"><span class="seat-role">PIC</span><span class="crew">Ken</span></span><span class="seat copilot" data-person="tom"><span class="seat-role">COPILOT</span><span class="crew">Tom</span></span><span class="seat pax" data-person="nick"><span class="seat-role">PAX</span><span class="crew">Nick</span></span></span></div>
+<div class="ac-row" data-people="axel lieven josha"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="axel"><span class="seat-role">PIC</span><span class="crew">Axel</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="josha"><span class="seat-role">PAX</span><span class="crew">Josha</span></span></span></div>
 </div>
+</div>
+<div class="crew-leg-block">
 <div class="crew-leg-label"><span class="cll-apt">EGSU</span><span class="cll-arr">→</span><span class="cll-apt">EBAW</span></div>
 <div class="crew-grid">
-<div class="ac-row"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Michael</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Nick</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Hans</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
-<div class="ac-row"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+<div class="ac-row" data-people="wim brecht ewoud"><span class="ac-reg">OO-VPE</span><span class="ac-seats"><span class="seat pic" data-person="wim"><span class="seat-role">PIC</span><span class="crew">Wim</span></span><span class="seat copilot" data-person="brecht"><span class="seat-role">COPILOT</span><span class="crew">Brecht</span></span><span class="seat pax" data-person="ewoud"><span class="seat-role">PAX</span><span class="crew">Ewoud</span></span></span></div>
+<div class="ac-row" data-people="tom michael nick annick"><span class="ac-reg">PH-DYX</span><span class="ac-seats"><span class="seat pic" data-person="tom"><span class="seat-role">PIC</span><span class="crew">Tom</span></span><span class="seat copilot" data-person="michael"><span class="seat-role">COPILOT</span><span class="crew">Michael</span></span><span class="seat pax" data-person="nick"><span class="seat-role">PAX</span><span class="crew">Nick</span></span><span class="seat pax" data-person="annick"><span class="seat-role">PAX</span><span class="crew">Annick</span></span></span></div>
+<div class="ac-row" data-people="luk dirk ken"><span class="ac-reg">OO-MPL</span><span class="ac-seats"><span class="seat pic" data-person="luk"><span class="seat-role">PIC</span><span class="crew">Luk</span></span><span class="seat copilot" data-person="dirk"><span class="seat-role">COPILOT</span><span class="crew">Dirk</span></span><span class="seat pax" data-person="ken"><span class="seat-role">PAX</span><span class="crew">Ken</span></span></span></div>
+<div class="ac-row" data-people="glenn hans axel"><span class="ac-reg">OO-MAV</span><span class="ac-seats"><span class="seat pic" data-person="glenn"><span class="seat-role">PIC</span><span class="crew">Glenn</span></span><span class="seat copilot" data-person="hans"><span class="seat-role">COPILOT</span><span class="crew">Hans</span></span><span class="seat pax" data-person="axel"><span class="seat-role">PAX</span><span class="crew">Axel</span></span></span></div>
+<div class="ac-row" data-people="josha kristof marc"><span class="ac-reg">OO-VSP</span><span class="ac-seats"><span class="seat pic" data-person="josha"><span class="seat-role">PIC</span><span class="crew">Josha</span></span><span class="seat copilot" data-person="kristof"><span class="seat-role">COPILOT</span><span class="crew">Kristof</span></span><span class="seat pax" data-person="marc"><span class="seat-role">PAX</span><span class="crew">Marc</span></span></span></div>
+<div class="ac-row" data-people="koen-v lieven koenraad-vb"><span class="ac-reg">F-GXNC</span><span class="ac-seats"><span class="seat pic" data-person="koen-v"><span class="seat-role">PIC</span><span class="crew">Koen V</span></span><span class="seat copilot" data-person="lieven"><span class="seat-role">COPILOT</span><span class="crew">Lieven</span></span><span class="seat pax" data-person="koenraad-vb"><span class="seat-role">PAX</span><span class="crew">Koenraad VB</span></span></span></div>
+</div>
 </div>
 </div>
 </details>
@@ -487,7 +539,7 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 
 <footer>
   <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
-  <p class="updated">Laatst bijgewerkt: 09/06/2026 15:04 UTC</p>
+  <p class="updated">Laatst bijgewerkt: 09/06/2026 15:18 UTC</p>
 </footer>
 
 <div id="lightbox" class="lightbox" hidden>
@@ -525,6 +577,112 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
     if(lb && !lb.hidden && (e.target===lb || e.target.classList.contains('lb-close'))){ lb.hidden=true; lbImg.src=''; }
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb&&!lb.hidden){lb.hidden=true;lbImg.src='';}});
+
+  // ---- deelnemer-filter ----
+  var CF_KEY = 'hg_crew_filter';
+  var cfCount = document.getElementById('cfCount');
+  // slug -> originele naam (uit de chips)
+  var nameMap = {};
+  var cfChips = Array.prototype.slice.call(document.querySelectorAll('.cf-chip'));
+  cfChips.forEach(function(c){ nameMap[c.getAttribute('data-person')] = c.textContent.trim(); });
+
+  function loadSel(){
+    try{ var v = JSON.parse(localStorage.getItem(CF_KEY)); return Array.isArray(v) ? v : []; }
+    catch(err){ return []; }
+  }
+  function saveSel(sel){
+    try{ localStorage.setItem(CF_KEY, JSON.stringify(sel)); }catch(err){}
+  }
+  var cfSel = loadSel();
+
+  function namesLabel(sel){
+    var ns = sel.map(function(s){ return nameMap[s] || s; });
+    if(ns.length === 1) return ns[0];
+    if(ns.length === 2) return ns[0] + ' & ' + ns[1];
+    return ns.slice(0, -1).join(', ') + ' & ' + ns[ns.length - 1];
+  }
+
+  function applyFilter(){
+    var sel = cfSel;
+    var rows = document.querySelectorAll('.ac-row[data-people]');
+    var blocks = document.querySelectorAll('.crew-leg-block');
+    var details = document.querySelectorAll('details.crew-details');
+    var sections = document.querySelectorAll('section.day');
+
+    // chip active-state
+    cfChips.forEach(function(c){
+      var on = sel.indexOf(c.getAttribute('data-person')) !== -1;
+      c.classList.toggle('active', on);
+    });
+    // reset highlights + dimming
+    document.querySelectorAll('.seat.person-hit').forEach(function(s){ s.classList.remove('person-hit'); });
+    document.querySelectorAll('.seat.cf-dim').forEach(function(s){ s.classList.remove('cf-dim'); });
+
+    if(!sel.length){
+      // toon alles
+      rows.forEach(function(r){ r.classList.remove('cf-hidden'); });
+      blocks.forEach(function(b){ b.classList.remove('cf-hidden'); });
+      sections.forEach(function(s){ s.classList.remove('cf-hidden'); });
+      if(cfCount) cfCount.textContent = 'Toont alle vluchten';
+      return;
+    }
+
+    // rows tonen/verbergen op basis van overlap met de selectie
+    rows.forEach(function(r){
+      var people = (r.getAttribute('data-people') || '').split(/\s+/).filter(Boolean);
+      var hit = sel.some(function(s){ return people.indexOf(s) !== -1; });
+      r.classList.toggle('cf-hidden', !hit);
+      if(hit){
+        r.querySelectorAll('.seat[data-person]').forEach(function(seat){
+          if(sel.indexOf(seat.getAttribute('data-person')) !== -1){ seat.classList.add('person-hit'); }
+          else { seat.classList.add('cf-dim'); }
+        });
+      }
+    });
+    // leg-blocks: verberg als alle rows erin verborgen zijn
+    blocks.forEach(function(b){
+      var rs = b.querySelectorAll('.ac-row[data-people]');
+      var anyVisible = Array.prototype.some.call(rs, function(r){ return !r.classList.contains('cf-hidden'); });
+      b.classList.toggle('cf-hidden', !anyVisible);
+    });
+    // open alle zichtbare crew-details zodat de gefilterde vluchten meteen zichtbaar zijn
+    details.forEach(function(d){
+      var vis = d.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length > 0;
+      if(vis) d.open = true;
+    });
+    // day-sections: verberg een hele dag als die geen enkele zichtbare vlucht heeft
+    var visCount = 0;
+    sections.forEach(function(s){
+      var vis = s.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
+      s.classList.toggle('cf-hidden', vis === 0);
+    });
+    visCount = document.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
+
+    if(cfCount){
+      var noun = visCount === 1 ? 'vlucht' : 'vluchten';
+      cfCount.innerHTML = '<b>' + visCount + '</b> ' + noun + ' met ' + namesLabel(sel);
+    }
+  }
+
+  // chip-klik: toggle slug in/uit selectie
+  cfChips.forEach(function(c){
+    c.addEventListener('click', function(){
+      var slug = c.getAttribute('data-person');
+      var i = cfSel.indexOf(slug);
+      if(i === -1){ cfSel.push(slug); } else { cfSel.splice(i, 1); }
+      saveSel(cfSel);
+      applyFilter();
+    });
+  });
+  var cfReset = document.getElementById('cfReset');
+  if(cfReset){
+    cfReset.addEventListener('click', function(){
+      cfSel = [];
+      try{ localStorage.removeItem(CF_KEY); }catch(err){}
+      applyFilter();
+    });
+  }
+  applyFilter();
 })();
 </script>
 </body>

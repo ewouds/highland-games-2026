@@ -41,25 +41,46 @@ def fmt_time(mins):
     return f"{m} min"
 
 
+# Vaste deelnemerslijst (hoofdlettergevoelig) — bron voor de deelnemer-filter.
+PARTICIPANTS = [
+    "Annick", "Axel", "Brecht", "Dirk", "Ewoud", "Glenn", "Hans", "Josha",
+    "Ken", "Koen V", "Koenraad VB", "Kristof", "Lieven", "Luk", "Marc",
+    "Michael", "Nick", "Tom", "Wim",
+]
+
+
+def pslug(name):
+    """Veilige, stabiele slug voor data-attributen (bv. 'Koen V' -> 'koen-v')."""
+    return name.lower().replace(" ", "-")
+
+
 def crew_member(name, role):
     """Render one crew member chip with role styling."""
     cls = {"PIC": "pic", "COPILOT": "copilot"}.get(role, "pax")
     chip = f'<span class="crew">{html.escape(name)}</span>'
-    return f'<span class="seat {cls}"><span class="seat-role">{html.escape(role)}</span>{chip}</span>'
+    return (
+        f'<span class="seat {cls}" data-person="{pslug(name)}">'
+        f'<span class="seat-role">{html.escape(role)}</span>{chip}</span>'
+    )
 
 
 def render_aircraft_crew(ac):
     """Render one aircraft row: reg + PIC + Copilot + PAX list."""
     reg = ac.get("reg", "")
     seats = []
+    names = []
     if ac.get("pic"):
         seats.append(crew_member(ac["pic"], "PIC"))
+        names.append(ac["pic"])
     if ac.get("copilot"):
         seats.append(crew_member(ac["copilot"], "COPILOT"))
+        names.append(ac["copilot"])
     for p in (ac.get("pax", []) or []):
         seats.append(crew_member(p, "PAX"))
+        names.append(p)
+    people = " ".join(pslug(n) for n in names)
     return (
-        f'<div class="ac-row">'
+        f'<div class="ac-row" data-people="{html.escape(people)}">'
         f'<span class="ac-reg">{html.escape(reg)}</span>'
         f'<span class="ac-seats">{"".join(seats)}</span>'
         '</div>'
@@ -263,6 +284,7 @@ def render_day(data, day):
                 crew = leg.get("crew") or []
                 if not crew:
                     continue
+                parts.append('<div class="crew-leg-block">')
                 parts.append(
                     f'<div class="crew-leg-label"><span class="cll-apt">{leg["from"]}</span>'
                     f'<span class="cll-arr">→</span><span class="cll-apt">{leg["to"]}</span></div>'
@@ -270,6 +292,7 @@ def render_day(data, day):
                 parts.append('<div class="crew-grid">')
                 for ac in crew:
                     parts.append(render_aircraft_crew(ac))
+                parts.append('</div>')
                 parts.append('</div>')
             parts.append('</div>')
             parts.append('</details>')
@@ -312,6 +335,25 @@ def main():
     trip_days = [d for d in data["days"] if not d.get("prep")]
     prep_html = render_prep_section(prep_days)
     days_html = prep_html + "\n" + "\n".join(render_day(data, d) for d in trip_days)
+
+    # deelnemer-filter chips (alfabetisch, vaste lijst)
+    chips = "".join(
+        f'<button class="cf-chip" data-person="{pslug(n)}">{html.escape(n)}</button>'
+        for n in sorted(PARTICIPANTS, key=lambda s: s.lower())
+    )
+    crew_filter_html = (
+        '<div class="crew-filter" id="crewFilter">'
+        '<div class="cf-head">'
+        '<span class="cf-title">\U0001F50D Filter op deelnemer</span>'
+        '<span class="cf-hint">Tik op een naam om alleen die vluchten te tonen — combineer meerdere namen.</span>'
+        '</div>'
+        f'<div class="cf-chips">{chips}</div>'
+        '<div class="cf-foot">'
+        '<button class="cf-reset" id="cfReset">Reset</button>'
+        '<span class="cf-count" id="cfCount"></span>'
+        '</div>'
+        '</div>'
+    )
 
     photo_line = f"Al <b>{n_photos}</b> foto's online." if n_photos else "De eerste beelden volgen snel."
 
@@ -357,6 +399,8 @@ def main():
     <p>Welkom op het live reisverslag van onze Fly-Out naar Schotland & Ierland. We vertrekken op <b>woensdag 10 juni</b> vanuit Antwerpen (EBAW) en zijn <b>maandag 15 juni</b> terug. Onderweg landen we op legendarische velden — van het strand van <b>Barra</b> tot de Highlands van <b>Inverness</b> en de Ierse westkust.</p>
     <p>Dit verslag wordt onderweg bijgewerkt met foto's en verhalen. {photo_line}</p>
   </div>
+
+  {crew_filter_html}
 
   {days_html}
 </main>
@@ -531,6 +575,34 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
   letter-spacing:.04em;font-size:17px;color:var(--accent)}
 .crew-leg-label:first-child{margin-top:2px}
 .cll-arr{color:var(--accent2);font-size:14px}
+.crew-leg-block{margin:0}
+/* --- deelnemer-filter --- */
+.crew-filter{margin:28px 0 4px;background:linear-gradient(180deg,var(--card),#101b32);
+  border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;
+  box-shadow:0 8px 30px rgba(0,0,0,.28)}
+.cf-head{display:flex;flex-direction:column;gap:3px;margin-bottom:13px}
+.cf-title{font-weight:700;font-size:16px;color:var(--ink);display:flex;align-items:center;gap:8px}
+.cf-hint{font-size:12.5px;color:var(--muted)}
+.cf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cf-chip{font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;
+  color:var(--muted);background:rgba(255,255,255,.03);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;transition:background .15s,color .15s,border-color .15s}
+.cf-chip:hover{color:var(--ink);border-color:rgba(72,169,255,.5);background:rgba(72,169,255,.08)}
+.cf-chip.active{color:var(--accent);background:rgba(72,169,255,.18);
+  border-color:rgba(72,169,255,.7);box-shadow:0 0 0 1px rgba(72,169,255,.25) inset}
+.cf-foot{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.cf-reset{font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;
+  color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:9px;
+  padding:6px 13px;transition:background .15s,color .15s,border-color .15s}
+.cf-reset:hover{color:var(--rest);border-color:rgba(255,207,107,.5);background:rgba(255,207,107,.08)}
+.cf-count{font-size:12.5px;color:var(--muted)}
+.cf-count b{color:var(--accent2)}
+/* highlight van geselecteerde deelnemer in de crew */
+.seat.person-hit{background:rgba(255,207,107,.18);border-radius:8px;padding:2px 6px;
+  box-shadow:0 0 0 1px rgba(255,207,107,.5),0 0 12px rgba(255,207,107,.25)}
+.seat.person-hit .crew{color:var(--rest);font-weight:700}
+.seat.cf-dim{opacity:.32;filter:saturate(.6)}
+.cf-hidden{display:none !important}
 .entries{margin-top:18px;display:grid;gap:18px}
 .entries.empty{color:var(--muted);font-style:italic;font-size:14px;opacity:.7;margin-top:14px}
 .entry{border-left:2px solid rgba(72,169,255,.3);padding-left:16px}
@@ -579,6 +651,112 @@ JS_TEMPLATE = r"""
     if(lb && !lb.hidden && (e.target===lb || e.target.classList.contains('lb-close'))){ lb.hidden=true; lbImg.src=''; }
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb&&!lb.hidden){lb.hidden=true;lbImg.src='';}});
+
+  // ---- deelnemer-filter ----
+  var CF_KEY = 'hg_crew_filter';
+  var cfCount = document.getElementById('cfCount');
+  // slug -> originele naam (uit de chips)
+  var nameMap = {};
+  var cfChips = Array.prototype.slice.call(document.querySelectorAll('.cf-chip'));
+  cfChips.forEach(function(c){ nameMap[c.getAttribute('data-person')] = c.textContent.trim(); });
+
+  function loadSel(){
+    try{ var v = JSON.parse(localStorage.getItem(CF_KEY)); return Array.isArray(v) ? v : []; }
+    catch(err){ return []; }
+  }
+  function saveSel(sel){
+    try{ localStorage.setItem(CF_KEY, JSON.stringify(sel)); }catch(err){}
+  }
+  var cfSel = loadSel();
+
+  function namesLabel(sel){
+    var ns = sel.map(function(s){ return nameMap[s] || s; });
+    if(ns.length === 1) return ns[0];
+    if(ns.length === 2) return ns[0] + ' & ' + ns[1];
+    return ns.slice(0, -1).join(', ') + ' & ' + ns[ns.length - 1];
+  }
+
+  function applyFilter(){
+    var sel = cfSel;
+    var rows = document.querySelectorAll('.ac-row[data-people]');
+    var blocks = document.querySelectorAll('.crew-leg-block');
+    var details = document.querySelectorAll('details.crew-details');
+    var sections = document.querySelectorAll('section.day');
+
+    // chip active-state
+    cfChips.forEach(function(c){
+      var on = sel.indexOf(c.getAttribute('data-person')) !== -1;
+      c.classList.toggle('active', on);
+    });
+    // reset highlights + dimming
+    document.querySelectorAll('.seat.person-hit').forEach(function(s){ s.classList.remove('person-hit'); });
+    document.querySelectorAll('.seat.cf-dim').forEach(function(s){ s.classList.remove('cf-dim'); });
+
+    if(!sel.length){
+      // toon alles
+      rows.forEach(function(r){ r.classList.remove('cf-hidden'); });
+      blocks.forEach(function(b){ b.classList.remove('cf-hidden'); });
+      sections.forEach(function(s){ s.classList.remove('cf-hidden'); });
+      if(cfCount) cfCount.textContent = 'Toont alle vluchten';
+      return;
+    }
+
+    // rows tonen/verbergen op basis van overlap met de selectie
+    rows.forEach(function(r){
+      var people = (r.getAttribute('data-people') || '').split(/\s+/).filter(Boolean);
+      var hit = sel.some(function(s){ return people.indexOf(s) !== -1; });
+      r.classList.toggle('cf-hidden', !hit);
+      if(hit){
+        r.querySelectorAll('.seat[data-person]').forEach(function(seat){
+          if(sel.indexOf(seat.getAttribute('data-person')) !== -1){ seat.classList.add('person-hit'); }
+          else { seat.classList.add('cf-dim'); }
+        });
+      }
+    });
+    // leg-blocks: verberg als alle rows erin verborgen zijn
+    blocks.forEach(function(b){
+      var rs = b.querySelectorAll('.ac-row[data-people]');
+      var anyVisible = Array.prototype.some.call(rs, function(r){ return !r.classList.contains('cf-hidden'); });
+      b.classList.toggle('cf-hidden', !anyVisible);
+    });
+    // open alle zichtbare crew-details zodat de gefilterde vluchten meteen zichtbaar zijn
+    details.forEach(function(d){
+      var vis = d.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length > 0;
+      if(vis) d.open = true;
+    });
+    // day-sections: verberg een hele dag als die geen enkele zichtbare vlucht heeft
+    var visCount = 0;
+    sections.forEach(function(s){
+      var vis = s.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
+      s.classList.toggle('cf-hidden', vis === 0);
+    });
+    visCount = document.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
+
+    if(cfCount){
+      var noun = visCount === 1 ? 'vlucht' : 'vluchten';
+      cfCount.innerHTML = '<b>' + visCount + '</b> ' + noun + ' met ' + namesLabel(sel);
+    }
+  }
+
+  // chip-klik: toggle slug in/uit selectie
+  cfChips.forEach(function(c){
+    c.addEventListener('click', function(){
+      var slug = c.getAttribute('data-person');
+      var i = cfSel.indexOf(slug);
+      if(i === -1){ cfSel.push(slug); } else { cfSel.splice(i, 1); }
+      saveSel(cfSel);
+      applyFilter();
+    });
+  });
+  var cfReset = document.getElementById('cfReset');
+  if(cfReset){
+    cfReset.addEventListener('click', function(){
+      cfSel = [];
+      try{ localStorage.removeItem(CF_KEY); }catch(err){}
+      applyFilter();
+    });
+  }
+  applyFilter();
 })();
 """
 
