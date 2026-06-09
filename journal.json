@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "09/06/2026 15:32 UTC",
+    "lastUpdated": "09/06/2026 15:44 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 4
+    "nextRef": 5
   },
   "aircraft": [
     {
@@ -607,7 +607,14 @@
       "label": "Dag 4 — Rustdag",
       "restDay": true,
       "legs": [],
-      "entries": [],
+      "entries": [
+        {
+          "ref": 4,
+          "time": "Rustdag",
+          "text": "Geen wielen van de grond vandaag — een welverdiende rustdag in Belfast. Tijd om bij te komen van de eerste dagen vliegen, de stad te verkennen rond de Titanic Quarter, en de batterijen op te laden voor de terugreis via Cardiff. Tweede en laatste nacht in het Aloft.",
+          "photos": []
+        }
+      ],
       "hotel": {
         "city": "Belfast",
         "name": "Aloft by Marriott Belfast Titanic",
