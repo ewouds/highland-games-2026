@@ -238,7 +238,7 @@ def main():
 </main>
 
 <footer>
-  <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Koda 🐾</p>
+  <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
   <p class="updated">Laatst bijgewerkt: {now}</p>
 </footer>
 
