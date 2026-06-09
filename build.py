@@ -342,17 +342,21 @@ def main():
         for n in sorted(PARTICIPANTS, key=lambda s: s.lower())
     )
     crew_filter_html = (
-        '<div class="crew-filter" id="crewFilter">'
-        '<div class="cf-head">'
+        '<details class="crew-filter" id="crewFilter">'
+        '<summary class="cf-summary">'
         '<span class="cf-title">\U0001F50D Filter op deelnemer</span>'
+        '<span class="cf-badge" id="cfBadge" hidden></span>'
+        '<span class="cf-toggle-hint"></span>'
+        '</summary>'
+        '<div class="cf-body">'
         '<span class="cf-hint">Tik op een naam om alleen die vluchten te tonen — combineer meerdere namen.</span>'
-        '</div>'
         f'<div class="cf-chips">{chips}</div>'
         '<div class="cf-foot">'
         '<button class="cf-reset" id="cfReset">Reset</button>'
         '<span class="cf-count" id="cfCount"></span>'
         '</div>'
         '</div>'
+        '</details>'
     )
 
     photo_line = f"Al <b>{n_photos}</b> foto's online." if n_photos else "De eerste beelden volgen snel."
@@ -578,11 +582,21 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .crew-leg-block{margin:0}
 /* --- deelnemer-filter --- */
 .crew-filter{margin:28px 0 4px;background:linear-gradient(180deg,var(--card),#101b32);
-  border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;
+  border:1px solid var(--line);border-radius:18px;overflow:hidden;
   box-shadow:0 8px 30px rgba(0,0,0,.28)}
-.cf-head{display:flex;flex-direction:column;gap:3px;margin-bottom:13px}
+.cf-summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;
+  padding:16px 18px;user-select:none;transition:background .15s}
+.cf-summary::-webkit-details-marker{display:none}
+.cf-summary:hover{background:rgba(72,169,255,.05)}
+.cf-badge{background:rgba(72,169,255,.18);color:var(--accent);border:1px solid rgba(72,169,255,.45);
+  font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.cf-toggle-hint{margin-left:auto;color:var(--muted);font-size:13px;flex:none}
+.crew-filter[open] .cf-toggle-hint::after{content:"\25B2 inklappen"}
+.crew-filter:not([open]) .cf-toggle-hint::after{content:"\25BC openklappen"}
+.crew-filter[open] .cf-summary{border-bottom:1px solid var(--line)}
+.cf-body{padding:14px 18px 16px}
 .cf-title{font-weight:700;font-size:16px;color:var(--ink);display:flex;align-items:center;gap:8px}
-.cf-hint{font-size:12.5px;color:var(--muted)}
+.cf-hint{font-size:12.5px;color:var(--muted);display:block;margin-bottom:12px}
 .cf-chips{display:flex;flex-wrap:wrap;gap:8px}
 .cf-chip{font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;
   color:var(--muted);background:rgba(255,255,255,.03);border:1px solid var(--line);
@@ -655,6 +669,13 @@ JS_TEMPLATE = r"""
   // ---- deelnemer-filter ----
   var CF_KEY = 'hg_crew_filter';
   var cfCount = document.getElementById('cfCount');
+  var cfBadge = document.getElementById('cfBadge');
+  var crewFilter = document.getElementById('crewFilter');
+  function setBadge(n){
+    if(!cfBadge) return;
+    if(n > 0){ cfBadge.textContent = n + (n === 1 ? ' geselecteerd' : ' geselecteerd'); cfBadge.hidden = false; }
+    else { cfBadge.hidden = true; cfBadge.textContent = ''; }
+  }
   // slug -> originele naam (uit de chips)
   var nameMap = {};
   var cfChips = Array.prototype.slice.call(document.querySelectorAll('.cf-chip'));
@@ -698,6 +719,7 @@ JS_TEMPLATE = r"""
       blocks.forEach(function(b){ b.classList.remove('cf-hidden'); });
       sections.forEach(function(s){ s.classList.remove('cf-hidden'); });
       if(cfCount) cfCount.textContent = 'Toont alle vluchten';
+      setBadge(0);
       return;
     }
 
@@ -736,6 +758,7 @@ JS_TEMPLATE = r"""
       var noun = visCount === 1 ? 'vlucht' : 'vluchten';
       cfCount.innerHTML = '<b>' + visCount + '</b> ' + noun + ' met ' + namesLabel(sel);
     }
+    setBadge(sel.length);
   }
 
   // chip-klik: toggle slug in/uit selectie
@@ -756,6 +779,8 @@ JS_TEMPLATE = r"""
       applyFilter();
     });
   }
+  // init: pas opgeslagen selectie toe; klap de filter open als er een actieve selectie is
+  if(crewFilter && cfSel.length){ crewFilter.open = true; }
   applyFilter();
 })();
 """
