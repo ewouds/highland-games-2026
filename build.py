@@ -40,32 +40,25 @@ def fmt_time(mins):
     return f"{m} min"
 
 
-def crew_member(name, role, highlight):
-    """Render one crew member chip with role styling; highlight the spotlight name."""
+def crew_member(name, role):
+    """Render one crew member chip with role styling."""
     cls = {"PIC": "pic", "COPILOT": "copilot"}.get(role, "pax")
-    is_hl = highlight and name.strip().lower() == highlight.strip().lower()
-    chip = f'<span class="crew{" me" if is_hl else ""}">{html.escape(name)}</span>'
+    chip = f'<span class="crew">{html.escape(name)}</span>'
     return f'<span class="seat {cls}"><span class="seat-role">{html.escape(role)}</span>{chip}</span>'
 
 
-def render_aircraft_crew(ac, highlight):
+def render_aircraft_crew(ac):
     """Render one aircraft row: reg + PIC + Copilot + PAX list."""
     reg = ac.get("reg", "")
     seats = []
     if ac.get("pic"):
-        seats.append(crew_member(ac["pic"], "PIC", highlight))
+        seats.append(crew_member(ac["pic"], "PIC"))
     if ac.get("copilot"):
-        seats.append(crew_member(ac["copilot"], "COPILOT", highlight))
-    for i, p in enumerate(ac.get("pax", []) or []):
-        seats.append(crew_member(p, "PAX", highlight))
-    has_me = highlight and any(
-        (ac.get("pic") or "").strip().lower() == highlight.strip().lower()
-        or (ac.get("copilot") or "").strip().lower() == highlight.strip().lower()
-        or any((p or "").strip().lower() == highlight.strip().lower() for p in (ac.get("pax") or []))
-        for _ in [0]
-    )
+        seats.append(crew_member(ac["copilot"], "COPILOT"))
+    for p in (ac.get("pax", []) or []):
+        seats.append(crew_member(p, "PAX"))
     return (
-        f'<div class="ac-row{" mine" if has_me else ""}">'
+        f'<div class="ac-row">'
         f'<span class="ac-reg">{html.escape(reg)}</span>'
         f'<span class="ac-seats">{"".join(seats)}</span>'
         '</div>'
@@ -134,11 +127,11 @@ def render_day(data, day):
     if rest:
         parts.append('<div class="rest-banner">🛌 Rustdag — geen vluchten gepland. Tijd om de Highlands te proeven.</div>')
     else:
-        # legs
+        # legs — kort overzicht (altijd zichtbaar)
         parts.append('<div class="legs">')
-        highlight = data.get("meta", {}).get("highlightName")
         for leg in day.get("legs", []):
             frm, to = leg["from"], leg["to"]
+            n_ac = len(leg.get("crew") or [])
             parts.append('<div class="leg">')
             parts.append(
                 f'<div class="leg-route"><span class="apt">{frm}</span>'
@@ -148,15 +141,32 @@ def render_day(data, day):
                 f'<span class="apt-name">{html.escape(ap.get(to, ""))}</span></div>'
             )
             meta = f'{leg["dist_nm"]} NM · {fmt_time(leg.get("time_min"))}'
+            if n_ac:
+                meta += f' · {n_ac} toestellen'
             parts.append(f'<div class="leg-meta">{meta}</div>')
-            crew = leg.get("crew") or []
-            if crew:
-                parts.append('<div class="crew-grid">')
-                for ac in crew:
-                    parts.append(render_aircraft_crew(ac, highlight))
-                parts.append('</div>')
             parts.append('</div>')
         parts.append('</div>')
+
+        # crew-details (inklapbaar, opent op klik)
+        has_crew = any(leg.get("crew") for leg in day.get("legs", []))
+        if has_crew:
+            parts.append('<details class="crew-details">')
+            parts.append('<summary><span class="sum-ico">☰</span> Bemanning per vliegtuig <span class="sum-hint">(klik om te tonen)</span></summary>')
+            parts.append('<div class="crew-body">')
+            for leg in day.get("legs", []):
+                crew = leg.get("crew") or []
+                if not crew:
+                    continue
+                parts.append(
+                    f'<div class="crew-leg-label"><span class="cll-apt">{leg["from"]}</span>'
+                    f'<span class="cll-arr">→</span><span class="cll-apt">{leg["to"]}</span></div>'
+                )
+                parts.append('<div class="crew-grid">')
+                for ac in crew:
+                    parts.append(render_aircraft_crew(ac))
+                parts.append('</div>')
+            parts.append('</div>')
+            parts.append('</details>')
 
     # entries
     entries = day.get("entries", [])
@@ -321,10 +331,8 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .crew-grid{display:grid;gap:7px;margin-top:4px}
 .ac-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;
   background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
-.ac-row.mine{background:rgba(72,169,255,.10);border-color:rgba(72,169,255,.35)}
 .ac-reg{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent2);
   font-size:18px;min-width:74px;flex-shrink:0;padding-top:1px}
-.ac-row.mine .ac-reg{color:var(--accent)}
 .ac-seats{display:flex;flex-wrap:wrap;gap:6px}
 .seat{display:inline-flex;align-items:center;gap:5px;font-size:13px}
 .seat-role{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
@@ -333,8 +341,22 @@ main{max-width:920px;margin:0 auto;padding:0 18px 40px}
 .seat.copilot .seat-role{background:rgba(126,224,192,.2);color:var(--copilot)}
 .seat.pax .seat-role{background:rgba(185,167,255,.16);color:var(--pax)}
 .crew{color:var(--ink)}
-.crew.me{font-weight:800;color:#fff;background:rgba(72,169,255,.28);
-  padding:1px 7px;border-radius:999px;box-shadow:0 0 0 1px rgba(72,169,255,.5)}
+.crew-details{margin-top:10px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
+  background:rgba(255,255,255,.02);overflow:hidden}
+.crew-details summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:14px;font-weight:600;
+  color:var(--ink);display:flex;align-items:center;gap:8px;user-select:none;transition:background .15s}
+.crew-details summary::-webkit-details-marker{display:none}
+.crew-details summary:hover{background:rgba(72,169,255,.07)}
+.sum-ico{color:var(--accent);font-size:15px}
+.sum-hint{color:var(--muted);font-weight:400;font-size:12px;margin-left:auto}
+.crew-details[open] summary{border-bottom:1px solid rgba(255,255,255,.08)}
+.crew-details[open] .sum-hint::after{content:"▲"}
+.crew-details:not([open]) .sum-hint::after{content:"▼"}
+.crew-body{padding:12px 14px 14px}
+.crew-leg-label{display:flex;align-items:center;gap:7px;margin:12px 0 7px;font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.04em;font-size:17px;color:var(--accent)}
+.crew-leg-label:first-child{margin-top:2px}
+.cll-arr{color:var(--accent2);font-size:14px}
 .entries{margin-top:18px;display:grid;gap:18px}
 .entries.empty{color:var(--muted);font-style:italic;font-size:14px;opacity:.7;margin-top:14px}
 .entry{border-left:2px solid rgba(72,169,255,.3);padding-left:16px}
