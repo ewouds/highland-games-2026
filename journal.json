@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 13:00 UTC",
+    "lastUpdated": "10/06/2026 13:25 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 25,
+    "nextRef": 26,
     "baggageKg": 7
   },
   "aircraft": [
@@ -433,6 +433,17 @@
             "lat": 53.8344,
             "lon": -1.1855
           }
+        },
+        {
+          "ref": 25,
+          "time": "15:25",
+          "text": "Gezellige drukte onderweg naar Glasgow.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-132554-1-15-25-cet-en-route-egcm-egpg.jpg",
+              "caption": "15:25 CET — En route EGCM→EGPG"
+            }
+          ]
         }
       ],
       "hotel": {
