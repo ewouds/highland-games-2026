@@ -8,7 +8,7 @@
     "lastUpdated": "10/06/2026 07:28 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 20,
+    "nextRef": 21,
     "baggageKg": 7
   },
   "aircraft": [
@@ -357,6 +357,21 @@
           "location": {
             "lat": 51.1894,
             "lon": 4.4603
+          }
+        },
+        {
+          "ref": 20,
+          "time": "09:26",
+          "text": "Walton-on-the-Naze in zicht.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-072855-1-09-26-cet-walton-on-the-naze.jpg",
+              "caption": "09:26 CET — Walton-on-the-Naze"
+            }
+          ],
+          "location": {
+            "lat": 51.8486,
+            "lon": 1.2685
           }
         }
       ],
