@@ -246,14 +246,6 @@ a.cll-apt.has-plate{color:var(--accent)}
 .gallery figcaption{font-size:12px;color:var(--muted);padding:8px 10px}
 footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.06);margin-top:30px}
 footer .updated{font-size:12px;opacity:.7;margin-top:6px}
-.links-section{max-width:920px;margin:40px auto 0;padding:0 18px}
-.links-title{font-size:20px;font-weight:700;margin:0 0 16px;color:var(--ink)}
-.links-list{display:flex;flex-wrap:wrap;gap:12px}
-.link-card{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;padding:14px 20px;text-decoration:none;color:var(--ink);transition:border-color .15s,background .15s}
-.link-card:hover{border-color:rgba(72,169,255,.45);background:rgba(72,169,255,.06)}
-.link-ico{font-size:20px}
-.link-label{font-weight:600;font-size:15px}
 .lightbox{position:fixed;inset:0;background:rgba(5,8,16,.94);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;cursor:zoom-out}
 .lightbox[hidden]{display:none}
 .lightbox img{max-width:96vw;max-height:92vh;border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,.6)}
@@ -396,7 +388,12 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="htl-head"><span class="htl-ico">🛏️</span><div class="htl-title"><span class="htl-city">Glasgow</span><span class="htl-name">Motel One Glasgow</span></div></div>
 <div class="htl-meta"><span class="htl-row"><span class="htl-k">📅</span>wo 10/06/2026 → do 11/06/2026</span><span class="htl-row"><span class="htl-k">👥</span>Brecht (booking.com)</span><span class="htl-row htl-addr"><span class="htl-k">📍</span><a href="https://www.google.com/maps/search/?api=1&query=Motel%20One%20Glasgow%2078-82%20Oswald%20St%2C%20Glasgow%20G1%204PL%2C%20Verenigd%20Koninkrijk" target="_blank" rel="noopener">78-82 Oswald St, Glasgow G1 4PL, Verenigd Koninkrijk</a></span></div>
 </div>
-<div class="entries empty">Nog geen updates voor deze dag.</div>
+<div class="entries">
+<div class="entry">
+<div class="entry-time"><span class="entry-ref">REF-005</span><span class="entry-time-txt">06:15</span></div>
+<p>Eerste piloten overlopen samen de voorbereidingen — gendecs, GAR&#x27;s, brandstofberekeningen en de route nog eens doorlopen.</p>
+</div>
+</div>
 </div>
 </details>
 </section>
@@ -542,6 +539,10 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 <div class="htl-note">2e nacht — rustdag in Belfast</div>
 </div>
 <div class="entries">
+<div class="entry">
+<div class="entry-time"><span class="entry-ref">REF-004</span><span class="entry-time-txt">Rustdag</span></div>
+<p>Geen wielen van de grond vandaag — een welverdiende rustdag in Belfast. Tijd om bij te komen van de eerste dagen vliegen, de stad te verkennen rond de Titanic Quarter, en de batterijen op te laden voor de terugreis via Cardiff. Tweede en laatste nacht in het Aloft.</p>
+</div>
 </div>
 </div>
 </details>
@@ -648,19 +649,11 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
 </div>
 </details>
 </section>
-<section class="links-section">
-<h2 class="links-title">🔗 Nuttige links</h2>
-<div class="links-list">
-<a href="https://raacbe.sharepoint.com/:f:/s/52-ACTIVITEITENenEVENTS/IgCmV9F69yl4Q6nO-dIj6jlyASerAmAwa4WYliei_6rhG38?e=23doZt" target="_blank" rel="noopener" class="link-card"><span class="link-ico">📁</span><span class="link-label">Sharepoint</span></a>
-<a href="https://forms.gle/ZTiCrqzcSMBJofUc8" target="_blank" rel="noopener" class="link-card"><span class="link-ico">💳</span><span class="link-label">Ingeven betaling</span></a>
-<a href="https://docs.google.com/spreadsheets/d/1tAHL-qAMTvBXvMOMkypy-jVMmxwzRfe3ndscBwWDVtk/edit?usp=sharing" target="_blank" rel="noopener" class="link-card"><span class="link-ico">📊</span><span class="link-label">Overzicht betalingen</span></a>
-</div>
-</section>
 </main>
 
 <footer>
   <p>✈️ The Highland Games · Fly-Out 2026 · gemaakt door Ewoud's Koda 🐾</p>
-  <p class="updated">Laatst bijgewerkt: 09/06/2026 20:33 UTC</p>
+  <p class="updated">Laatst bijgewerkt: 10/06/2026 04:17 UTC</p>
 </footer>
 
 <button id="fabToggle" class="fab" type="button" aria-expanded="false" title="Alles openklappen">
@@ -787,10 +780,8 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
       if(vis) d.open = true;
     });
     // day-sections: verberg een hele dag als die geen enkele zichtbare vlucht heeft
-    // (rustdagen altijd tonen — ze hebben geen vluchten)
     var visCount = 0;
     sections.forEach(function(s){
-      if(s.classList.contains('rest')){ s.classList.remove('cf-hidden'); return; }
       var vis = s.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
       s.classList.toggle('cf-hidden', vis === 0);
     });
@@ -897,17 +888,17 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
       if(pop){ pop.classList.remove('show'); }
       if(pop && pop._for){ pop._for.classList.remove('wt-active'); pop._for=null; }
     }
-    // touch: tap toont popup, tweede tap sluit, tap elders sluit
-    document.addEventListener('touchend',function(e){
-      var el=e.target.closest('.seat-wt');
-      if(el){
-        e.preventDefault();
-        if(pop && pop._for===el){ hide(); } else { showFor(el); }
-        return;
-      }
-      hide();
-    });
-    // click (desktop) toggelt popup; elders sluit
+    // touch: long-press 380ms
+    document.addEventListener('touchstart',function(e){
+      var el=e.target.closest('.seat-wt'); if(!el) return;
+      lpTarget=el; startY=(e.touches[0]||{}).clientY||0;
+      lpTimer=setTimeout(function(){ showFor(el); lpTarget=null; }, 380);
+    },{passive:true});
+    document.addEventListener('touchmove',function(e){
+      if(lpTimer && Math.abs(((e.touches[0]||{}).clientY||0)-startY)>10){ clearTimeout(lpTimer); lpTimer=null; lpTarget=null; }
+    },{passive:true});
+    document.addEventListener('touchend',function(){ if(lpTimer){clearTimeout(lpTimer);lpTimer=null;lpTarget=null;} },{passive:true});
+    // tap/click elders sluit; click op badge (desktop) toggelt
     document.addEventListener('click',function(e){
       var el=e.target.closest('.seat-wt');
       if(el){ if(pop && pop._for===el){ hide(); } else { showFor(el); } e.stopPropagation(); return; }
