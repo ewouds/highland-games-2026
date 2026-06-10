@@ -261,19 +261,7 @@
           ]
         }
       ],
-      "entries": [
-        {
-          "ref": 7,
-          "time": "06:15",
-          "text": "Eerste piloten overlopen de voorbereidingen.",
-          "photos": [
-            {
-              "file": "2026-06-10-20260610-042124-1-piloten-briefing.jpg",
-              "caption": "Piloten briefing"
-            }
-          ]
-        }
-      ],
+      "entries": [],
       "hotel": {
         "city": "Glasgow",
         "name": "Motel One Glasgow",
