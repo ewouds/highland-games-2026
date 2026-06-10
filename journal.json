@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 06:27 UTC",
+    "lastUpdated": "10/06/2026 06:28 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 13,
+    "nextRef": 17,
     "baggageKg": 7
   },
   "aircraft": [
@@ -261,7 +261,52 @@
           ]
         }
       ],
-      "entries": [],
+      "entries": [
+        {
+          "ref": 13,
+          "time": "06:15",
+          "text": "Eerste piloten overlopen de voorbereidingen.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-062755-1-foto.jpg",
+              "caption": ""
+            }
+          ]
+        },
+        {
+          "ref": 14,
+          "time": "06:50",
+          "text": "Koffiekoeken in de club bij vertrek — waar is Hans?",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-062801-1-foto.jpg",
+              "caption": ""
+            }
+          ]
+        },
+        {
+          "ref": 15,
+          "time": "07:30",
+          "text": "Prepwerk met onze gastvlieger.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-062805-1-foto.jpg",
+              "caption": ""
+            }
+          ]
+        },
+        {
+          "ref": 16,
+          "time": "08:19",
+          "text": "Leaving EBAW.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-062809-1-foto.jpg",
+              "caption": ""
+            }
+          ]
+        }
+      ],
       "hotel": {
         "city": "Glasgow",
         "name": "Motel One Glasgow",
