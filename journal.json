@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 04:21 UTC",
+    "lastUpdated": "10/06/2026 04:47 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 8,
+    "nextRef": 9,
     "baggageKg": 7
   },
   "aircraft": [
@@ -270,6 +270,17 @@
             {
               "file": "2026-06-10-20260610-042124-1-piloten-briefing.jpg",
               "caption": "Piloten briefing"
+            }
+          ]
+        },
+        {
+          "ref": 8,
+          "time": "06:15",
+          "text": "",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-044748-1-foto.jpg",
+              "caption": ""
             }
           ]
         }
