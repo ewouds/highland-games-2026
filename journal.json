@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 08:12 UTC",
+    "lastUpdated": "10/06/2026 10:46 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 22,
+    "nextRef": 23,
     "baggageKg": 7
   },
   "aircraft": [
@@ -387,6 +387,21 @@
           "location": {
             "lat": 52.205,
             "lon": 0.175
+          }
+        },
+        {
+          "ref": 22,
+          "time": "12:46",
+          "text": "Aangekomen tussen de buien in Leeds, evalueren voor de volgende leg.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-104624-1-12-46-cet-egcm-leeds-east.jpg",
+              "caption": "12:46 CET — EGCM Leeds East"
+            }
+          ],
+          "location": {
+            "lat": 53.8344,
+            "lon": -1.1855
           }
         }
       ],
