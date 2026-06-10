@@ -789,8 +789,10 @@ footer .updated{font-size:12px;opacity:.7;margin-top:6px}
       if(vis) d.open = true;
     });
     // day-sections: verberg een hele dag als die geen enkele zichtbare vlucht heeft
+    // (rustdagen altijd tonen — ze hebben geen vluchten)
     var visCount = 0;
     sections.forEach(function(s){
+      if(s.classList.contains('rest')){ s.classList.remove('cf-hidden'); return; }
       var vis = s.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
       s.classList.toggle('cf-hidden', vis === 0);
     });
