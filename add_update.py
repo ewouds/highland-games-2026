@@ -70,6 +70,8 @@ def main():
     ap.add_argument("--date", default="today")
     ap.add_argument("--time", default="")
     ap.add_argument("--text", default="")
+    ap.add_argument("--lat", default=None, help="GPS latitude (decimal)")
+    ap.add_argument("--lon", default=None, help="GPS longitude (decimal)")
     ap.add_argument("--photo", action="append", nargs="+", metavar=("PATH", "CAPTION"),
                     help="Path then optional caption. Repeatable.")
     ap.add_argument("--rebuild", action="store_true", help="Only rebuild+push, no new entry")
@@ -136,6 +138,8 @@ def main():
                         mx = max(mx, _e["ref"])
             nextref = mx + 1
         entry = {"ref": nextref, "time": args.time, "text": args.text, "photos": photos}
+        if args.lat and args.lon:
+            entry["location"] = {"lat": float(args.lat), "lon": float(args.lon)}
         # skip fully-empty entries
         if entry["text"] or entry["photos"]:
             day.setdefault("entries", []).append(entry)
