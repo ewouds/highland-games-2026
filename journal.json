@@ -8,7 +8,7 @@
     "lastUpdated": "10/06/2026 07:28 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 19,
+    "nextRef": 20,
     "baggageKg": 7
   },
   "aircraft": [
@@ -343,6 +343,21 @@
               "caption": "09:26 CET — Noordzee"
             }
           ]
+        },
+        {
+          "ref": 19,
+          "time": "09:26",
+          "text": "Traditiebreuk — de koffiekoeken restjes gaan niet mee op de fly-out.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-072819-1-09-26-cet-ebaw.jpg",
+              "caption": "09:26 CET — EBAW"
+            }
+          ],
+          "location": {
+            "lat": 51.1894,
+            "lon": 4.4603
+          }
         }
       ],
       "hotel": {
