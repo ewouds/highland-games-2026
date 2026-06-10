@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 06:55 UTC",
+    "lastUpdated": "10/06/2026 07:27 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 18,
@@ -269,7 +269,7 @@
           "photos": [
             {
               "file": "2026-06-10-20260610-062755-1-foto.jpg",
-              "caption": ""
+              "caption": "06:15 CET — EBAW"
             }
           ],
           "location": {
@@ -284,7 +284,7 @@
           "photos": [
             {
               "file": "2026-06-10-20260610-062801-1-foto.jpg",
-              "caption": ""
+              "caption": "06:50 CET — EBAW"
             }
           ],
           "location": {
@@ -299,7 +299,7 @@
           "photos": [
             {
               "file": "2026-06-10-20260610-062805-1-foto.jpg",
-              "caption": ""
+              "caption": "07:30 CET — EBAW"
             }
           ],
           "location": {
@@ -314,7 +314,7 @@
           "photos": [
             {
               "file": "2026-06-10-20260610-062809-1-foto.jpg",
-              "caption": ""
+              "caption": "08:19 CET — EBAW"
             }
           ],
           "location": {
@@ -329,7 +329,7 @@
           "photos": [
             {
               "file": "2026-06-10-20260610-065445-1-foto.jpg",
-              "caption": ""
+              "caption": "08:54 CET — Noordzee"
             }
           ]
         }
