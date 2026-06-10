@@ -8,7 +8,7 @@
     "lastUpdated": "10/06/2026 04:18 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 6,
+    "nextRef": 7,
     "baggageKg": 7
   },
   "aircraft": [
@@ -261,7 +261,19 @@
           ]
         }
       ],
-      "entries": [],
+      "entries": [
+        {
+          "ref": 6,
+          "time": "06:15",
+          "text": "Eerste piloten overlopen samen de voorbereidingen — gendecs, GAR's, brandstofberekeningen en de route nog eens doorlopen.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-041828-1-piloten-briefing.jpg",
+              "caption": "Piloten briefing"
+            }
+          ]
+        }
+      ],
       "hotel": {
         "city": "Glasgow",
         "name": "Motel One Glasgow",
