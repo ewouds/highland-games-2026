@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 15:10 UTC",
+    "lastUpdated": "10/06/2026 19:23 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 27,
+    "nextRef": 28,
     "baggageKg": 7
   },
   "aircraft": [
@@ -458,6 +458,21 @@
           "location": {
             "lat": 55.9747,
             "lon": -3.9719
+          }
+        },
+        {
+          "ref": 27,
+          "time": "21:23",
+          "text": "Avondeten in Glasgow.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-192348-1-21-23-cet-glasgow.jpg",
+              "caption": "21:23 CET — Glasgow"
+            }
+          ],
+          "location": {
+            "lat": 55.8642,
+            "lon": -4.2518
           }
         }
       ],
