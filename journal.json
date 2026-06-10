@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 13:25 UTC",
+    "lastUpdated": "10/06/2026 15:10 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 26,
+    "nextRef": 27,
     "baggageKg": 7
   },
   "aircraft": [
@@ -444,6 +444,21 @@
               "caption": "15:25 CET — En route EGCM→EGPG"
             }
           ]
+        },
+        {
+          "ref": 26,
+          "time": "17:10",
+          "text": "Welcome to Cumbernauld, na een flinke regenbui tijdens het wachten.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-151032-1-17-10-cet-egpg-cumbernauld.jpg",
+              "caption": "17:10 CET — EGPG Cumbernauld"
+            }
+          ],
+          "location": {
+            "lat": 55.9747,
+            "lon": -3.9719
+          }
         }
       ],
       "hotel": {
