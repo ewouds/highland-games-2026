@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 10:46 UTC",
+    "lastUpdated": "10/06/2026 11:24 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 23,
+    "nextRef": 24,
     "baggageKg": 7
   },
   "aircraft": [
@@ -397,6 +397,21 @@
             {
               "file": "2026-06-10-20260610-104624-1-12-46-cet-egcm-leeds-east.jpg",
               "caption": "12:46 CET — EGCM Leeds East"
+            }
+          ],
+          "location": {
+            "lat": 53.8344,
+            "lon": -1.1855
+          }
+        },
+        {
+          "ref": 23,
+          "time": "13:23",
+          "text": "Hapje eten in Leeds.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-112403-1-13-23-cet-egcm-leeds-east.jpg",
+              "caption": "13:23 CET — EGCM Leeds East"
             }
           ],
           "location": {
