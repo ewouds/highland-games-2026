@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 08:04 UTC",
+    "lastUpdated": "10/06/2026 08:12 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 21,
+    "nextRef": 22,
     "baggageKg": 7
   },
   "aircraft": [
@@ -372,6 +372,21 @@
           "location": {
             "lat": 51.8486,
             "lon": 1.2685
+          }
+        },
+        {
+          "ref": 21,
+          "time": "10:12",
+          "text": "Aangekomen in Cambridge.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-081226-1-10-12-cet-egsc-cambridge.jpg",
+              "caption": "10:12 CET — EGSC Cambridge"
+            }
+          ],
+          "location": {
+            "lat": 52.205,
+            "lon": 0.175
           }
         }
       ],
