@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 07:27 UTC",
+    "lastUpdated": "10/06/2026 07:28 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 18,
+    "nextRef": 19,
     "baggageKg": 7
   },
   "aircraft": [
@@ -330,6 +330,17 @@
             {
               "file": "2026-06-10-20260610-065445-1-foto.jpg",
               "caption": "08:54 CET — Noordzee"
+            }
+          ]
+        },
+        {
+          "ref": 18,
+          "time": "09:26",
+          "text": "Ankerplek op de Noordzee.",
+          "photos": [
+            {
+              "file": "2026-06-10-20260610-072802-1-09-26-cet-noordzee.jpg",
+              "caption": "09:26 CET — Noordzee"
             }
           ]
         }
