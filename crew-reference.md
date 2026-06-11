@@ -1,7 +1,7 @@
 # Fly-Out 2026 — The Highland Games — Crew & Routing Reference
 
-Bron: `Fly_Out_2026_-_sheet_organisatie_-_v08_GRD.pdf` (organisatie-sheet v08).
-Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_organisatie_-_v08_GRD---9e6e778b-4caa-4140-98bd-e15816e88fdf.pdf`
+Bron: screenshot nieuwe planning (11/06/2026, herplanning wegens BKN600 Barra).
+Origineel backup: `crew-reference-original.md` (v08 PDF).
 
 > **Bron van waarheid voor crew-bezetting = deze sheet.** `journal.json` veld `days[].legs[].crew[]` is hieruit overgenomen. De site toont dit per dag/leg/vliegtuig (PIC / Copilot / Pax), met Ewoud gehighlight.
 
@@ -20,8 +20,9 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 - EGSC — Cambridge
 - EGCM — Leeds East
 - EGPG — Cumbernauld
-- EGPR — Barra (strandbaan!)
+- EGPN — Dundee
 - EGPE — Inverness
+- EGPR — Barra (strandbaan!)
 - EGEO — Oban
 - EGAD — Newtownards
 - EIKY — Kerry
@@ -30,7 +31,7 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 
 ## Volledige crew-bezetting per leg (PIC / COPILOT / PAX)
 
-### wo 10/06
+### wo 10/06 (ongewijzigd — reeds gevlogen)
 **EBAW → EGSC** (171 NM · 102.6 min)
 - OO-VPE: PIC Kristof · CO Josha · PAX Michael
 - PH-DYX: PIC Dirk · CO Hans · PAX Ken
@@ -55,16 +56,16 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 - OO-VSP: PIC Josha · CO Tom · PAX Hans
 - F-GXNC: PIC Koen V · CO Lieven · PAX Ken
 
-### do 11/06
-**EGPG → EGPR (Barra)** (131 NM · 78.6 min)
-- OO-VPE: PIC Kristof · CO Axel · PAX Wim
-- PH-DYX: PIC Dirk · CO Marc · PAX Hans
-- OO-MPL: PIC Glenn · CO Nick · PAX Michael, Koenraad VB
-- OO-MAV: PIC Brecht · CO **Ewoud** · PAX Josha
-- OO-VSP: PIC Tom · CO Luk · PAX Ken
-- F-GXNC: PIC Lieven · CO Annick · PAX Koen V
+### do 11/06 (NIEUWE ROUTING — Dundee + Inverness i.p.v. Barra)
+**EGPG → EGPN (Dundee)** (43 NM · 25.8 min)
+- OO-VPE: PIC Kristof · CO Ewoud · PAX Annick
+- PH-DYX: PIC Nick · CO Glenn · PAX Josha, Koen V
+- OO-MPL: PIC Hans · CO Tom · PAX Koenraad VB
+- OO-MAV: PIC Brecht · CO Luk · PAX Axel
+- OO-VSP: PIC Dirk · CO Ken · PAX Marc
+- F-GXNC: PIC Lieven · CO Michael · PAX Wim
 
-**EGPR → EGPE** (115 NM · 69 min)
+**EGPN → EGPE (Inverness)** (74 NM · 44.4 min)
 - OO-VPE: PIC Annick · CO Glenn · PAX Nick
 - PH-DYX: PIC Michael · CO Tom · PAX Axel, Josha
 - OO-MPL: PIC Marc · CO Dirk · PAX Hans
@@ -72,16 +73,24 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 - OO-VSP: PIC Ken · CO Kristof · PAX Koenraad VB
 - F-GXNC: PIC **Ewoud** · CO Lieven · PAX Koen V
 
-### vr 12/06
-**EGPE → EGEO** (79 NM · 47.4 min)
+### vr 12/06 (Barra leg verplaatst naar hier)
+**EGPE → EGPR (Barra)** (115 NM · 69 min)
+- OO-VPE: PIC Kristof · CO Axel · PAX Wim
+- PH-DYX: PIC Tom · CO Marc · PAX Hans
+- OO-MPL: PIC Glenn · CO Nick · PAX Michael, Koenraad VB
+- OO-MAV: PIC Brecht · CO **Ewoud** · PAX Josha
+- OO-VSP: PIC Dirk · CO Luk · PAX Ken
+- F-GXNC: PIC Lieven · CO Annick · PAX Koen V
+
+**EGPR → EGEO (Oban)** (75 NM · 45 min)
 - OO-VPE: PIC Nick · CO Glenn · PAX Annick
-- PH-DYX: PIC Koenraad VB · CO Brecht · PAX **Ewoud**, Wim
-- OO-MPL: PIC Hans · CO Dirk · PAX Luk
+- PH-DYX: PIC Koenraad VB · CO Brecht · PAX Ewoud, Wim
+- OO-MPL: PIC Hans · CO Tom · PAX Luk
 - OO-MAV: PIC Axel · CO Kristof · PAX Ken
-- OO-VSP: PIC Josha · CO Tom · PAX Marc
+- OO-VSP: PIC Josha · CO Dirk · PAX Marc
 - F-GXNC: PIC Koen V · CO Lieven · PAX Michael
 
-**EGEO → EGAD** (114 NM · 68.4 min)
+**EGEO → EGAD (Newtownards)** (114 NM · 68.4 min)
 - OO-VPE: PIC Annick · CO Dirk · PAX Michael
 - PH-DYX: PIC Wim · CO Brecht · PAX Koenraad VB, Hans
 - OO-MPL: PIC Kristof · CO Ken · PAX Marc
@@ -92,7 +101,7 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 ### za 13/06 — RUSTDAG (geen vluchten)
 
 ### zo 14/06
-**EGAD → EIKY** (199 NM · 119.4 min)
+**EGAD → EIKY (Kerry)** (199 NM · 119.4 min)
 - OO-VPE: PIC Nick · CO Glenn · PAX Annick
 - PH-DYX: PIC Wim · CO Brecht · PAX **Ewoud**, Koen V
 - OO-MPL: PIC Hans · CO Tom · PAX Marc
@@ -100,7 +109,7 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 - OO-VSP: PIC Dirk · CO Ken · PAX Josha
 - F-GXNC: PIC Axel · CO Lieven · PAX Koenraad VB
 
-**EIKY → EGFF** (235 NM · 141 min)
+**EIKY → EGFF (Cardiff)** (235 NM · 141 min)
 - OO-VPE: PIC Koenraad VB · CO Brecht · PAX Michael
 - PH-DYX: PIC Marc · CO Dirk · PAX Hans
 - OO-MPL: PIC Koen V · CO Kristof · PAX Wim, Nick
@@ -109,7 +118,7 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 - F-GXNC: PIC Ken · CO Lieven · PAX Axel
 
 ### ma 15/06
-**EGFF → EGSU** (136 NM · 81.6 min)
+**EGFF → EGSU (Duxford)** (136 NM · 81.6 min)
 - OO-VPE: PIC Annick · CO Glenn · PAX Luk
 - PH-DYX: PIC Marc · CO Kristof · PAX Hans
 - OO-MPL: PIC Michael · CO Dirk · PAX Wim, **Ewoud**
@@ -117,7 +126,7 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 - OO-VSP: PIC Ken · CO Tom · PAX Nick
 - F-GXNC: PIC Axel · CO Lieven · PAX Josha
 
-**EGSU → EBAW** (170 NM · 102 min)
+**EGSU → EBAW (Antwerpen)** (170 NM · 102 min)
 - OO-VPE: PIC Wim · CO Brecht · PAX **Ewoud**
 - PH-DYX: PIC Tom · CO Michael · PAX Nick, Annick
 - OO-MPL: PIC Luk · CO Dirk · PAX Ken
@@ -131,9 +140,10 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 | wo 10/6 | EBAW→EGSC | PAX | F-GXNC |
 | wo 10/6 | EGSC→EGCM | PIC | F-GXNC |
 | wo 10/6 | EGCM→EGPG | PAX | PH-DYX |
-| do 11/6 | EGPG→EGPR | COPILOT | OO-MAV |
-| do 11/6 | EGPR→EGPE | PIC | F-GXNC |
-| vr 12/6 | EGPE→EGEO | PAX | PH-DYX |
+| do 11/6 | EGPG→EGPN | COPILOT | OO-VPE |
+| do 11/6 | EGPN→EGPE | PIC | F-GXNC |
+| vr 12/6 | EGPE→EGPR (Barra) | COPILOT | OO-MAV |
+| vr 12/6 | EGPR→EGEO | PAX | PH-DYX |
 | vr 12/6 | EGEO→EGAD | PIC | OO-MAV |
 | za 13/6 | RUSTDAG | — | — |
 | zo 14/6 | EGAD→EIKY | PAX | PH-DYX |
@@ -141,7 +151,11 @@ Bron-PDF bewaard: `/home/azureuser/.openclaw/media/inbound/Fly_Out_2026_-_sheet_
 | ma 15/6 | EGFF→EGSU | PAX | OO-MPL |
 | ma 15/6 | EGSU→EBAW | PAX | OO-VPE |
 
-> NB: in een eerdere versie stond Ewoud op leg EBAW→EGSC als PIC F-GXNC en op EGCM→EGPG als PAX OO-VPE. Volgens de PDF v08 is dat PAX F-GXNC resp. PAX PH-DYX. Sheet = leidend.
+## Wijzigingen t.o.v. originele planning (v08)
+- **do 11/6**: Barra-leg geschrapt (BKN600), vervangen door EGPG→EGPN (Dundee)→EGPE (Inverness)
+- **vr 12/6**: Barra verplaatst naar deze dag (EGPE→EGPR), daarna EGPR→EGEO (was: EGPE→EGEO direct)
+- **zo 14/6**: vertrek vanuit EGAD i.p.v. EGEO (EGAD was al eindpunt vr 12/6 in origineel)
+- Ewoud do 11/6 leg 1: was COPILOT OO-MAV, nu COPILOT OO-VPE (EGPG→EGPN)
 
 ## Deelnemers (gewichten kg, uit fuel/W&B sheet)
 Kristof 70, Dirk 110, Glenn 78, Tom 100, Brecht 64, Lieven 85,

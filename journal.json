@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 06:55 UTC",
+    "lastUpdated": "11/06/2026 07:39 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 30,
@@ -494,69 +494,73 @@
       "legs": [
         {
           "from": "EGPG",
-          "to": "EGPR",
-          "dist_nm": 131,
-          "time_min": 78.6,
+          "from_name": "Cumbernauld",
+          "to": "EGPN",
+          "to_name": "Dundee",
+          "dist_nm": 43,
+          "time_min": 25.8,
           "crew": [
             {
-              "reg": "OO-VPE",
+              "aircraft": "OO-VPE",
               "pic": "Kristof",
-              "copilot": "Axel",
+              "copilot": "Ewoud",
               "pax": [
-                "Wim"
+                "Annick"
               ]
             },
             {
-              "reg": "PH-DYX",
-              "pic": "Dirk",
-              "copilot": "Marc",
+              "aircraft": "PH-DYX",
+              "pic": "Nick",
+              "copilot": "Glenn",
               "pax": [
-                "Hans"
+                "Josha",
+                "Koen V"
               ]
             },
             {
-              "reg": "OO-MPL",
-              "pic": "Glenn",
-              "copilot": "Nick",
+              "aircraft": "OO-MPL",
+              "pic": "Hans",
+              "copilot": "Tom",
               "pax": [
-                "Michael",
                 "Koenraad VB"
               ]
             },
             {
-              "reg": "OO-MAV",
+              "aircraft": "OO-MAV",
               "pic": "Brecht",
-              "copilot": "Ewoud",
-              "pax": [
-                "Josha"
-              ]
-            },
-            {
-              "reg": "OO-VSP",
-              "pic": "Tom",
               "copilot": "Luk",
               "pax": [
-                "Ken"
+                "Axel"
               ]
             },
             {
-              "reg": "F-GXNC",
-              "pic": "Lieven",
-              "copilot": "Annick",
+              "aircraft": "OO-VSP",
+              "pic": "Dirk",
+              "copilot": "Ken",
               "pax": [
-                "Koen V"
+                "Marc"
+              ]
+            },
+            {
+              "aircraft": "F-GXNC",
+              "pic": "Lieven",
+              "copilot": "Michael",
+              "pax": [
+                "Wim"
               ]
             }
           ]
         },
         {
-          "from": "EGPR",
+          "from": "EGPN",
+          "from_name": "Dundee",
           "to": "EGPE",
-          "dist_nm": 115,
-          "time_min": 69,
+          "to_name": "Inverness",
+          "dist_nm": 74,
+          "time_min": 44.4,
           "crew": [
             {
-              "reg": "OO-VPE",
+              "aircraft": "OO-VPE",
               "pic": "Annick",
               "copilot": "Glenn",
               "pax": [
@@ -564,7 +568,7 @@
               ]
             },
             {
-              "reg": "PH-DYX",
+              "aircraft": "PH-DYX",
               "pic": "Michael",
               "copilot": "Tom",
               "pax": [
@@ -573,7 +577,7 @@
               ]
             },
             {
-              "reg": "OO-MPL",
+              "aircraft": "OO-MPL",
               "pic": "Marc",
               "copilot": "Dirk",
               "pax": [
@@ -581,7 +585,7 @@
               ]
             },
             {
-              "reg": "OO-MAV",
+              "aircraft": "OO-MAV",
               "pic": "Luk",
               "copilot": "Brecht",
               "pax": [
@@ -589,7 +593,7 @@
               ]
             },
             {
-              "reg": "OO-VSP",
+              "aircraft": "OO-VSP",
               "pic": "Ken",
               "copilot": "Kristof",
               "pax": [
@@ -597,7 +601,7 @@
               ]
             },
             {
-              "reg": "F-GXNC",
+              "aircraft": "F-GXNC",
               "pic": "Ewoud",
               "copilot": "Lieven",
               "pax": [
@@ -674,12 +678,73 @@
       "legs": [
         {
           "from": "EGPE",
-          "to": "EGEO",
-          "dist_nm": 79,
-          "time_min": 47.4,
+          "from_name": "Inverness",
+          "to": "EGPR",
+          "to_name": "Barra",
+          "dist_nm": 115,
+          "time_min": 69,
           "crew": [
             {
-              "reg": "OO-VPE",
+              "aircraft": "OO-VPE",
+              "pic": "Kristof",
+              "copilot": "Axel",
+              "pax": [
+                "Wim"
+              ]
+            },
+            {
+              "aircraft": "PH-DYX",
+              "pic": "Tom",
+              "copilot": "Marc",
+              "pax": [
+                "Hans"
+              ]
+            },
+            {
+              "aircraft": "OO-MPL",
+              "pic": "Glenn",
+              "copilot": "Nick",
+              "pax": [
+                "Michael",
+                "Koenraad VB"
+              ]
+            },
+            {
+              "aircraft": "OO-MAV",
+              "pic": "Brecht",
+              "copilot": "Ewoud",
+              "pax": [
+                "Josha"
+              ]
+            },
+            {
+              "aircraft": "OO-VSP",
+              "pic": "Dirk",
+              "copilot": "Luk",
+              "pax": [
+                "Ken"
+              ]
+            },
+            {
+              "aircraft": "F-GXNC",
+              "pic": "Lieven",
+              "copilot": "Annick",
+              "pax": [
+                "Koen V"
+              ]
+            }
+          ]
+        },
+        {
+          "from": "EGPR",
+          "from_name": "Barra",
+          "to": "EGEO",
+          "to_name": "Oban",
+          "dist_nm": 75,
+          "time_min": 45,
+          "crew": [
+            {
+              "aircraft": "OO-VPE",
               "pic": "Nick",
               "copilot": "Glenn",
               "pax": [
@@ -687,7 +752,7 @@
               ]
             },
             {
-              "reg": "PH-DYX",
+              "aircraft": "PH-DYX",
               "pic": "Koenraad VB",
               "copilot": "Brecht",
               "pax": [
@@ -696,15 +761,15 @@
               ]
             },
             {
-              "reg": "OO-MPL",
+              "aircraft": "OO-MPL",
               "pic": "Hans",
-              "copilot": "Dirk",
+              "copilot": "Tom",
               "pax": [
                 "Luk"
               ]
             },
             {
-              "reg": "OO-MAV",
+              "aircraft": "OO-MAV",
               "pic": "Axel",
               "copilot": "Kristof",
               "pax": [
@@ -712,15 +777,15 @@
               ]
             },
             {
-              "reg": "OO-VSP",
+              "aircraft": "OO-VSP",
               "pic": "Josha",
-              "copilot": "Tom",
+              "copilot": "Dirk",
               "pax": [
                 "Marc"
               ]
             },
             {
-              "reg": "F-GXNC",
+              "aircraft": "F-GXNC",
               "pic": "Koen V",
               "copilot": "Lieven",
               "pax": [
@@ -731,12 +796,14 @@
         },
         {
           "from": "EGEO",
+          "from_name": "Oban",
           "to": "EGAD",
+          "to_name": "Newtownards",
           "dist_nm": 114,
           "time_min": 68.4,
           "crew": [
             {
-              "reg": "OO-VPE",
+              "aircraft": "OO-VPE",
               "pic": "Annick",
               "copilot": "Dirk",
               "pax": [
@@ -744,7 +811,7 @@
               ]
             },
             {
-              "reg": "PH-DYX",
+              "aircraft": "PH-DYX",
               "pic": "Wim",
               "copilot": "Brecht",
               "pax": [
@@ -753,7 +820,7 @@
               ]
             },
             {
-              "reg": "OO-MPL",
+              "aircraft": "OO-MPL",
               "pic": "Kristof",
               "copilot": "Ken",
               "pax": [
@@ -761,7 +828,7 @@
               ]
             },
             {
-              "reg": "OO-MAV",
+              "aircraft": "OO-MAV",
               "pic": "Ewoud",
               "copilot": "Glenn",
               "pax": [
@@ -769,7 +836,7 @@
               ]
             },
             {
-              "reg": "OO-VSP",
+              "aircraft": "OO-VSP",
               "pic": "Tom",
               "copilot": "Luk",
               "pax": [
@@ -777,7 +844,7 @@
               ]
             },
             {
-              "reg": "F-GXNC",
+              "aircraft": "F-GXNC",
               "pic": "Lieven",
               "copilot": "Josha",
               "pax": [
