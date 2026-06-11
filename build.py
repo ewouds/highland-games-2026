@@ -112,9 +112,11 @@ def crew_member(name, role):
     )
 
 
-def render_aircraft_crew(ac):
-    """Render one aircraft row: reg + PIC + Copilot + PAX list."""
+def render_aircraft_crew(ac, type_map=None):
+    """Render one aircraft row: reg (type) + PIC + Copilot + PAX list."""
     reg = ac.get("reg", "")
+    ac_type = (type_map or {}).get(reg, "")
+    reg_label = f"{reg} ({ac_type})" if ac_type else reg
     seats = []
     names = []
     if ac.get("pic"):
@@ -129,7 +131,7 @@ def render_aircraft_crew(ac):
     people = " ".join(pslug(n) for n in names)
     return (
         f'<div class="ac-row" data-people="{html.escape(people)}">'
-        f'<span class="ac-reg">{html.escape(reg)}</span>'
+        f'<span class="ac-reg">{html.escape(reg_label)}</span>'
         f'<span class="ac-seats">{"".join(seats)}</span>'
         '</div>'
     )
@@ -282,6 +284,7 @@ def render_hotel(h):
 
 def render_day(data, day):
     ap = data["airports"]
+    ac_type_map = {ac["reg"]: ac.get("type", "") for ac in data.get("aircraft", [])}
     parts = []
     rest = day.get("restDay")
     prep = day.get("prep")
@@ -350,7 +353,7 @@ def render_day(data, day):
                 )
                 parts.append('<div class="crew-grid">')
                 for ac in crew:
-                    parts.append(render_aircraft_crew(ac))
+                    parts.append(render_aircraft_crew(ac, type_map=ac_type_map))
                 parts.append('</div>')
                 parts.append('</div>')
             parts.append('</div>')
