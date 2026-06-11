@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 18:08 UTC",
+    "lastUpdated": "11/06/2026 20:58 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 35,
+    "nextRef": 36,
     "baggageKg": 7
   },
   "aircraft": [
@@ -572,6 +572,17 @@
           "time": "17:30",
           "text": "Niet gevlogen vandaag — weer bleef de hele dag te slecht. Morgen nieuwe poging.",
           "photos": []
+        },
+        {
+          "ref": 35,
+          "time": "20:58",
+          "text": "Avondeten in Glasgow. Quote van de avond: \"Ik heb aan de keuze gezeten.\" — hasselback aardappels met vis en erwtenpuree.",
+          "photos": [
+            {
+              "file": "2026-06-11-20260611-205845-1-ik-heb-aan-de-keuze-gezeten.jpg",
+              "caption": "\"Ik heb aan de keuze gezeten\""
+            }
+          ]
         }
       ],
       "hotel": {
