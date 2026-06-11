@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 13:26 UTC",
+    "lastUpdated": "11/06/2026 15:32 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 34,
+    "nextRef": 35,
     "baggageKg": 7
   },
   "aircraft": [
@@ -498,126 +498,7 @@
       "weekday": "Donderdag",
       "label": "Dag 2 — De eilanden in",
       "restDay": false,
-      "legs": [
-        {
-          "from": "EGPG",
-          "from_name": "Cumbernauld",
-          "to": "EGPN",
-          "to_name": "Dundee",
-          "dist_nm": 43,
-          "time_min": 25.8,
-          "crew": [
-            {
-              "pic": "Kristof",
-              "copilot": "Ewoud",
-              "pax": [
-                "Annick"
-              ],
-              "reg": "OO-VPE"
-            },
-            {
-              "pic": "Nick",
-              "copilot": "Glenn",
-              "pax": [
-                "Josha",
-                "Koen V"
-              ],
-              "reg": "PH-DYX"
-            },
-            {
-              "pic": "Hans",
-              "copilot": "Tom",
-              "pax": [
-                "Koenraad VB"
-              ],
-              "reg": "OO-MPL"
-            },
-            {
-              "pic": "Brecht",
-              "copilot": "Luk",
-              "pax": [
-                "Axel"
-              ],
-              "reg": "OO-MAV"
-            },
-            {
-              "pic": "Dirk",
-              "copilot": "Ken",
-              "pax": [
-                "Marc"
-              ],
-              "reg": "OO-VSP"
-            },
-            {
-              "pic": "Lieven",
-              "copilot": "Michael",
-              "pax": [
-                "Wim"
-              ],
-              "reg": "F-GXNC"
-            }
-          ]
-        },
-        {
-          "from": "EGPN",
-          "from_name": "Dundee",
-          "to": "EGPE",
-          "to_name": "Inverness",
-          "dist_nm": 74,
-          "time_min": 44.4,
-          "crew": [
-            {
-              "pic": "Annick",
-              "copilot": "Glenn",
-              "pax": [
-                "Nick"
-              ],
-              "reg": "OO-VPE"
-            },
-            {
-              "pic": "Michael",
-              "copilot": "Tom",
-              "pax": [
-                "Axel",
-                "Josha"
-              ],
-              "reg": "PH-DYX"
-            },
-            {
-              "pic": "Marc",
-              "copilot": "Dirk",
-              "pax": [
-                "Hans"
-              ],
-              "reg": "OO-MPL"
-            },
-            {
-              "pic": "Luk",
-              "copilot": "Brecht",
-              "pax": [
-                "Wim"
-              ],
-              "reg": "OO-MAV"
-            },
-            {
-              "pic": "Ken",
-              "copilot": "Kristof",
-              "pax": [
-                "Koenraad VB"
-              ],
-              "reg": "OO-VSP"
-            },
-            {
-              "pic": "Ewoud",
-              "copilot": "Lieven",
-              "pax": [
-                "Koen V"
-              ],
-              "reg": "F-GXNC"
-            }
-          ]
-        }
-      ],
+      "legs": [],
       "entries": [
         {
           "ref": 28,
@@ -684,6 +565,12 @@
               "caption": "Wachten op beter weer in de Cumbernauld crew room"
             }
           ]
+        },
+        {
+          "ref": 34,
+          "time": "17:30",
+          "text": "Niet gevlogen vandaag — weer bleef de hele dag te slecht. Morgen nieuwe poging.",
+          "photos": []
         }
       ],
       "hotel": {
