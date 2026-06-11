@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 11:53 UTC",
+    "lastUpdated": "11/06/2026 13:13 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 34,
@@ -556,7 +556,15 @@
               ],
               "reg": "F-GXNC"
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": 9,
+            "PH-DYX": -14,
+            "OO-MPL": 51,
+            "OO-MAV": -6,
+            "OO-VSP": 25,
+            "F-GXNC": 10
+          }
         },
         {
           "from": "EGPN",
@@ -615,7 +623,15 @@
               ],
               "reg": "F-GXNC"
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -2,
+            "PH-DYX": -25,
+            "OO-MPL": 35,
+            "OO-MAV": -14,
+            "OO-VSP": 71,
+            "F-GXNC": 9
+          }
         }
       ],
       "entries": [
@@ -784,7 +800,15 @@
               ],
               "reg": "F-GXNC"
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -13,
+            "PH-DYX": 30,
+            "OO-MPL": -6,
+            "OO-MAV": -3,
+            "OO-VSP": 27,
+            "F-GXNC": 40
+          }
         },
         {
           "from": "EGPR",
@@ -843,7 +867,15 @@
               ],
               "reg": "F-GXNC"
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -3,
+            "PH-DYX": -13,
+            "OO-MPL": 47,
+            "OO-MAV": -61,
+            "OO-VSP": 30,
+            "F-GXNC": 19
+          }
         },
         {
           "from": "EGEO",
@@ -902,7 +934,15 @@
               ],
               "reg": "F-GXNC"
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -22,
+            "PH-DYX": -29,
+            "OO-MPL": 72,
+            "OO-MAV": -8,
+            "OO-VSP": 45,
+            "F-GXNC": 10
+          }
         }
       ],
       "entries": [],
@@ -1043,7 +1083,15 @@
                 "Koenraad VB"
               ]
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -8,
+            "PH-DYX": 3,
+            "OO-MPL": 45,
+            "OO-MAV": -11,
+            "OO-VSP": 18,
+            "F-GXNC": 3
+          }
         },
         {
           "from": "EIKY",
@@ -1100,7 +1148,15 @@
                 "Axel"
               ]
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -14,
+            "PH-DYX": 20,
+            "OO-MPL": 9,
+            "OO-MAV": 14,
+            "OO-VSP": 48,
+            "F-GXNC": -1
+          }
         }
       ],
       "entries": [],
@@ -1175,7 +1231,15 @@
                 "Josha"
               ]
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -10,
+            "PH-DYX": 60,
+            "OO-MPL": -27,
+            "OO-MAV": -2,
+            "OO-VSP": 45,
+            "F-GXNC": 10
+          }
         },
         {
           "from": "EGSU",
@@ -1232,7 +1296,15 @@
                 "Koenraad VB"
               ]
             }
-          ]
+          ],
+          "weight_margins": {
+            "OO-VPE": -10,
+            "PH-DYX": -4,
+            "OO-MPL": 34,
+            "OO-MAV": -16,
+            "OO-VSP": 76,
+            "F-GXNC": 2
+          }
         }
       ],
       "entries": []

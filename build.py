@@ -113,12 +113,13 @@ def crew_member(name, role):
     )
 
 
-def render_aircraft_crew(ac, type_map=None):
-    """Render one aircraft row: reg (type) + PIC + Copilot + PAX list."""
+def render_aircraft_crew(ac, type_map=None, weight_margins=None):
+    """Render one aircraft row: reg + PIC + Copilot + PAX list + weight margin."""
     reg = ac.get("reg", "")
     ac_type = (type_map or {}).get(reg, "")
     fa_code = reg.replace("-", "")
     fa_url = f"https://www.flightaware.com/live/flight/{fa_code}"
+    margin = (weight_margins or {}).get(reg)
     seats = []
     names = []
     if ac.get("pic"):
@@ -131,9 +132,13 @@ def render_aircraft_crew(ac, type_map=None):
         seats.append(crew_member(p, "PAX"))
         names.append(p)
     people = " ".join(pslug(n) for n in names)
+    margin_html = ""
+    if margin is not None:
+        cls = "margin-neg" if margin < 0 else "margin-pos"
+        margin_html = f'<span class="wt-margin {cls}">{margin:+d} kg</span>'
     return (
         f'<div class="ac-row" data-people="{html.escape(people)}">'
-        f'<span class="ac-reg"><a href="{fa_url}" target="_blank" title="{html.escape(ac_type)}">{html.escape(reg)}</a></span>'
+        f'<span class="ac-reg"><a href="{fa_url}" target="_blank" title="{html.escape(ac_type)}">{html.escape(reg)}</a>{margin_html}</span>'
         f'<span class="ac-seats">{"".join(seats)}</span>'
         '</div>'
     )
@@ -353,9 +358,10 @@ def render_day(data, day):
                     f'<div class="crew-leg-label">{apt_code(leg["from"], "cll-apt")}'
                     f'<span class="cll-arr">→</span>{apt_code(leg["to"], "cll-apt")}</div>'
                 )
+                wm = leg.get("weight_margins", {})
                 parts.append('<div class="crew-grid">')
                 for ac in crew:
-                    parts.append(render_aircraft_crew(ac, type_map=ac_type_map))
+                    parts.append(render_aircraft_crew(ac, type_map=ac_type_map, weight_margins=wm))
                 parts.append('</div>')
                 parts.append('</div>')
             parts.append('</div>')
@@ -625,6 +631,9 @@ a.cll-apt.has-plate{color:var(--accent)}
   font-size:18px;min-width:74px;flex-shrink:0;padding-top:1px}
 .ac-reg a{color:var(--accent2);text-decoration:none}
 .ac-reg a:hover{text-decoration:underline;color:var(--accent)}
+.wt-margin{font-family:monospace;font-size:11px;margin-left:6px;padding:1px 5px;border-radius:3px;font-weight:700}
+.margin-neg{background:#c0392b;color:#fff}
+.margin-pos{background:#27ae60;color:#fff}
 .ac-seats{display:flex;flex-wrap:wrap;gap:6px}
 .seat{display:inline-flex;align-items:center;gap:5px;font-size:13px}
 .seat-role{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
