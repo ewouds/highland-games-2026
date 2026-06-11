@@ -116,7 +116,8 @@ def render_aircraft_crew(ac, type_map=None):
     """Render one aircraft row: reg (type) + PIC + Copilot + PAX list."""
     reg = ac.get("reg", "")
     ac_type = (type_map or {}).get(reg, "")
-    reg_label = f"{reg} ({ac_type})" if ac_type else reg
+    fa_code = reg.replace("-", "")
+    fa_url = f"https://www.flightaware.com/live/flight/{fa_code}"
     seats = []
     names = []
     if ac.get("pic"):
@@ -131,7 +132,7 @@ def render_aircraft_crew(ac, type_map=None):
     people = " ".join(pslug(n) for n in names)
     return (
         f'<div class="ac-row" data-people="{html.escape(people)}">'
-        f'<span class="ac-reg">{html.escape(reg_label)}</span>'
+        f'<span class="ac-reg"><a href="{fa_url}" target="_blank" title="{html.escape(ac_type)}">{html.escape(reg)}</a></span>'
         f'<span class="ac-seats">{"".join(seats)}</span>'
         '</div>'
     )
