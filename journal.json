@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 17:04 UTC",
+    "lastUpdated": "11/06/2026 17:40 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 35,
@@ -684,10 +684,10 @@
           "crew": [
             {
               "reg": "OO-VPE",
-              "pic": "Nick",
+              "pic": "Michael",
               "copilot": "Glenn",
               "pax": [
-                "Annick"
+                "Nick"
               ]
             },
             {
@@ -701,10 +701,10 @@
             },
             {
               "reg": "OO-MPL",
-              "pic": "Hans",
+              "pic": "Ken",
               "copilot": "Tom",
               "pax": [
-                "Luk"
+                "Josha"
               ]
             },
             {
@@ -712,23 +712,15 @@
               "pic": "Axel",
               "copilot": "Kristof",
               "pax": [
-                "Ken"
+                "Hans"
               ]
             },
             {
               "reg": "OO-VSP",
-              "pic": "Josha",
+              "pic": "Luk",
               "copilot": "Dirk",
               "pax": [
                 "Marc"
-              ]
-            },
-            {
-              "reg": "F-GXNC",
-              "pic": "Michael",
-              "copilot": "Koen V",
-              "pax": [
-                "Lieven"
               ]
             }
           ]
