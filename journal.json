@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "10/06/2026 19:23 UTC",
+    "lastUpdated": "11/06/2026 06:35 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 28,
+    "nextRef": 29,
     "baggageKg": 7
   },
   "aircraft": [
@@ -607,7 +607,14 @@
           ]
         }
       ],
-      "entries": [],
+      "entries": [
+        {
+          "ref": 28,
+          "time": "08:35",
+          "text": "Herplannen wegens bkn600 in Barra",
+          "photos": []
+        }
+      ],
       "hotel": {
         "city": "Inverness",
         "name": "B&B Hotel Inverness",
