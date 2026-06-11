@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 08:23 UTC",
+    "lastUpdated": "11/06/2026 08:51 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 30,
+    "nextRef": 31,
     "baggageKg": 7
   },
   "aircraft": [
@@ -638,6 +638,17 @@
             {
               "file": "2026-06-11-20260611-065551-1-glenn-herpland-de-route-op-z-n-ipad.jpg",
               "caption": "Glenn herpland de route op z'n iPad"
+            }
+          ]
+        },
+        {
+          "ref": 30,
+          "time": "08:51",
+          "text": "Safety pilots evalueren de meteo",
+          "photos": [
+            {
+              "file": "2026-06-11-20260611-085126-1-safety-pilots-evalueren-de-meteo.jpg",
+              "caption": "Safety pilots evalueren de meteo"
             }
           ]
         }
