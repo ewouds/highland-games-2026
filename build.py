@@ -138,7 +138,7 @@ def render_aircraft_crew(ac, type_map=None, weight_margins=None):
         margin_html = f'<span class="wt-margin {cls}">{margin:+d} kg</span>'
     return (
         f'<div class="ac-row" data-people="{html.escape(people)}">'
-        f'<span class="ac-reg"><a href="{fa_url}" target="_blank" title="{html.escape(ac_type)}">{html.escape(reg)}</a><br>{margin_html}</span>'
+        f'<span class="ac-reg"><a href="{fa_url}" target="_blank" title="{html.escape(ac_type)}">{html.escape(reg)}</a>{margin_html}</span>'
         f'<span class="ac-seats">{"".join(seats)}</span>'
         '</div>'
     )
@@ -628,7 +628,7 @@ a.cll-apt.has-plate{color:var(--accent)}
 .ac-row{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;
   background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
 .ac-reg{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent2);
-  font-size:18px;min-width:74px;flex-shrink:0;padding-top:1px}
+  font-size:18px;min-width:74px;flex-shrink:0;padding-top:1px;display:flex;flex-direction:column;align-items:flex-start}
 .ac-reg a{color:var(--accent2);text-decoration:none}
 .ac-reg a:hover{text-decoration:underline;color:var(--accent)}
 .wt-margin{font-family:monospace;font-size:10px;display:inline-block;padding:1px 5px;border-radius:3px;font-weight:700;margin-top:2px}
