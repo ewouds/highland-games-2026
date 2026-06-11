@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 13:13 UTC",
+    "lastUpdated": "11/06/2026 13:16 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 34,
@@ -558,10 +558,10 @@
             }
           ],
           "weight_margins": {
-            "OO-VPE": 9,
+            "OO-VPE": -5,
             "PH-DYX": -14,
             "OO-MPL": 51,
-            "OO-MAV": -6,
+            "OO-MAV": -5,
             "OO-VSP": 25,
             "F-GXNC": 10
           }
@@ -625,10 +625,10 @@
             }
           ],
           "weight_margins": {
-            "OO-VPE": -2,
-            "PH-DYX": -25,
+            "OO-VPE": -22,
+            "PH-DYX": -23,
             "OO-MPL": 35,
-            "OO-MAV": -14,
+            "OO-MAV": -71,
             "OO-VSP": 71,
             "F-GXNC": 9
           }
@@ -804,8 +804,8 @@
           "weight_margins": {
             "OO-VPE": -13,
             "PH-DYX": 30,
-            "OO-MPL": -6,
-            "OO-MAV": -3,
+            "OO-MPL": -43,
+            "OO-MAV": -9,
             "OO-VSP": 27,
             "F-GXNC": 40
           }
@@ -869,12 +869,12 @@
             }
           ],
           "weight_margins": {
-            "OO-VPE": -3,
-            "PH-DYX": -13,
+            "OO-VPE": 3,
+            "PH-DYX": -82,
             "OO-MPL": 47,
-            "OO-MAV": -61,
+            "OO-MAV": -62,
             "OO-VSP": 30,
-            "F-GXNC": 19
+            "F-GXNC": 18
           }
         },
         {
@@ -937,11 +937,11 @@
           ],
           "weight_margins": {
             "OO-VPE": -22,
-            "PH-DYX": -29,
+            "PH-DYX": -92,
             "OO-MPL": 72,
-            "OO-MAV": -8,
+            "OO-MAV": -49,
             "OO-VSP": 45,
-            "F-GXNC": 10
+            "F-GXNC": 19
           }
         }
       ],
@@ -1085,11 +1085,11 @@
             }
           ],
           "weight_margins": {
-            "OO-VPE": -8,
-            "PH-DYX": 3,
+            "OO-VPE": 3,
+            "PH-DYX": -84,
             "OO-MPL": 45,
             "OO-MAV": -11,
-            "OO-VSP": 18,
+            "OO-VSP": 38,
             "F-GXNC": 3
           }
         },
@@ -1153,8 +1153,8 @@
             "OO-VPE": -14,
             "PH-DYX": 20,
             "OO-MPL": 9,
-            "OO-MAV": 14,
-            "OO-VSP": 48,
+            "OO-MAV": -14,
+            "OO-VSP": 40,
             "F-GXNC": -1
           }
         }
@@ -1299,7 +1299,7 @@
           ],
           "weight_margins": {
             "OO-VPE": -10,
-            "PH-DYX": -4,
+            "PH-DYX": 10,
             "OO-MPL": 34,
             "OO-MAV": -16,
             "OO-VSP": 76,
