@@ -901,6 +901,8 @@ JS_TEMPLATE = r"""
     // day-sections: verberg een hele dag als die geen enkele zichtbare vlucht heeft
     var visCount = 0;
     sections.forEach(function(s){
+      var hasCrewAtAll = s.querySelectorAll('.ac-row[data-people]').length > 0;
+      if(!hasCrewAtAll){ return; }
       var vis = s.querySelectorAll('.ac-row[data-people]:not(.cf-hidden)').length;
       s.classList.toggle('cf-hidden', vis === 0);
     });
