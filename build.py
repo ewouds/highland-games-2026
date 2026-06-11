@@ -622,6 +622,8 @@ a.cll-apt.has-plate{color:var(--accent)}
   background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
 .ac-reg{font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;color:var(--accent2);
   font-size:18px;min-width:74px;flex-shrink:0;padding-top:1px}
+.ac-reg a{color:var(--accent2);text-decoration:none}
+.ac-reg a:hover{text-decoration:underline;color:var(--accent)}
 .ac-seats{display:flex;flex-wrap:wrap;gap:6px}
 .seat{display:inline-flex;align-items:center;gap:5px;font-size:13px}
 .seat-role{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
