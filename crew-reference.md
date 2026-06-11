@@ -1,29 +1,28 @@
 # Fly-Out 2026 — The Highland Games — Crew & Routing Reference
 
-Bron: screenshot nieuwe planning (11/06/2026, herplanning wegens BKN600 Barra).
+Bron: screenshot v09 GRD planning (11/06/2026, herplanning na grounding do 11/6).
 Origineel backup: `crew-reference-original.md` (v08 PDF).
 
 > **Bron van waarheid voor crew-bezetting = deze sheet.** `journal.json` veld `days[].legs[].crew[]` is hieruit overgenomen. De site toont dit per dag/leg/vliegtuig (PIC / Copilot / Pax), met Ewoud gehighlight.
 
 ## Vliegtuigen
-| Reg | Tank |
-|-----|------|
-| OO-VPE | 91 L |
-| PH-DYX | 91 L |
-| OO-MPL | 91 L |
-| OO-MAV | 24 USG |
-| OO-VSP | 91 L |
-| F-GXNC | 24 USG |
+| Reg | Type | Tank |
+|-----|------|------|
+| OO-VPE | Robin DR401 | 91 L |
+| PH-DYX | Robin DR401 | 91 L |
+| OO-MPL | Robin DR401 | 91 L |
+| OO-MAV | Cessna 172 | 24 USG |
+| OO-VSP | Robin DR401 | 91 L |
+| F-GXNC | Diamond DA40 | 24 USG |
 
 ## Vlieghavens
 - EBAW — Antwerpen (thuisbasis)
 - EGSC — Cambridge
 - EGCM — Leeds East
 - EGPG — Cumbernauld
-- EGPN — Dundee
-- EGPE — Inverness
 - EGPR — Barra (strandbaan!)
-- EGEO — Oban
+- EGPO — Stornoway (NIEUW in v09)
+- EGPE — Inverness
 - EGAD — Newtownards
 - EIKY — Kerry
 - EGFF — Cardiff
@@ -31,7 +30,7 @@ Origineel backup: `crew-reference-original.md` (v08 PDF).
 
 ## Volledige crew-bezetting per leg (PIC / COPILOT / PAX)
 
-### wo 10/06 (ongewijzigd — reeds gevlogen)
+### wo 10/06 (reeds gevlogen — ongewijzigd)
 **EBAW → EGSC** (171 NM · 102.6 min)
 - OO-VPE: PIC Kristof · CO Josha · PAX Michael
 - PH-DYX: PIC Dirk · CO Hans · PAX Ken
@@ -56,25 +55,10 @@ Origineel backup: `crew-reference-original.md` (v08 PDF).
 - OO-VSP: PIC Josha · CO Tom · PAX Hans
 - F-GXNC: PIC Koen V · CO Lieven · PAX Ken
 
-### do 11/06 (NIEUWE ROUTING — Dundee + Inverness i.p.v. Barra)
-**EGPG → EGPN (Dundee)** (43 NM · 25.8 min)
-- OO-VPE: PIC Kristof · CO Ewoud · PAX Annick
-- PH-DYX: PIC Nick · CO Glenn · PAX Josha, Koen V
-- OO-MPL: PIC Hans · CO Tom · PAX Koenraad VB
-- OO-MAV: PIC Brecht · CO Luk · PAX Axel
-- OO-VSP: PIC Dirk · CO Ken · PAX Marc
-- F-GXNC: PIC Lieven · CO Michael · PAX Wim
+### do 11/06 — GROUNDED (BKN600, niet gevlogen)
 
-**EGPN → EGPE (Inverness)** (74 NM · 44.4 min)
-- OO-VPE: PIC Annick · CO Glenn · PAX Nick
-- PH-DYX: PIC Michael · CO Tom · PAX Axel, Josha
-- OO-MPL: PIC Marc · CO Dirk · PAX Hans
-- OO-MAV: PIC Luk · CO Brecht · PAX Wim
-- OO-VSP: PIC Ken · CO Kristof · PAX Koenraad VB
-- F-GXNC: PIC **Ewoud** · CO Lieven · PAX Koen V
-
-### vr 12/06 (Barra leg verplaatst naar hier)
-**EGPE → EGPR (Barra)** (115 NM · 69 min)
+### vr 12/06 (v09 — via Barra + Stornoway)
+**EGPG → EGPR (Barra)** (131 NM · 78.6 min)
 - OO-VPE: PIC Kristof · CO Axel · PAX Wim
 - PH-DYX: PIC Tom · CO Marc · PAX Hans
 - OO-MPL: PIC Glenn · CO Nick · PAX Michael, Koenraad VB
@@ -82,31 +66,31 @@ Origineel backup: `crew-reference-original.md` (v08 PDF).
 - OO-VSP: PIC Dirk · CO Luk · PAX Ken
 - F-GXNC: PIC Lieven · CO Annick · PAX Koen V
 
-**EGPR → EGEO (Oban)** (75 NM · 45 min)
+**EGPR → EGPO (Stornoway)** (80 NM · 48 min)
 - OO-VPE: PIC Nick · CO Glenn · PAX Annick
-- PH-DYX: PIC Koenraad VB · CO Brecht · PAX Ewoud, Wim
+- PH-DYX: PIC **Ewoud** · CO Brecht · PAX Koenraad VB, Wim
 - OO-MPL: PIC Hans · CO Tom · PAX Luk
 - OO-MAV: PIC Axel · CO Kristof · PAX Ken
 - OO-VSP: PIC Josha · CO Dirk · PAX Marc
-- F-GXNC: PIC Koen V · CO Lieven · PAX Michael
+- F-GXNC: PIC Michael · CO Koen V · PAX Lieven
 
-**EGEO → EGAD (Newtownards)** (114 NM · 68.4 min)
-- OO-VPE: PIC Annick · CO Dirk · PAX Michael
-- PH-DYX: PIC Wim · CO Brecht · PAX Koenraad VB, Hans
-- OO-MPL: PIC Kristof · CO Ken · PAX Marc
-- OO-MAV: PIC **Ewoud** · CO Glenn · PAX Koen V
-- OO-VSP: PIC Tom · CO Luk · PAX Nick
-- F-GXNC: PIC Lieven · CO Josha · PAX Axel
+**EGPO → EGAD (Newtownards)** (219 NM · 131.4 min)
+- OO-VPE: PIC Annick · CO Dirk · PAX Axel
+- PH-DYX: PIC Kristof · CO Brecht · PAX Koenraad VB, Josha
+- OO-MPL: PIC Michael · CO Ken · PAX Marc
+- OO-MAV: PIC Glenn · CO Luk · PAX Koen V
+- OO-VSP: PIC Tom · CO Nick · PAX Hans
+- F-GXNC: PIC **Ewoud** · CO Lieven · PAX Wim
 
 ### za 13/06 — RUSTDAG (geen vluchten)
 
 ### zo 14/06
 **EGAD → EIKY (Kerry)** (199 NM · 119.4 min)
-- OO-VPE: PIC Nick · CO Glenn · PAX Annick
-- PH-DYX: PIC Wim · CO Brecht · PAX **Ewoud**, Koen V
+- OO-VPE: PIC Annick · CO Glenn · PAX Wim
+- PH-DYX: PIC Nick · CO Brecht · PAX **Ewoud**, Koen V
 - OO-MPL: PIC Hans · CO Tom · PAX Marc
-- OO-MAV: PIC Luk · CO Kristof · PAX Michael
-- OO-VSP: PIC Dirk · CO Ken · PAX Josha
+- OO-MAV: PIC Luk · CO Ken · PAX Michael
+- OO-VSP: PIC Dirk · CO Kristof · PAX Josha
 - F-GXNC: PIC Axel · CO Lieven · PAX Koenraad VB
 
 **EIKY → EGFF (Cardiff)** (235 NM · 141 min)
@@ -134,30 +118,31 @@ Origineel backup: `crew-reference-original.md` (v08 PDF).
 - OO-VSP: PIC Josha · CO Kristof · PAX Marc
 - F-GXNC: PIC Koen V · CO Lieven · PAX Koenraad VB
 
-## Ewoud's persoonlijk schema (samenvatting)
+## Ewoud's persoonlijk schema (v09)
 | Dag | Leg | Rol | Vliegtuig |
 |-----|-----|-----|-----------|
 | wo 10/6 | EBAW→EGSC | PAX | F-GXNC |
 | wo 10/6 | EGSC→EGCM | PIC | F-GXNC |
 | wo 10/6 | EGCM→EGPG | PAX | PH-DYX |
-| do 11/6 | EGPG→EGPN | COPILOT | OO-VPE |
-| do 11/6 | EGPN→EGPE | PIC | F-GXNC |
-| vr 12/6 | EGPE→EGPR (Barra) | COPILOT | OO-MAV |
-| vr 12/6 | EGPR→EGEO | PAX | PH-DYX |
-| vr 12/6 | EGEO→EGAD | PIC | OO-MAV |
+| do 11/6 | GROUNDED | — | — |
+| vr 12/6 | EGPG→EGPR (Barra) | COPILOT | OO-MAV |
+| vr 12/6 | EGPR→EGPO (Stornoway) | PIC | PH-DYX |
+| vr 12/6 | EGPO→EGAD | PIC | F-GXNC |
 | za 13/6 | RUSTDAG | — | — |
 | zo 14/6 | EGAD→EIKY | PAX | PH-DYX |
 | zo 14/6 | EIKY→EGFF | COPILOT | OO-MAV |
 | ma 15/6 | EGFF→EGSU | PAX | OO-MPL |
 | ma 15/6 | EGSU→EBAW | PAX | OO-VPE |
 
-## Wijzigingen t.o.v. originele planning (v08)
-- **do 11/6**: Barra-leg geschrapt (BKN600), vervangen door EGPG→EGPN (Dundee)→EGPE (Inverness)
-- **vr 12/6**: Barra verplaatst naar deze dag (EGPE→EGPR), daarna EGPR→EGEO (was: EGPE→EGEO direct)
-- **zo 14/6**: vertrek vanuit EGAD i.p.v. EGEO (EGAD was al eindpunt vr 12/6 in origineel)
-- Ewoud do 11/6 leg 1: was COPILOT OO-MAV, nu COPILOT OO-VPE (EGPG→EGPN)
+## Wijzigingen v09 t.o.v. v08
+- **do 11/6**: VOLLEDIG GROUNDED (BKN600 heel Schotland)
+- **vr 12/6**: Route nu EGPG→EGPR→**EGPO (Stornoway)**→EGAD (was: EGPE→EGPR→EGEO→EGAD)
+- **Dundee (EGPN) en Inverness (EGPE) geschrapt** uit planning
+- **Oban (EGEO) geschrapt**, vervangen door Stornoway (EGPO)
+- Ewoud vr 12/6 leg 2: PIC PH-DYX (Barra→Stornoway) — nieuw
+- Ewoud vr 12/6 leg 3: PIC F-GXNC (Stornoway→EGAD) — nieuw
 
-## Deelnemers (gewichten kg, uit fuel/W&B sheet)
+## Deelnemers (gewichten kg)
 Kristof 70, Dirk 110, Glenn 78, Tom 100, Brecht 64, Lieven 85,
 Josha 85, Hans 93, Marc 98, Annick 54, Nick 88, Axel 76,
 Michael 76, Ken 96, Luk 96, Koen V 77, Wim 85, Ewoud 85,

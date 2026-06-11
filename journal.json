@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 15:32 UTC",
+    "lastUpdated": "11/06/2026 17:04 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 35,
@@ -55,7 +55,8 @@
     "EIKY": "Kerry",
     "EGFF": "Cardiff",
     "EGSU": "Duxford",
-    "EGPN": "Dundee"
+    "EGPN": "Dundee",
+    "EGPO": "Stornoway"
   },
   "days": [
     {
@@ -615,179 +616,179 @@
       "restDay": false,
       "legs": [
         {
-          "from": "EGPE",
-          "from_name": "Inverness",
+          "from": "EGPG",
+          "from_name": "Cumbernauld",
           "to": "EGPR",
           "to_name": "Barra",
-          "dist_nm": 115,
-          "time_min": 69,
+          "dist_nm": 131,
+          "time_min": 78.6,
           "crew": [
             {
+              "reg": "OO-VPE",
               "pic": "Kristof",
               "copilot": "Axel",
               "pax": [
                 "Wim"
-              ],
-              "reg": "OO-VPE"
+              ]
             },
             {
+              "reg": "PH-DYX",
               "pic": "Tom",
               "copilot": "Marc",
               "pax": [
                 "Hans"
-              ],
-              "reg": "PH-DYX"
+              ]
             },
             {
+              "reg": "OO-MPL",
               "pic": "Glenn",
               "copilot": "Nick",
               "pax": [
                 "Michael",
                 "Koenraad VB"
-              ],
-              "reg": "OO-MPL"
+              ]
             },
             {
+              "reg": "OO-MAV",
               "pic": "Brecht",
               "copilot": "Ewoud",
               "pax": [
                 "Josha"
-              ],
-              "reg": "OO-MAV"
+              ]
             },
             {
+              "reg": "OO-VSP",
               "pic": "Dirk",
               "copilot": "Luk",
               "pax": [
                 "Ken"
-              ],
-              "reg": "OO-VSP"
+              ]
             },
             {
+              "reg": "F-GXNC",
               "pic": "Lieven",
               "copilot": "Annick",
               "pax": [
                 "Koen V"
-              ],
-              "reg": "F-GXNC"
+              ]
             }
           ]
         },
         {
           "from": "EGPR",
           "from_name": "Barra",
-          "to": "EGEO",
-          "to_name": "Oban",
-          "dist_nm": 75,
-          "time_min": 45,
+          "to": "EGPO",
+          "to_name": "Stornoway",
+          "dist_nm": 80,
+          "time_min": 48,
           "crew": [
             {
+              "reg": "OO-VPE",
               "pic": "Nick",
               "copilot": "Glenn",
               "pax": [
                 "Annick"
-              ],
-              "reg": "OO-VPE"
+              ]
             },
             {
-              "pic": "Koenraad VB",
+              "reg": "PH-DYX",
+              "pic": "Ewoud",
               "copilot": "Brecht",
               "pax": [
-                "Ewoud",
+                "Koenraad VB",
                 "Wim"
-              ],
-              "reg": "PH-DYX"
+              ]
             },
             {
+              "reg": "OO-MPL",
               "pic": "Hans",
               "copilot": "Tom",
               "pax": [
                 "Luk"
-              ],
-              "reg": "OO-MPL"
+              ]
             },
             {
+              "reg": "OO-MAV",
               "pic": "Axel",
               "copilot": "Kristof",
               "pax": [
                 "Ken"
-              ],
-              "reg": "OO-MAV"
+              ]
             },
             {
+              "reg": "OO-VSP",
               "pic": "Josha",
               "copilot": "Dirk",
               "pax": [
                 "Marc"
-              ],
-              "reg": "OO-VSP"
+              ]
             },
             {
-              "pic": "Koen V",
-              "copilot": "Lieven",
+              "reg": "F-GXNC",
+              "pic": "Michael",
+              "copilot": "Koen V",
               "pax": [
-                "Michael"
-              ],
-              "reg": "F-GXNC"
+                "Lieven"
+              ]
             }
           ]
         },
         {
-          "from": "EGEO",
-          "from_name": "Oban",
+          "from": "EGPO",
+          "from_name": "Stornoway",
           "to": "EGAD",
           "to_name": "Newtownards",
-          "dist_nm": 114,
-          "time_min": 68.4,
+          "dist_nm": 219,
+          "time_min": 131.4,
           "crew": [
             {
+              "reg": "OO-VPE",
               "pic": "Annick",
               "copilot": "Dirk",
               "pax": [
-                "Michael"
-              ],
-              "reg": "OO-VPE"
+                "Axel"
+              ]
             },
             {
-              "pic": "Wim",
+              "reg": "PH-DYX",
+              "pic": "Kristof",
               "copilot": "Brecht",
               "pax": [
                 "Koenraad VB",
-                "Hans"
-              ],
-              "reg": "PH-DYX"
+                "Josha"
+              ]
             },
             {
-              "pic": "Kristof",
+              "reg": "OO-MPL",
+              "pic": "Michael",
               "copilot": "Ken",
               "pax": [
                 "Marc"
-              ],
-              "reg": "OO-MPL"
+              ]
             },
             {
-              "pic": "Ewoud",
-              "copilot": "Glenn",
-              "pax": [
-                "Koen V"
-              ],
-              "reg": "OO-MAV"
-            },
-            {
-              "pic": "Tom",
+              "reg": "OO-MAV",
+              "pic": "Glenn",
               "copilot": "Luk",
               "pax": [
-                "Nick"
-              ],
-              "reg": "OO-VSP"
+                "Koen V"
+              ]
             },
             {
-              "pic": "Lieven",
-              "copilot": "Josha",
+              "reg": "OO-VSP",
+              "pic": "Tom",
+              "copilot": "Nick",
               "pax": [
-                "Axel"
-              ],
-              "reg": "F-GXNC"
+                "Hans"
+              ]
+            },
+            {
+              "reg": "F-GXNC",
+              "pic": "Ewoud",
+              "copilot": "Lieven",
+              "pax": [
+                "Wim"
+              ]
             }
           ]
         }
@@ -877,21 +878,23 @@
       "legs": [
         {
           "from": "EGAD",
+          "from_name": "Newtownards",
           "to": "EIKY",
+          "to_name": "Kerry",
           "dist_nm": 199,
           "time_min": 119.4,
           "crew": [
             {
               "reg": "OO-VPE",
-              "pic": "Nick",
+              "pic": "Annick",
               "copilot": "Glenn",
               "pax": [
-                "Annick"
+                "Wim"
               ]
             },
             {
               "reg": "PH-DYX",
-              "pic": "Wim",
+              "pic": "Nick",
               "copilot": "Brecht",
               "pax": [
                 "Ewoud",
@@ -909,7 +912,7 @@
             {
               "reg": "OO-MAV",
               "pic": "Luk",
-              "copilot": "Kristof",
+              "copilot": "Ken",
               "pax": [
                 "Michael"
               ]
@@ -917,7 +920,7 @@
             {
               "reg": "OO-VSP",
               "pic": "Dirk",
-              "copilot": "Ken",
+              "copilot": "Kristof",
               "pax": [
                 "Josha"
               ]
@@ -934,7 +937,9 @@
         },
         {
           "from": "EIKY",
+          "from_name": "Kerry",
           "to": "EGFF",
+          "to_name": "Cardiff",
           "dist_nm": 235,
           "time_min": 141,
           "crew": [
@@ -1009,7 +1014,9 @@
       "legs": [
         {
           "from": "EGFF",
+          "from_name": "Cardiff",
           "to": "EGSU",
+          "to_name": "Duxford",
           "dist_nm": 136,
           "time_min": 81.6,
           "crew": [
@@ -1066,7 +1073,9 @@
         },
         {
           "from": "EGSU",
+          "from_name": "Duxford",
           "to": "EBAW",
+          "to_name": "Antwerpen",
           "dist_nm": 170,
           "time_min": 102,
           "crew": [
