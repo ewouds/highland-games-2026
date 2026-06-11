@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "11/06/2026 06:55 UTC",
+    "lastUpdated": "11/06/2026 06:50 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 30,
+    "nextRef": 29,
     "baggageKg": 7
   },
   "aircraft": [
@@ -616,17 +616,6 @@
             {
               "file": "2026-06-11-ontbijt-glasgow-herplannen.jpg",
               "caption": "Ontbijt in Glasgow — herplannen wegens BKN600 in Barra"
-            }
-          ]
-        },
-        {
-          "ref": 29,
-          "time": "08:55",
-          "text": "Glenn aan de pc — Google Sheet stress om de planning rond te krijgen na BKN600 Barra",
-          "photos": [
-            {
-              "file": "2026-06-11-20260611-065551-1-glenn-herpland-de-route-op-z-n-ipad.jpg",
-              "caption": "Glenn herpland de route op z'n iPad"
             }
           ]
         }
