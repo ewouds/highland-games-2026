@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 08:00 UTC",
+    "lastUpdated": "12/06/2026 08:12 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 39,
+    "nextRef": 40,
     "baggageKg": 7
   },
   "aircraft": [
@@ -839,6 +839,17 @@
             {
               "file": "2026-06-12-20260612-080014-1-regendruppels-op-de-cockpit-wachten-op-v.jpg",
               "caption": "Regendruppels op de cockpit — wachten op VMC voor de Barra-leg"
+            }
+          ]
+        },
+        {
+          "ref": 39,
+          "time": "10:12",
+          "text": "IMC inspectie vanuit de cockpit van OO-MAV — regen tikt op het glas, maar de glimlach is er al",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-081237-1-imc-inspectie-cockpit-oo-mav-regendruppe.jpg",
+              "caption": "IMC inspectie — cockpit OO-MAV, regendruppels en optimisme"
             }
           ]
         }
