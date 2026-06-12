@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 08:12 UTC",
+    "lastUpdated": "12/06/2026 10:27 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 40,
+    "nextRef": 41,
     "baggageKg": 7
   },
   "aircraft": [
@@ -850,6 +850,17 @@
             {
               "file": "2026-06-12-20260612-081237-1-imc-inspectie-cockpit-oo-mav-regendruppe.jpg",
               "caption": "IMC inspectie — cockpit OO-MAV, regendruppels en optimisme"
+            }
+          ]
+        },
+        {
+          "ref": 40,
+          "time": "12:27",
+          "text": "GELAND IN BARRA! 🏖️✈️ De beach runway — een vliegtuig op het zand, bandensporen in het strand, eilanden aan de horizon. Bucket list: ✅",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-102754-1-barra-beach-runway-egpr-vliegtuig-gepark.jpg",
+              "caption": "Barra beach runway — EGPR. Vliegtuig geparkeerd op het zand, eilanden in de verte"
             }
           ]
         }
