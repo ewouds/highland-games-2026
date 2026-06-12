@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 07:22 UTC",
+    "lastUpdated": "12/06/2026 08:00 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 38,
+    "nextRef": 39,
     "baggageKg": 7
   },
   "aircraft": [
@@ -828,6 +828,17 @@
             {
               "file": "2026-06-12-20260612-072149-1-briefing-voor-de-barra-leg-ipad-charts-u.jpg",
               "caption": "Briefing voor de Barra-leg — iPad charts uit, plannen aan de tafel"
+            }
+          ]
+        },
+        {
+          "ref": 38,
+          "time": "09:59",
+          "text": "Wachten op VMC condities voor vertrek — regen op de voorruit, geduld is een schone zaak",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-080014-1-regendruppels-op-de-cockpit-wachten-op-v.jpg",
+              "caption": "Regendruppels op de cockpit — wachten op VMC voor de Barra-leg"
             }
           ]
         }
