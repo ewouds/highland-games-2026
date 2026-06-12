@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 21:15 UTC",
+    "lastUpdated": "12/06/2026 21:40 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 44,
+    "nextRef": 45,
     "baggageKg": 7
   },
   "aircraft": [
@@ -889,6 +889,17 @@
             {
               "file": "2026-06-12-20260612-180401-1-egad-newtownards-oo-mav-en-f-gxnc-gepark.jpg",
               "caption": "EGAD Newtownards — OO-MAV en F-GXNC geparkeerd op het gras, windzak en dramatische Ierse lucht"
+            }
+          ]
+        },
+        {
+          "ref": 44,
+          "time": "23:40",
+          "text": "Avondeten in Newtownards. Quote: \"Daar mag hem thuis nog wel op zitten, op da kussen.\" — voldaan na een epische vliegdag, bord leeg, glimlach breed.",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-214044-1-post-dinner-vibe-bord-leeg-kussen-geclai.jpg",
+              "caption": "Post-dinner vibe — bord leeg, kussen geclaimd, tevreden piloot"
             }
           ]
         }
