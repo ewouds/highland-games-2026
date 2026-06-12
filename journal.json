@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 11:38 UTC",
+    "lastUpdated": "12/06/2026 13:36 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 42,
+    "nextRef": 43,
     "baggageKg": 7
   },
   "aircraft": [
@@ -874,6 +874,12 @@
               "caption": "Updated loadsheet dag 3 — F-GXNC grounded, 6 vliegtuigen voor 3 legs"
             }
           ]
+        },
+        {
+          "ref": 42,
+          "time": "15:36",
+          "text": "Aangekomen in EGPO — Stornoway, Isle of Lewis. Leg 2 van vandaag ✅ (PIC op PH-DYX). Nog één te gaan: de oversteek naar Noord-Ierland.",
+          "photos": []
         }
       ],
       "hotel": {
