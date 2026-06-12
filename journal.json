@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 21:40 UTC",
+    "lastUpdated": "12/06/2026 22:25 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 45,
+    "nextRef": 46,
     "baggageKg": 7
   },
   "aircraft": [
@@ -900,6 +900,17 @@
             {
               "file": "2026-06-12-20260612-214044-1-post-dinner-vibe-bord-leeg-kussen-geclai.jpg",
               "caption": "Post-dinner vibe — bord leeg, kussen geclaimd, tevreden piloot"
+            }
+          ]
+        },
+        {
+          "ref": 45,
+          "time": "23:55",
+          "text": "Dag 3 afsluiten zoals het hoort: Guinness in Noord-Ierland. Sláinte! 🍺🇮🇪",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-222549-1-welverdiende-guinness-na-3-legs-en-een-b.jpg",
+              "caption": "Welverdiende Guinness na 3 legs en een beach landing"
             }
           ]
         }
