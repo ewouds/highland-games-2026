@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 10:27 UTC",
+    "lastUpdated": "12/06/2026 11:38 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 41,
+    "nextRef": 42,
     "baggageKg": 7
   },
   "aircraft": [
@@ -861,6 +861,17 @@
             {
               "file": "2026-06-12-20260612-102754-1-barra-beach-runway-egpr-vliegtuig-gepark.jpg",
               "caption": "Barra beach runway — EGPR. Vliegtuig geparkeerd op het zand, eilanden in de verte"
+            }
+          ]
+        },
+        {
+          "ref": 41,
+          "time": "13:38",
+          "text": "Update in planning: F-GXNC blijft aan de grond. Ewoud's schema vandaag: EGPG→EGPR als copilot op OO-MAV ✅, EGPR→EGPO als PIC op PH-DYX, EGPO→EGAD als PIC op OO-MAV.",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-113831-1-updated-loadsheet-dag-3-f-gxnc-grounded-.jpg",
+              "caption": "Updated loadsheet dag 3 — F-GXNC grounded, 6 vliegtuigen voor 3 legs"
             }
           ]
         }
