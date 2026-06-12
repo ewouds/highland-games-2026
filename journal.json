@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 07:20 UTC",
+    "lastUpdated": "12/06/2026 07:21 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 37,
+    "nextRef": 38,
     "baggageKg": 7
   },
   "aircraft": [
@@ -825,6 +825,17 @@
           "time": "09:19",
           "text": "2de poging om Barra te bereiken — briefing in de lounge",
           "photos": []
+        },
+        {
+          "ref": 37,
+          "time": "09:19",
+          "text": "",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-072149-1-briefing-voor-de-barra-leg-ipad-charts-u.jpg",
+              "caption": "Briefing voor de Barra-leg — iPad charts uit, plannen aan de tafel"
+            }
+          ]
         }
       ],
       "hotel": {
