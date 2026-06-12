@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "12/06/2026 13:36 UTC",
+    "lastUpdated": "12/06/2026 18:04 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 43,
+    "nextRef": 44,
     "baggageKg": 7
   },
   "aircraft": [
@@ -880,6 +880,17 @@
           "time": "15:36",
           "text": "Aangekomen in EGPO — Stornoway, Isle of Lewis. Leg 2 van vandaag ✅ (PIC op PH-DYX). Nog één te gaan: de oversteek naar Noord-Ierland.",
           "photos": []
+        },
+        {
+          "ref": 43,
+          "time": "18:03",
+          "text": "Aangekomen in Newtownards! EGAD ✅ Alle 3 legs van vandaag afgerond. OO-MAV en F-GXNC naast elkaar op het gras — de hele vloot safe op Noord-Ierse bodem.",
+          "photos": [
+            {
+              "file": "2026-06-12-20260612-180401-1-egad-newtownards-oo-mav-en-f-gxnc-gepark.jpg",
+              "caption": "EGAD Newtownards — OO-MAV en F-GXNC geparkeerd op het gras, windzak en dramatische Ierse lucht"
+            }
+          ]
         }
       ],
       "hotel": {
