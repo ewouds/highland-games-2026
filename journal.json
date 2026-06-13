@@ -8,7 +8,7 @@
     "lastUpdated": "13/06/2026 11:21 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 48,
+    "nextRef": 49,
     "baggageKg": 7
   },
   "aircraft": [
@@ -984,6 +984,17 @@
           "time": "12:39",
           "text": "Laatste GARs worden ingevuld — iedereen rond de tafel voor de General Aviation Risk Assessment voordat morgen de propellers draaien.",
           "photos": []
+        },
+        {
+          "ref": 48,
+          "time": "13:20",
+          "text": "Citywalk in Belfast — de crew verkent de stad op de rustdag.",
+          "photos": [
+            {
+              "file": "2026-06-13-20260613-112145-1-citywalk-in-belfast.jpg",
+              "caption": "Citywalk in Belfast"
+            }
+          ]
         }
       ],
       "hotel": {
