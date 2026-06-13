@@ -89,8 +89,8 @@ Origineel backup: `crew-reference-original.md` (v08 PDF).
 - OO-VPE: PIC Annick · CO Glenn · PAX Wim
 - PH-DYX: PIC Nick · CO Brecht · PAX **Ewoud**, Koen V
 - OO-MPL: PIC Hans · CO Tom · PAX Marc
-- OO-MAV: PIC Luk · CO Ken · PAX Michael
-- OO-VSP: PIC Dirk · CO Kristof · PAX Josha
+- OO-MAV: PIC Luk · CO Kristof · PAX Michael
+- OO-VSP: PIC Dirk · CO Ken · PAX Josha
 - F-GXNC: PIC Axel · CO Lieven · PAX Koenraad VB
 
 **EIKY → EGFF (Cardiff)** (235 NM · 141 min)
@@ -107,7 +107,7 @@ Origineel backup: `crew-reference-original.md` (v08 PDF).
 - PH-DYX: PIC Marc · CO Kristof · PAX Hans
 - OO-MPL: PIC Michael · CO Dirk · PAX Wim, **Ewoud**
 - OO-MAV: PIC Brecht · CO Koen V · PAX Koenraad VB
-- OO-VSP: PIC Ken · CO Tom · PAX Nick
+- OO-VSP: PIC Nick · CO Tom · PAX Ken
 - F-GXNC: PIC Axel · CO Lieven · PAX Josha
 
 **EGSU → EBAW (Antwerpen)** (170 NM · 102 min)
