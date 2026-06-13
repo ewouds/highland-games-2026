@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "13/06/2026 16:54 UTC",
+    "lastUpdated": "13/06/2026 16:57 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 50,
+    "nextRef": 51,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1004,6 +1004,17 @@
             {
               "file": "2026-06-13-20260613-165446-1-king-of-the-world-titanic-museum-belfast.jpg",
               "caption": "King of the world — Titanic Museum Belfast"
+            }
+          ]
+        },
+        {
+          "ref": 50,
+          "time": "18:57",
+          "text": "In de Irish pub op de rustdag — Guinness heffen met de crew. Sláinte!",
+          "photos": [
+            {
+              "file": "2026-06-13-20260613-165757-1-cheers-in-de-irish-pub-belfast.jpg",
+              "caption": "Cheers in de Irish pub, Belfast"
             }
           ]
         }
