@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "14/06/2026 14:38 UTC",
+    "lastUpdated": "14/06/2026 16:22 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 58,
+    "nextRef": 59,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1241,6 +1241,17 @@
             {
               "file": "2026-06-14-20260614-143842-1-cockpit-selfie-in-oo-mav-crew-met-raac-l.jpg",
               "caption": "Cockpit selfie in OO-MAV: crew met RAAC lanyards, Irish Sea crossing richting Wales"
+            }
+          ]
+        },
+        {
+          "ref": 58,
+          "time": "16:22",
+          "text": "Met de volledige vloot goed aangekomen in Cardiff (EGFF) na een lange rustige vlucht over de Irish Sea",
+          "photos": [
+            {
+              "file": "2026-06-14-20260614-162253-1-de-volledige-raac-vloot-op-de-apron-van-.jpg",
+              "caption": "De volledige RAAC-vloot op de apron van Cardiff Airport — PH-DYX, OO-MAV en de rest netjes naast elkaar"
             }
           ]
         }
