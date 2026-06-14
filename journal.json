@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "14/06/2026 16:22 UTC",
+    "lastUpdated": "14/06/2026 21:50 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 59,
+    "nextRef": 60,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1252,6 +1252,17 @@
             {
               "file": "2026-06-14-20260614-162253-1-de-volledige-raac-vloot-op-de-apron-van-.jpg",
               "caption": "De volledige RAAC-vloot op de apron van Cardiff Airport — PH-DYX, OO-MAV en de rest netjes naast elkaar"
+            }
+          ]
+        },
+        {
+          "ref": 59,
+          "time": "21:49",
+          "text": "Lieven kreeg zijn ezelsoren — welverdiende gin-tonic in een gezellige Welsh pub na een lange vliegdag",
+          "photos": [
+            {
+              "file": "2026-06-14-20260614-215001-1-lieven-met-zijn-ezelsoren-fancy-gin-toni.jpg",
+              "caption": "Lieven met zijn 'ezelsoren' — fancy gin-tonic met grapefruit in een pub met glas-in-lood ramen"
             }
           ]
         }
