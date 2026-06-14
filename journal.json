@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "14/06/2026 12:00 UTC",
+    "lastUpdated": "14/06/2026 14:38 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 57,
+    "nextRef": 58,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1230,6 +1230,17 @@
             {
               "file": "2026-06-14-20260614-120010-1-cliffs-of-moher-vanuit-de-lucht-de-volle.jpg",
               "caption": "Cliffs of Moher vanuit de lucht — de volledige klifwand met sea stacks zichtbaar"
+            }
+          ]
+        },
+        {
+          "ref": 57,
+          "time": "14:38",
+          "text": "Crossing van Ireland naar United Kingdom met OO-MAV — cockpit selfie met crew, Irish Sea onder ons",
+          "photos": [
+            {
+              "file": "2026-06-14-20260614-143842-1-cockpit-selfie-in-oo-mav-crew-met-raac-l.jpg",
+              "caption": "Cockpit selfie in OO-MAV: crew met RAAC lanyards, Irish Sea crossing richting Wales"
             }
           ]
         }
