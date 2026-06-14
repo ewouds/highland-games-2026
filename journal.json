@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "14/06/2026 07:32 UTC",
+    "lastUpdated": "14/06/2026 09:40 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 55,
+    "nextRef": 56,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1208,6 +1208,17 @@
             {
               "file": "2026-06-14-20260614-073205-1-newtownards-airfield-vliegtuigen-op-het-.jpg",
               "caption": "Newtownards airfield — vliegtuigen op het gras, klaar voor vertrek"
+            }
+          ]
+        },
+        {
+          "ref": 55,
+          "time": "09:40",
+          "text": "Media opnames in flight — cockpit selfie via tablet-reflectie",
+          "photos": [
+            {
+              "file": "2026-06-14-20260614-094044-1-in-flight-cockpit-setup-tablet-headset-c.jpg",
+              "caption": "In-flight cockpit setup: tablet, headset, camera — selfie via reflectie"
             }
           ]
         }
