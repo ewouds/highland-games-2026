@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "15/06/2026 08:44 UTC",
+    "lastUpdated": "15/06/2026 08:54 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 65,
+    "nextRef": 66,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1456,6 +1456,17 @@
             {
               "file": "2026-06-15-20260615-084455-1-ground-crew-met-epu-arriveert-voor-de-ju.jpg",
               "caption": "Ground crew met EPU arriveert voor de jumpstart"
+            }
+          ]
+        },
+        {
+          "ref": 65,
+          "time": "10:55",
+          "text": "Plot twist: EPU komt eraan maar levert 28V external power — wij hebben 12V nodig. Klassiek voltage mismatch probleem op een GA-veld.",
+          "photos": [
+            {
+              "file": "2026-06-15-20260615-085449-1-global-trek-aviation-gpu-op-de-apron-hel.jpg",
+              "caption": "Global Trek Aviation GPU op de apron — helaas 28V i.p.v. de benodigde 12V"
             }
           ]
         }
