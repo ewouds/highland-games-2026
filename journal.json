@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "15/06/2026 15:49 UTC",
+    "lastUpdated": "15/06/2026 15:51 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 68,
+    "nextRef": 69,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1491,6 +1491,12 @@
               "caption": "De crew op het terras van het RAAC clubhuis — biertjes verdiend na 6 dagen flyout"
             }
           ]
+        },
+        {
+          "ref": 68,
+          "time": "17:51",
+          "text": "Correctie: F-GXNC is niet op een ferry maar wordt gevlogen — onderweg naar EBCL (Chevetogne) waar ferry-piloot Glenn hem ophaalt om terug naar EBLE (Sanicole) te brengen voor eigenaar Lieven.",
+          "photos": []
         }
       ]
     }
