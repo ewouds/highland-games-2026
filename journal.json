@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "16/06/2026 11:40 UTC",
+    "lastUpdated": "16/06/2026 15:26 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 72,
+    "nextRef": 73,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1523,6 +1523,17 @@
             {
               "file": "klm-cityhopper-cardiff.jpg",
               "caption": "KLM Cityhopper PH-EZF op Cardiff Airport — Dirk, Michael en Wim op weg naar huis via Amsterdam"
+            }
+          ]
+        },
+        {
+          "ref": 72,
+          "time": "15:26",
+          "text": "De bezemwagen (Dirk, Wim & Michael) is ook aangekomen. Nu is iedereen terug in EBAW! 🏁",
+          "photos": [
+            {
+              "file": "2026-06-16-20260616-152652-1-de-bezemwagen-is-thuis-iedereen-terug-op.jpg",
+              "caption": "De bezemwagen is thuis — iedereen terug op EBAW, Highland Games complete"
             }
           ]
         }
