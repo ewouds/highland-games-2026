@@ -5,10 +5,10 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "16/06/2026 09:31 UTC",
+    "lastUpdated": "16/06/2026 11:40 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
-    "nextRef": 71,
+    "nextRef": 72,
     "baggageKg": 7
   },
   "aircraft": [
@@ -1265,6 +1265,12 @@
               "caption": "Lieven met zijn 'ezelsoren' — fancy gin-tonic met grapefruit in een pub met glas-in-lood ramen"
             }
           ]
+        },
+        {
+          "ref": 71,
+          "time": "18:00",
+          "text": "Quote of the day: sommige kregen een 9 voor hun landing... op de schaal van Richter 😂",
+          "photos": []
         }
       ],
       "hotel": {
