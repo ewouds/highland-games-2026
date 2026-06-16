@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "16/06/2026 09:08 UTC",
+    "lastUpdated": "16/06/2026 09:10 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 71,
@@ -1507,7 +1507,12 @@
           "ref": 70,
           "time": "21:00",
           "text": "Dirk, Michael en Wim zijn vertrokken vanuit Cardiff naar huis via AMS. KLM Cityhopper PH-EZF op het platform.",
-          "photos": []
+          "photos": [
+            {
+              "file": "photos/klm-cityhopper-cardiff.jpg",
+              "caption": "KLM Cityhopper PH-EZF op Cardiff Airport — Dirk, Michael en Wim op weg naar huis via Amsterdam"
+            }
+          ]
         }
       ]
     }
