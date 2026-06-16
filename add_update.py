@@ -25,7 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 JOURNAL = os.path.join(HERE, "journal.json")
 PHOTOS = os.path.join(HERE, "photos")
 
-VALID_DATES = ["2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15"]
+VALID_DATES = ["2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16"]
 
 
 def run(cmd, **kw):

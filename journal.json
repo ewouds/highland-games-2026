@@ -5,7 +5,7 @@
     "depart": "2026-06-10",
     "return": "2026-06-15",
     "homeBase": "EBAW",
-    "lastUpdated": "16/06/2026 09:10 UTC",
+    "lastUpdated": "16/06/2026 09:13 UTC",
     "pilot": "Ewoud Smets",
     "tagline": "Zes vliegtuigen, één crew, de Highlands tegemoet.",
     "nextRef": 71,
@@ -1502,10 +1502,16 @@
               "caption": "Koen, Glenn en Lieven in de hangar bij OO-BP na het inleveren van de F-GXNC"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Maandag — Terug naar huis",
+      "entries": [
         {
           "ref": 70,
-          "time": "21:00",
+          "time": "11:00",
           "text": "Dirk, Michael en Wim zijn vertrokken vanuit Cardiff naar huis via AMS. KLM Cityhopper PH-EZF op het platform.",
           "photos": [
             {
@@ -1514,7 +1520,10 @@
             }
           ]
         }
-      ]
+      ],
+      "weekday": "Maandag",
+      "label": "Dag 7 — De laatste drie naar huis",
+      "restDay": false
     }
   ],
   "weights": {
